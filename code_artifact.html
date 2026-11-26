@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ورقة العمل التفاعلية: التخريج الرقمي — المعهد العالي هاشم أشعري تبوإيرنج</title>
+
+  <!-- خطوط جوجل العربية: الأميري للنصوص الحديثية والعناوين التراثية، وكايرو لواجهة المستخدم الحديثة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- مكتبة Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Cairo"', 'system-ui', 'sans-serif'],
+            amiri: ['"Amiri"', 'serif'],
+          },
+          colors: {
+            maroon: {
+              950: '#2E0B10',
+              900: '#3E1016',
+              800: '#5A1A22',
+              700: '#70212B',
+              600: '#8A2A36',
+              100: '#F5E4E6',
+              50: '#FBF4F5',
+            },
+            gold: {
+              800: '#6E4E04',
+              700: '#8F6606',
+              600: '#B8860B',
+              500: '#D4A017',
+              100: '#F9EFC7',
+              50: '#FDF9EC',
+            },
+            parchment: '#FAF7F2',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* تنسيقات الخطوط العربية التراثية والحديثية */
+    .font-hadith {
+      font-family: 'Amiri', serif;
+      line-height: 2.05;
+    }
+
+    /* زخرفة هندسية هادئة للترويسة الأكاديمية */
+    .academic-header-bg {
+      background-color: #5A1A22;
+      background-image:
+        radial-gradient(rgba(184, 134, 11, 0.22) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
+    }
+
+    /* إخفاء شريط التمرير الأفقي للتبويبات في الهواتف */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* تأثير التمويه في وضع التدريب على الحوار (الملحق ب) */
+    .role-blurred {
+      filter: blur(7px);
+      user-select: none;
+      transition: filter 0.25s ease;
+    }
+    .role-blurred.revealed {
+      filter: blur(0);
+      user-select: text;
+    }
+
+    /* إعدادات الطباعة والتصدير إلى ملف PDF */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 13mm 12mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        font-size: 10.5pt !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .tab-panel-nonprint {
+        display: none !important;
+      }
+      .print-section {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 16px !important;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+      .print-page-break {
+        page-break-before: always;
+      }
+      .academic-header-bg {
+        background: #5A1A22 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .maroon-print-head {
+        background-color: #5A1A22 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      input, textarea {
+        border: 1px solid #cbd5e1 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+      .rubrik-selected {
+        background-color: #F5E4E6 !important;
+        border: 2px solid #5A1A22 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-parchment text-stone-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ==================== الترويسة الأكاديمية العليا ==================== -->
+  <header class="academic-header-bg text-white shadow-lg border-b-4 border-gold-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5">
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+        <!-- شعار وهوية المعهد والمادة -->
+        <div class="flex items-start gap-3.5">
+          <div class="shrink-0 w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-gold-500/50 flex items-center justify-center shadow-inner p-2.5">
+            <svg class="w-8 h-8 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+              <path d="M8 7h8" />
+              <path d="M8 11h6" />
+              <circle cx="15.5" cy="14.5" r="1.5" />
+            </svg>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-gold-100">
+              <span>المعهد العالي هاشم أشعري تبوإيرنج</span>
+              <span class="text-gold-500">|</span>
+              <span>قسم تخصص الحديث وعلومه</span>
+            </div>
+            <h1 class="font-hadith text-2xl sm:text-3xl lg:text-[32px] font-bold text-white mt-1 leading-snug">
+              المادة: اللغة العربية التطبيقية (مهارة الاستماع والحوار) — اللقاء العاشر: التخريج الرقمي
+            </h1>
+            <p class="text-rose-100/90 text-xs sm:text-sm mt-1">
+              <strong>المحاضر:</strong> الأستاذ حنيف فتحوني، الماجستير
+              <span class="mx-2 text-gold-500">•</span>
+              <strong>الزمن المخصص:</strong> ١٠٠ دقيقة (٢ × ٥٠ دقيقة)
+              <span class="mx-2 text-gold-500">•</span>
+              <strong>الموضوع الفرعي:</strong> مصطلحات واجهة المكتبات الرقمية والتوجيه الشفهي للتخريج
+            </p>
+          </div>
+        </div>
+
+        <!-- أزرار التحكم السريعة في الترويسة -->
+        <div class="no-print flex flex-wrap items-center gap-2 lg:justify-end shrink-0">
+          <!-- مؤشر الحفظ التلقائي -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-xs font-medium text-rose-50">
+            <span id="autosave-dot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="autosave-text">تم الحفظ تلقائياً</span>
+          </div>
+
+          <!-- زر قاموس المفردات السريع (د) -->
+          <button type="button" onclick="openKamusDrawer()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-xs font-bold shadow-sm transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>قاموس المفردات السريع (د)</span>
+          </button>
+
+          <!-- زر تبديل وضع المحاضر -->
+          <button type="button" onclick="toggleModeDosen()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-xs font-bold text-white transition cursor-pointer" title="تفعيل لإظهار مفتاح الإجابة للملحق ج وملاحظات المحاضر">
+            <span id="dosen-dot" class="w-2.5 h-2.5 rounded-full bg-stone-400 transition"></span>
+            <span>وضع المحاضر: <strong id="dosen-label">مُغلق</strong></span>
+          </button>
+
+          <!-- زر الطباعة / التصدير -->
+          <button type="button" onclick="printWorksheet()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-maroon-800 hover:bg-gold-50 text-xs font-bold shadow-sm transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            <span>طباعة / تصدير PDF</span>
+          </button>
+
+          <!-- زر مسح البيانات -->
+          <button type="button" onclick="openResetModal()" class="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-rose-950/70 hover:bg-rose-950 border border-rose-400/30 text-rose-100 text-xs font-semibold transition cursor-pointer" title="مسح جميع البيانات المحفوظة">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            <span>مسح البيانات</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- شريط بيانات الثنائي / المجموعة الثلاثية -->
+      <div class="mt-4 bg-white/10 backdrop-blur-xs border border-white/15 rounded-2xl overflow-hidden">
+        <button type="button" onclick="toggleIdentityPanel()" class="no-print w-full px-4 py-2.5 flex items-center justify-between text-right text-xs sm:text-sm font-bold text-gold-100 hover:bg-white/5 transition cursor-pointer">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>بيانات الفريق الدراسي (الموجِّه والمُشغِّل)</span>
+            <span id="identity-summary" class="text-xs font-normal text-rose-100/80 hidden sm:inline"></span>
+          </span>
+          <svg id="identity-chevron" class="w-4 h-4 text-gold-100 transform transition-transform duration-200 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+
+        <div id="identity-panel-body" class="px-4 pb-4 pt-2 border-t border-white/10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div>
+              <label for="id-pemandu" class="block text-xs font-bold text-gold-100 mb-1">اسم الموجِّه</label>
+              <input id="id-pemandu" type="text" placeholder="أدخل اسم الطالب الموجِّه..." oninput="handleStateChange()" class="w-full px-3.5 py-2 rounded-xl bg-white text-stone-800 text-sm border border-stone-200 focus:outline-none focus:ring-2 focus:ring-gold-500" />
+            </div>
+            <div>
+              <label for="id-operator" class="block text-xs font-bold text-gold-100 mb-1">اسم المُشغِّل</label>
+              <input id="id-operator" type="text" placeholder="أدخل اسم الطالب المُشغِّل..." oninput="handleStateChange()" class="w-full px-3.5 py-2 rounded-xl bg-white text-stone-800 text-sm border border-stone-200 focus:outline-none focus:ring-2 focus:ring-gold-500" />
+            </div>
+            <div>
+              <label for="id-pengamat" class="block text-xs font-bold text-gold-100 mb-1">اسم المُلاحِظ (اختياري — للمجموعات الثلاثية)</label>
+              <input id="id-pengamat" type="text" placeholder="عند تشكيل مجموعة من ثلاثة طلاب..." oninput="handleStateChange()" class="w-full px-3.5 py-2 rounded-xl bg-white text-stone-800 text-sm border border-stone-200 focus:outline-none focus:ring-2 focus:ring-gold-500" />
+            </div>
+            <div>
+              <label for="id-kelas-tanggal" class="block text-xs font-bold text-gold-100 mb-1">الفصل / التاريخ</label>
+              <input id="id-kelas-tanggal" type="text" placeholder="مثال: المستوى الرابع / ٢٦ نوفمبر ٢٠٢٦" oninput="handleStateChange()" class="w-full px-3.5 py-2 rounded-xl bg-white text-stone-800 text-sm border border-stone-200 focus:outline-none focus:ring-2 focus:ring-gold-500" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== شريط تنبيه وضع المحاضر ==================== -->
+  <div id="dosen-banner" class="hidden no-print bg-gold-50 border-b border-gold-600/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-gold-800">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded-md bg-gold-600 text-white font-bold">وضع المحاضر مُفعَّل</span>
+        <span>تم إظهار <strong>مفتاح الإجابة للملحق ج</strong> و<strong>ملاحظات المحاضر (البند ح)</strong>.</span>
+      </div>
+      <button type="button" onclick="toggleModeDosen()" class="text-maroon-800 underline font-bold hover:text-maroon-700 self-start sm:self-auto cursor-pointer">إغلاق وضع المحاضر</button>
+    </div>
+  </div>
+
+  <!-- ==================== شريط التبويبات الرئيسية الستة ==================== -->
+  <nav class="no-print sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-stone-200 shadow-xs">
+    <div class="max-w-6xl mx-auto px-2 sm:px-6">
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2.5" role="tablist" aria-label="أقسام ورقة العمل">
+        <button type="button" role="tab" data-tab="tab-mufradat" onclick="switchTab('tab-mufradat')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ١. المفردات والمراجع
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-a" onclick="switchTab('tab-lampiran-a')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ٢. الملحق أ: الاستماع
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-b" onclick="switchTab('tab-lampiran-b')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ٣. الملحق ب: الحوار التفاعلي
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-c" onclick="switchTab('tab-lampiran-c')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ٤. الملحق ج: بطاقات التخريج والنتائج
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-d" onclick="switchTab('tab-lampiran-d')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ٥. الملحق د: بطاقة التقييم
+        </button>
+        <button type="button" role="tab" data-tab="tab-mandiri" onclick="switchTab('tab-mandiri')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer">
+          ٦. الواجب المنزلي والتأمل
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== المحتوى الرئيسي ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- ================================================================ -->
+    <!-- التبويب ١: المفردات والمراجع (البندان ج و د)                      -->
+    <!-- ================================================================ -->
+    <section id="tab-mufradat" class="tab-panel tab-panel-nonprint space-y-6">
+
+      <!-- ملاحظات للمحاضر (البند ح — تظهر فقط عند تفعيل وضع المحاضر) -->
+      <div class="dosen-only hidden bg-gold-50 border-2 border-gold-600/50 rounded-2xl p-5 shadow-xs">
+        <div class="flex items-center gap-2 mb-2.5">
+          <span class="px-3 py-1 rounded-lg bg-maroon-800 text-white text-xs font-bold">البند (ح) — ملاحظات إرشادية للمحاضر</span>
+        </div>
+        <ul class="list-disc pr-5 space-y-1.5 text-sm text-stone-800 leading-relaxed">
+          <li>ينبغي للمحاضر تجربة جميع خطوات التخريج مسبقاً على الجهاز والشبكة المستخدَمة في القاعة؛ إذ تتغيّر واجهات المكتبات الرقمية باستمرار مما يستدعي تكييف بعض المصطلحات وفق التحديث الأخير.</li>
+          <li>المقطع التعريفي في الخيار الأول قديم نسبياً (٢٠١٦م)؛ فإذا اختلفت واجهة الموقع الحالية كثيراً يُفضَّل تسجيل شاشة قصير بصوت المحاضر (٣–٥ دقائق) باستخدام مفردات البند (د).</li>
+          <li>في حال عدم توفّر أجهزة لجميع الطلاب، تُشكَّل مجموعات ثلاثية: <strong>مُوجِّه</strong>، و<strong>مُشغِّل</strong>، و<strong>مُلاحِظ</strong> يرصد دقة المصطلحات وصيغ الأفعال.</li>
+          <li>يُركِّز التقييم الأساسي على <strong>جودة التوجيه الشفهي باللغة العربية الفصحى</strong>، لا على مجرد السرعة في الوصول إلى الحديث.</li>
+        </ul>
+      </div>
+
+      <!-- روابط المكتبات الرقمية + ملخص طرق التخريج الخمس الكلاسيكية -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <!-- الروابط السريعة للمكتبات الرقمية -->
+        <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-50 text-maroon-800 text-xs font-bold mb-2">البند (ج) و(هـ) — مصادر التطبيق</span>
+            <h2 class="font-hadith text-2xl font-bold text-maroon-800">روابط المكتبات الحديثية الرقمية</h2>
+            <p class="text-xs text-stone-500 mt-1 mb-4">يفتح المُشغِّل أحد هذه المصادر أثناء جلسة التدريب التطبيقي:</p>
+          </div>
+
+          <div class="space-y-2.5">
+            <a href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-maroon-50 hover:bg-maroon-100/80 border border-maroon-800/20 transition group">
+              <div>
+                <div class="text-sm font-bold text-maroon-900">الموسوعة الحديثية — الدرر السنية</div>
+                <div class="text-xs text-maroon-700 mt-0.5" dir="ltr">https://dorar.net/hadith</div>
+              </div>
+              <svg class="w-4 h-4 text-maroon-800 group-hover:-translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+
+            <a href="https://shamela.ws" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-parchment hover:bg-stone-100 border border-stone-200 transition group">
+              <div>
+                <div class="text-sm font-bold text-stone-900">المكتبة الشاملة (النسخة الشبكية)</div>
+                <div class="text-xs text-stone-500 mt-0.5" dir="ltr">https://shamela.ws</div>
+              </div>
+              <svg class="w-4 h-4 text-stone-600 group-hover:-translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=4nUMczAtNNQ" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-gold-50 hover:bg-gold-100/70 border border-gold-600/25 transition group">
+              <div>
+                <div class="text-sm font-bold text-gold-800">فيديو تعريفي: الموسوعة الحديثية (الدرر)</div>
+                <div class="text-xs text-gold-700 mt-0.5">تعرّف على موسوعات الدرر السنية (مادة الاستماع)</div>
+              </div>
+              <svg class="w-4 h-4 text-gold-700 group-hover:-translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ملخص طرق التخريج الخمس الكلاسيكية -->
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-stone-200 shadow-xs p-5">
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-gold-50 text-gold-800 text-xs font-bold mb-2">مدخل معرفي</span>
+          <h2 class="font-hadith text-2xl font-bold text-maroon-800">التخريج الرقمي وطرق التخريج الخمس الكلاسيكية</h2>
+          <p class="text-sm text-stone-700 mt-1.5 leading-relaxed">
+            <strong>تخريج الحديث:</strong> هو الدلالة على موضع الحديث في مصادره الأصلية التي أخرجته بسنده، ثم بيان مرتبته عند الحاجة. وتُيسِّر المكتبات الرقمية ما كان يُطلب قديماً عبر الفهارس والمعاجم، ويغلب في البحث الرقمي الاعتماد على <em>الكلمات المفتاحية</em> و<em>ألفاظ المتن</em>.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5 mt-4">
+            <div class="p-3 rounded-xl bg-parchment border border-stone-200">
+              <div class="text-xs font-extrabold text-maroon-800 mb-1">١. راوي الحديث</div>
+              <p class="text-[11px] text-stone-600 leading-relaxed">التخريج عن طريق اسم الصحابي راوي الحديث الأعلى.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-parchment border border-stone-200">
+              <div class="text-xs font-extrabold text-maroon-800 mb-1">٢. أول لفظ المتن</div>
+              <p class="text-[11px] text-stone-600 leading-relaxed">التخريج عن طريق مطلع الحديث وأول كلمة فيه.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-maroon-50 border border-maroon-800/30">
+              <div class="text-xs font-extrabold text-maroon-900 mb-1">٣. الكلمات المفتاحية</div>
+              <p class="text-[11px] text-maroon-800 leading-relaxed">عن طريق كلمة بارزة قليلة الدوران في متن الحديث.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-parchment border border-stone-200">
+              <div class="text-xs font-extrabold text-maroon-800 mb-1">٤. موضوع الحديث</div>
+              <p class="text-[11px] text-stone-600 leading-relaxed">التخريج عن طريق الباب الفقهي أو الموضوع العام.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-parchment border border-stone-200">
+              <div class="text-xs font-extrabold text-maroon-800 mb-1">٥. صفة خاصة</div>
+              <p class="text-[11px] text-stone-600 leading-relaxed">عن طريق وصف ظاهر في الإسناد أو المتن (كالقدسي أو المرسل).</p>
+            </div>
+          </div>
+
+          <div class="mt-3.5 p-3 rounded-xl bg-stone-50 border border-stone-200 text-xs text-stone-700">
+            <strong class="text-maroon-800">عناصر بطاقة النتيجة الرقمية:</strong> تعرض الموسوعات الحديثية غالباً: <em>متن الحديث</em>، و<em>الراوي (الصحابي)</em>، و<em>المحدِّث/المُخرِّج</em>، و<em>المصدر</em>، و<em>الصفحة أو الرقم</em>، و<em>خلاصة حكم المحدِّث</em>.
+          </div>
+        </div>
+      </div>
+
+      <!-- جدول المفردات التفاعلي + بطاقات الاستذكار السريعة (Flashcards) -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-4 border-b border-stone-100">
+          <div>
+            <h2 class="font-hadith text-2xl font-bold text-maroon-800">البند (د) — المفردات المفتاحية للتخريج الرقمي</h2>
+            <p class="text-xs text-stone-500 mt-0.5">ابحث في جدول المفردات أو صفِّها حسب الفئة، أو اختبر حفظك عبر بطاقات الاستذكار السريعة.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- مربع بحث مباشر -->
+            <div class="relative flex-1 sm:flex-none">
+              <svg class="w-4 h-4 text-stone-400 absolute right-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <input id="mufradat-search" type="text" placeholder="ابحث عن مصطلح..." oninput="renderMufradatTable()" class="w-full sm:w-52 pr-9 pl-3 py-2 rounded-xl border border-stone-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </div>
+
+            <!-- تصفية حسب الفئة -->
+            <select id="mufradat-cat-filter" onchange="renderMufradatTable()" class="px-3 py-2 rounded-xl border border-stone-200 bg-white text-xs sm:text-sm font-semibold text-stone-700 focus:outline-none focus:ring-2 focus:ring-maroon-800">
+              <option value="all">جميع الفئات (١٥)</option>
+              <option value="d1">د.١: مصطلحات الواجهة (٨)</option>
+              <option value="d2">د.٢: الأوامر والربط والنتائج (٧)</option>
+            </select>
+
+            <!-- زر بطاقات الاستذكار -->
+            <button type="button" onclick="toggleFlashcard()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-maroon-800 hover:bg-maroon-700 text-white text-xs font-bold transition cursor-pointer">
+              <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              <span>بطاقات الاستذكار السريعة</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- لوحة بطاقات الاستذكار السريعة (قابلة للطي) -->
+        <div id="flashcard-panel" class="hidden my-5 p-5 rounded-2xl bg-gradient-to-l from-maroon-900 to-maroon-800 text-white shadow-md">
+          <div class="flex items-center justify-between text-xs text-gold-100 mb-3">
+            <span class="font-bold">بطاقات الاستذكار السريعة — مفردات الواجهة والتوجيه (د.١ و د.٢)</span>
+            <span id="fc-counter" class="px-2.5 py-0.5 rounded-full bg-white/15 font-bold">١ / ١٥</span>
+          </div>
+
+          <div onclick="flipFlashcard()" class="min-h-[160px] bg-white/10 hover:bg-white/15 border border-gold-500/35 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition select-none">
+            <span id="fc-category" class="text-[11px] px-3 py-0.5 rounded-full bg-gold-600 text-white font-bold mb-2"></span>
+            <div id="fc-front" class="space-y-1.5">
+              <div id="fc-arabic" class="font-hadith text-3xl sm:text-4xl font-bold text-white"></div>
+              <p class="text-xs text-rose-100/80 mt-2">انقر على البطاقة لإظهار البيان الوظيفي للمصطلح</p>
+            </div>
+            <div id="fc-back" class="hidden space-y-2 max-w-xl">
+              <div id="fc-arabic-back" class="font-hadith text-2xl font-bold text-gold-100"></div>
+              <div id="fc-meaning" class="text-base sm:text-lg font-bold text-white leading-relaxed"></div>
+              <div id="fc-example" class="text-xs text-rose-100 bg-black/20 px-3 py-1.5 rounded-lg"></div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="prevFlashcard()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold transition cursor-pointer">→ السابق</button>
+              <button type="button" onclick="nextFlashcard()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold transition cursor-pointer">التالي ←</button>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="speakCurrentFlashcard()" class="px-3.5 py-2 rounded-xl bg-gold-600 hover:bg-gold-700 text-xs font-bold transition cursor-pointer">🔊 استماع للنطق</button>
+              <button type="button" onclick="shuffleFlashcards()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition cursor-pointer">🔀 خلط البطاقات</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- جدول المفردات الموحّد -->
+        <div class="overflow-x-auto rounded-xl border border-stone-200 mt-4">
+          <table class="w-full text-right border-collapse min-w-[650px]">
+            <thead class="bg-maroon-800 text-white text-xs sm:text-sm">
+              <tr>
+                <th class="px-4 py-3 w-36">التصنيف</th>
+                <th class="px-4 py-3 w-56">المصطلح / العبارة العربية</th>
+                <th class="px-4 py-3">الدلالة والوظيفة في التخريج</th>
+                <th class="px-4 py-3 w-28 text-center">أدوات</th>
+              </tr>
+            </thead>
+            <tbody id="mufradat-tbody" class="divide-y divide-stone-100 text-sm"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- مبدِّل صيغة فعل الأمر حسب المخاطب -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-50 text-maroon-800 text-xs font-bold mb-1">تنبيه نحوي تطبيقي</span>
+            <h3 class="font-hadith text-2xl font-bold text-maroon-800">صيغة فعل الأمر حسب المخاطب</h3>
+            <p class="text-xs text-stone-500 mt-0.5">يُراعى في التوجيه الشفهي مطابقة صيغة فعل الأمر لجنس المخاطب وعدده.</p>
+          </div>
+
+          <div class="inline-flex rounded-xl bg-parchment p-1 border border-stone-200 self-start">
+            <button type="button" onclick="setAmrMode('male')" id="amr-btn-male" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">المفرد المذكر</button>
+            <button type="button" onclick="setAmrMode('female')" id="amr-btn-female" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">المفردة المؤنثة</button>
+            <button type="button" onclick="setAmrMode('plural')" id="amr-btn-plural" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">الجمع</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-maroon-50 border border-maroon-800/20 flex flex-col justify-center">
+            <div id="amr-label" class="text-xs font-bold text-maroon-800 mb-1.5">المفرد المذكر</div>
+            <div id="amr-verbs" class="font-hadith text-3xl font-bold text-maroon-950">اكتبْ، اختَرْ، اضغطْ</div>
+            <div id="amr-verbs-sub" class="text-xs text-maroon-800 mt-2">صيغة الأمر عند توجيه زميل واحد.</div>
+          </div>
+
+          <div class="md:col-span-2 p-4 rounded-2xl bg-gold-50/80 border border-gold-600/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-gold-800">الجملة التطبيقية النموذجية (من توصيف المقرر):</span>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="speakArabic(document.getElementById('rps-sentence-ar').textContent)" class="px-2.5 py-1 rounded-lg bg-white border border-gold-600/30 hover:bg-gold-100 text-xs font-bold text-gold-800 cursor-pointer">🔊 استماع</button>
+                  <button type="button" onclick="copyText(document.getElementById('rps-sentence-ar').textContent)" class="px-2.5 py-1 rounded-lg bg-white border border-gold-600/30 hover:bg-gold-100 text-xs font-bold text-gold-800 cursor-pointer">📋 نسخ</button>
+                </div>
+              </div>
+              <p id="rps-sentence-ar" class="font-hadith text-2xl sm:text-[27px] font-bold text-stone-900 leading-loose">
+                اكتبْ كلمة «النية» في مربع البحث، ثم اختَرْ بحث مطابق، واضغطْ على زر البحث.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- التبويب ٢: الملحق أ — ورقة عمل الاستماع                           -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-a" class="tab-panel print-section hidden bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-200">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-800 text-white text-xs font-bold mb-1.5">الملحق (أ)</span>
+          <h2 class="font-hadith text-2xl sm:text-3xl font-bold text-maroon-800">ورقة عمل الاستماع (تحليل الشرح المرئي للمكتبة الرقمية)</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            استمع إلى المقطع التعليمي حول تشغيل المكتبة الحديثية الرقمية، ثم دوِّن المصطلحات والأوامر المسموعة وأجب عن أسئلة الاستيعاب.
+          </p>
+        </div>
+
+        <!-- شريط نسبة الإنجاز -->
+        <div class="no-print shrink-0 bg-maroon-50 border border-maroon-800/20 rounded-xl px-4 py-2.5 min-w-[200px]">
+          <div class="flex items-center justify-between text-xs font-bold text-maroon-900 mb-1.5">
+            <span>نسبة إنجاز الورقة</span>
+            <span id="istima-progress-pct">٠٪</span>
+          </div>
+          <div class="w-full h-2 bg-rose-200/70 rounded-full overflow-hidden">
+            <div id="istima-progress-bar" class="h-full bg-maroon-800 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الجدول الأول: رصد المصطلحات والأوامر المسموعة -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h3 class="text-sm sm:text-base font-bold text-stone-900">أولاً: رصد المصطلحات والأوامر المسموعة</h3>
+          <button type="button" onclick="addIstimaRow()" class="no-print inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-maroon-800 hover:bg-maroon-700 text-white text-xs font-bold transition cursor-pointer">
+            <span>+ إضافة صف</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-stone-200">
+          <table class="w-full text-right border-collapse min-w-[650px]">
+            <thead class="maroon-print-head bg-maroon-800 text-white text-xs sm:text-sm">
+              <tr>
+                <th class="px-3 py-3 w-12 text-center">م</th>
+                <th class="px-3 py-3 w-1/3">المصطلح / الأمر المسموع</th>
+                <th class="px-3 py-3 w-1/3">عنصر الواجهة المقصود</th>
+                <th class="px-3 py-3 w-1/3">المعنى / الوظيفة بالعربية</th>
+                <th class="no-print px-2 py-3 w-10 text-center"></th>
+              </tr>
+            </thead>
+            <tbody id="istima-rows-body" class="divide-y divide-stone-200"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- الجدول الثاني: أسئلة الاستيعاب من الفيديو التعليمي -->
+      <div class="space-y-4 pt-2">
+        <h3 class="text-sm sm:text-base font-bold text-stone-900">ثانياً: أسئلة الاستيعاب من الفيديو التعليمي</h3>
+        <div class="overflow-x-auto rounded-xl border border-stone-200">
+          <table class="w-full text-right border-collapse">
+            <thead class="maroon-print-head bg-maroon-800 text-white text-xs sm:text-sm">
+              <tr>
+                <th class="px-4 py-3 w-2/5">السؤال</th>
+                <th class="px-4 py-3 w-3/5">الإجابة (من حصيلة الاستماع)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-200 text-sm">
+              <tr class="bg-parchment/40">
+                <td class="px-4 py-3.5 font-bold text-stone-800 align-top">
+                  <label for="istima-q1">١. ما الموقع أو التطبيق المستخدَم في الشرح التعليمي؟</label>
+                </td>
+                <td class="px-4 py-3">
+                  <textarea id="istima-q1" rows="2" oninput="handleStateChange()" placeholder="اكتب اسم الموقع أو التطبيق (مثل: الموسوعة الحديثية — موقع الدرر السنية)..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3.5 font-bold text-stone-800 align-top">
+                  <label for="istima-q2">٢. اكتب تسلسل خطوات البحث التي وردت في الشرح.</label>
+                </td>
+                <td class="px-4 py-3">
+                  <textarea id="istima-q2" rows="3" oninput="handleStateChange()" placeholder="أولاً: فتح الموقع، ثم كتابة الكلمة في مربع البحث، بعد ذلك اختيار نوع البحث والضغط على زر البحث..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+                </td>
+              </tr>
+              <tr class="bg-parchment/40">
+                <td class="px-4 py-3.5 font-bold text-stone-800 align-top">
+                  <label for="istima-q3">٣. ما المعلومات التي تظهر في نتائج البحث؟</label>
+                </td>
+                <td class="px-4 py-3">
+                  <textarea id="istima-q3" rows="3" oninput="handleStateChange()" placeholder="نص الحديث، والراوي (الصحابي)، والمحدِّث، والمصدر، والصفحة أو الرقم، وخلاصة حكم المحدِّث..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- التبويب ٣: الملحق ب — الحوار التفاعلي لتوجيه التخريج               -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-b" class="tab-panel tab-panel-nonprint hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6">
+        <!-- ترويسة الحوار وأدوات التحكم -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-stone-200">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-800 text-white text-xs font-bold mb-1.5">الملحق (ب)</span>
+            <h2 class="font-hadith text-2xl sm:text-3xl font-bold text-maroon-800">نموذج الحوار التفاعلي لتوجيه التخريج</h2>
+            <p class="text-xs sm:text-sm text-stone-600 mt-0.5">يمكن للطلاب تنويع العبارات بما يناسب واجهة الجهاز والتطبيق المستخدَم.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- تبديل جنس المخاطب -->
+            <div class="inline-flex rounded-xl bg-parchment p-1 border border-stone-200">
+              <button type="button" id="dlg-gender-m" onclick="setDialogGender('male')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">مخاطب مذكر (أحسنتَ / اكتبْ)</button>
+              <button type="button" id="dlg-gender-f" onclick="setDialogGender('female')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">مخاطبة مؤنثة (أحسنتِ / اكتبي)</button>
+            </div>
+
+            <!-- زر تشغيل الحوار كاملاً -->
+            <button type="button" id="btn-play-all-dialog" onclick="playAllDialog()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-xs font-bold transition cursor-pointer">
+              <span>🔊 تشغيل الحوار كاملاً</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- شريط وضع التدريب الشفهي على الأدوار -->
+        <div class="flex flex-wrap items-center justify-between gap-3 py-4">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span class="text-xs font-bold text-stone-600 ml-1">وضع التدريب الشفهي:</span>
+            <button type="button" onclick="setDialogRoleMode('all')" id="role-btn-all" class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">إظهار النصين</button>
+            <button type="button" onclick="setDialogRoleMode('pemandu')" id="role-btn-pemandu" class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">إخفاء نص الموجِّه</button>
+            <button type="button" onclick="setDialogRoleMode('operator')" id="role-btn-operator" class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">إخفاء نص المُشغِّل</button>
+          </div>
+          <span class="text-xs text-stone-500">في وضع الإخفاء، اضغط على زر <strong>«إظهار التلميح»</strong> عند الحاجة.</span>
+        </div>
+
+        <!-- أدوار الحوار الثمانية -->
+        <div id="dialog-container" class="space-y-3.5 py-2"></div>
+
+        <!-- ملحوظة منهجية -->
+        <div class="mt-5 p-3.5 rounded-xl bg-gold-50 border border-gold-600/25 text-xs sm:text-sm text-gold-800 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-gold-600 shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span><strong>ملحوظة:</strong> إجابات المُشغِّل الواردة أعلاه تمثّل النتائج المتوقعة للتدريب، وقد يختلف ترتيب البيانات أو صياغة الأزرار باختلاف نسخة الموقع أو التطبيق المستخدَم.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- التبويب ٤: الملحق ج — بطاقات التخريج وورقة النتائج                 -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-c" class="tab-panel print-section print-page-break hidden space-y-6">
+
+      <!-- مؤقت الجلسة التطبيقية وقواعد التفاعل (لا يظهر في الطباعة) -->
+      <div class="no-print bg-white rounded-2xl border border-stone-200 shadow-xs p-5">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="px-4 py-2.5 rounded-2xl bg-maroon-900 text-white text-center min-w-[130px] shadow-inner">
+              <div class="text-[10px] text-gold-100 font-bold">مؤقت النشاط الصفي</div>
+              <div id="timer-display" class="text-2xl sm:text-3xl font-extrabold tracking-wider text-gold-500">١٢:٠٠</div>
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button type="button" onclick="setTimerPreset(12, 'الجولة ١ (١٢ دقيقة) — البطاقتان ١ و٢')" class="px-3 py-1 rounded-lg bg-parchment hover:bg-maroon-50 text-stone-700 hover:text-maroon-800 text-xs font-bold border border-stone-200 cursor-pointer">الجولة ١ (١٢ دقيقة)</button>
+                <button type="button" onclick="setTimerPreset(12, 'الجولة ٢ (١٢ دقيقة) — تبادل الأدوار والبطاقة ٣')" class="px-3 py-1 rounded-lg bg-parchment hover:bg-maroon-50 text-stone-700 hover:text-maroon-800 text-xs font-bold border border-stone-200 cursor-pointer">الجولة ٢ (١٢ دقيقة)</button>
+                <button type="button" onclick="setTimerPreset(6, 'العرض الصفي (٦ دقائق) — التطبيق أمام الزملاء')" class="px-3 py-1 rounded-lg bg-parchment hover:bg-maroon-50 text-stone-700 hover:text-maroon-800 text-xs font-bold border border-stone-200 cursor-pointer">العرض الصفي (٦ دقائق)</button>
+              </div>
+              <div id="timer-label" class="text-xs text-stone-500 font-semibold">المرحلة الحالية: الجولة ١ (١٢ دقيقة) — البطاقتان ١ و٢</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" id="btn-timer-start" onclick="toggleTimer()" class="px-4 py-2 rounded-xl bg-maroon-800 hover:bg-maroon-700 text-white text-xs font-bold transition cursor-pointer">▶ بدء المؤقت</button>
+            <button type="button" onclick="resetTimer()" class="px-3.5 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition cursor-pointer">↺ إعادة ضبط</button>
+          </div>
+        </div>
+
+        <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden mt-3">
+          <div id="timer-bar" class="h-full bg-gold-600 transition-all duration-500" style="width: 100%"></div>
+        </div>
+
+        <div class="mt-3.5 p-3 rounded-xl bg-maroon-50 border border-maroon-800/20 text-xs sm:text-sm text-maroon-950 flex items-start gap-2.5">
+          <span class="px-2.5 py-0.5 rounded-md bg-maroon-800 text-white text-[11px] font-bold shrink-0 mt-0.5">ضابط النشاط</span>
+          <span>يقتصر دور <strong>الموجِّه</strong> على إعطاء التعليمات الشفهية بالعربية الفصحى <u>دون لمس الجهاز</u>، ويقتصر دور <strong>المُشغِّل</strong> على الاستفهام بالعربية وتدوين النتائج في ورقة العمل.</span>
+        </div>
+      </div>
+
+      <!-- جدول بطاقات مهام التخريج وورقة النتائج -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6 space-y-6">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-800 text-white text-xs font-bold mb-1.5">الملحق (ج)</span>
+          <h2 class="font-hadith text-2xl sm:text-3xl font-bold text-maroon-800">الملحق ج — بطاقات مهام التخريج وورقة النتائج</h2>
+        </div>
+
+        <!-- جدول بطاقات مهام التخريج (المطابق للتصميم المرفق) -->
+        <div class="overflow-x-auto rounded-xl border border-stone-200">
+          <table class="w-full text-right border-collapse min-w-[660px]">
+            <thead class="maroon-print-head bg-maroon-800 text-white text-xs sm:text-sm">
+              <tr>
+                <th class="px-3 py-3 w-20 text-center">البطاقة</th>
+                <th class="px-4 py-3 w-2/5">طرف الحديث المراد تخريجه</th>
+                <th class="px-4 py-3">المهمة الإضافية المطلوبة</th>
+                <th class="no-print px-3 py-3 w-36 text-center">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="task-cards-tbody" class="divide-y divide-stone-200 text-sm"></tbody>
+          </table>
+        </div>
+
+        <!-- ورقة نتائج التخريج (يملؤها المُشغِّل) -->
+        <div class="pt-2 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900">ورقة نتائج التخريج <span class="font-normal text-stone-500 text-sm">(يملؤها المُشغِّل)</span></h3>
+            <a href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer" class="no-print text-xs font-bold text-maroon-800 hover:text-maroon-700 underline">فتح الموسوعة الحديثية ↗</a>
+          </div>
+
+          <datalist id="hukum-options">
+            <option value="صحيح"></option>
+            <option value="صحيح — متفق عليه"></option>
+            <option value="متواتر / صحيح"></option>
+            <option value="حسن"></option>
+            <option value="حسن صحيح"></option>
+            <option value="صحيح لغيره"></option>
+            <option value="ضعيف"></option>
+          </datalist>
+
+          <div class="overflow-x-auto rounded-xl border border-stone-200">
+            <table class="w-full text-right border-collapse min-w-[760px]">
+              <thead class="maroon-print-head bg-maroon-800 text-white text-xs sm:text-sm">
+                <tr>
+                  <th class="px-3 py-3 w-16 text-center">البطاقة</th>
+                  <th class="px-3 py-3">الراوي (الصحابي)</th>
+                  <th class="px-3 py-3">المحدِّث / المُخرِّج</th>
+                  <th class="px-3 py-3">المصدر</th>
+                  <th class="px-3 py-3 w-28">الرقم / الصفحة</th>
+                  <th class="px-3 py-3 w-40">خلاصة حكم المحدِّث</th>
+                </tr>
+              </thead>
+              <tbody id="takhrij-results-body" class="divide-y divide-stone-200 text-sm"></tbody>
+            </table>
+          </div>
+
+          <!-- خانة مخصصة لمقارنة نتائج البطاقة ٢ قبل التصفية وبعدها -->
+          <div class="mt-4 p-4 rounded-xl bg-parchment border border-stone-200">
+            <label for="kartu2-filter-note" class="block text-sm font-bold text-maroon-900 mb-1">
+              مقارنة نتائج البطاقة ٢ قبل التصفية وبعدها (<span class="font-hadith text-lg">الدِّينُ النَّصِيحَةُ</span>)
+            </label>
+            <p class="text-xs text-stone-500 mb-2">قارن بين عدد النتائج ونوع المصادر الظاهرة قبل استخدام خاصية <strong>«تصفية»</strong> وبعد تضييق البحث بها.</p>
+            <textarea id="kartu2-filter-note" rows="2" oninput="handleStateChange()" placeholder="قبل التصفية: ظهرت نتائج كثيرة من كتب متعددة... وبعد التصفية (مثلاً: حصر البحث في الصحيحين أو الأحاديث الصحيحة): تقلصت النتائج إلى... مما سهّل الوصول إلى رواية مسلم..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- مفتاح الإجابة للمحاضر (مخفي إلا عند تفعيل وضع المحاضر) -->
+      <div class="dosen-only hidden bg-gold-50 rounded-2xl border-2 border-gold-600/50 shadow-xs p-5 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h3 class="font-hadith text-xl sm:text-2xl font-bold text-maroon-900">مفتاح الإجابة للمحاضر (للتحقق المسبق على الجهاز)</h3>
+          <span class="px-3 py-1 rounded-lg bg-maroon-800 text-white text-xs font-bold">خاص بالمحاضر</span>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-gold-600/40 bg-white">
+          <table class="w-full text-right border-collapse text-sm">
+            <thead class="bg-maroon-800 text-white text-xs sm:text-sm">
+              <tr>
+                <th class="px-3 py-2.5 w-20 text-center">البطاقة</th>
+                <th class="px-4 py-2.5">النتيجة التقديرية المتوقعة</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-200">
+              <tr>
+                <td class="px-3 py-3 text-center font-bold text-maroon-800">١</td>
+                <td class="px-4 py-3 text-stone-800">الراوي: عمر بن الخطاب رضي الله عنه. أخرجه البخاري (رقم ١) ومسلم (رقم ١٩٠٧). الحكم: صحيح.</td>
+              </tr>
+              <tr class="bg-parchment/50">
+                <td class="px-3 py-3 text-center font-bold text-maroon-800">٢</td>
+                <td class="px-4 py-3 text-stone-800">الراوي: تميم الداري رضي الله عنه. أخرجه مسلم (رقم ٥٥). الحكم: صحيح.</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 text-center font-bold text-maroon-800">٣</td>
+                <td class="px-4 py-3 text-stone-800">حديث متواتر رواه جمع من الصحابة في الصحيحين (البخاري ومسلم) وغيرهما، وتختلف أرقامه بحسب الطريق والطبعة.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-3 text-xs text-stone-700 leading-relaxed">
+          <strong>تنبيه منهجي:</strong> قد تختلف أرقام الأحاديث بين الطبعات والمكتبات الرقمية؛ فالعمدة في التوثيق هي <strong>اسم الكتاب، والباب، وحكم المحدِّث</strong>، لا الرقم المجرد وحده.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- التبويب ٥: الملحق د — بطاقة التقييم التفاعلية                     -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-d" class="tab-panel print-section print-page-break hidden bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-200">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-800 text-white text-xs font-bold mb-1.5">الملحق (د)</span>
+          <h2 class="font-hadith text-2xl sm:text-3xl font-bold text-maroon-800">بطاقة تقييم مهارة التوجيه الشفهي للتخريج</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-0.5">انقر على خانة الدرجة المناسبة (من ١ إلى ٤) لكل معيار ليتم احتساب الدرجة النهائية تلقائياً.</p>
+        </div>
+        <button type="button" onclick="resetRubrik()" class="no-print self-start sm:self-auto px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition cursor-pointer">↺ تصفير الدرجات</button>
+      </div>
+
+      <!-- بطاقات الاحتساب الفوري للدرجة -->
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div class="p-4 rounded-2xl bg-parchment border border-stone-200">
+          <div class="text-xs font-bold text-stone-500">مجموع الدرجات</div>
+          <div class="text-2xl font-extrabold text-stone-900 mt-1"><span id="rubrik-total">٠</span> <span class="text-sm font-semibold text-stone-400">من ٢٠</span></div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-maroon-800 text-white shadow-xs">
+          <div class="text-xs font-bold text-gold-100">الدرجة النهائية للقاء</div>
+          <div class="text-2xl font-extrabold text-white mt-1"><span id="rubrik-nilai">٠</span> <span class="text-sm font-medium text-gold-500">من ١٠٠</span></div>
+          <div class="text-[11px] text-rose-100 mt-0.5">المعادلة: (المجموع ÷ ٢٠) × ١٠٠</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-gold-50 border border-gold-600/30">
+          <div class="text-xs font-bold text-gold-800">وزن المشاركة الصفية (٢٠٪)</div>
+          <div class="text-2xl font-extrabold text-maroon-900 mt-1"><span id="rubrik-bobot">٠٫٠</span> <span class="text-sm font-bold text-gold-700">نقطة</span></div>
+          <div class="text-[11px] text-gold-800 mt-0.5">من رصيد المشاركة الصفية</div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-parchment border border-stone-200">
+          <div class="text-xs font-bold text-stone-500">التقدير اللفظي</div>
+          <div id="rubrik-predikat" class="text-lg font-extrabold text-stone-600 mt-1">لم يُقيَّم بعد</div>
+          <div id="rubrik-aspek-count" class="text-[11px] text-stone-500 mt-0.5">تم تقييم ٠ من ٥ معايير</div>
+        </div>
+      </div>
+
+      <!-- مصفوفة معايير التقييم النقرية -->
+      <div class="overflow-x-auto rounded-xl border border-stone-200">
+        <table class="w-full text-right border-collapse min-w-[780px]">
+          <thead class="maroon-print-head bg-maroon-800 text-white text-xs sm:text-sm">
+            <tr>
+              <th class="px-3.5 py-3 w-48">معيار التقييم</th>
+              <th class="px-3 py-3 text-center">١ (ضعيف)</th>
+              <th class="px-3 py-3 text-center">٢ (مقبول)</th>
+              <th class="px-3 py-3 text-center">٣ (جيد)</th>
+              <th class="px-3 py-3 text-center">٤ (ممتاز)</th>
+            </tr>
+          </thead>
+          <tbody id="rubrik-table-body" class="divide-y divide-stone-200 text-xs sm:text-sm"></tbody>
+        </table>
+      </div>
+
+      <!-- حقل ملاحظات المحاضر -->
+      <div class="p-4 rounded-xl bg-parchment border border-stone-200">
+        <label for="rubrik-feedback" class="block text-sm font-bold text-maroon-900 mb-1">
+          ملاحظات المحاضر (أو المُلاحِظ)
+        </label>
+        <p class="text-xs text-stone-500 mb-2">دوِّن الملاحظات المتعلقة بدقة المصطلحات، ومطابقة فعل الأمر للمخاطب، وسلامة النطق والطلاقة.</p>
+        <textarea id="rubrik-feedback" rows="3" oninput="handleStateChange()" placeholder="اكتب التغذية الراجعة والتوجيهات التحسينية للطالب..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- التبويب ٦: الواجب المنزلي والتأمل الختامي (البند ز و ف.٤)          -->
+    <!-- ================================================================ -->
+    <section id="tab-mandiri" class="tab-panel print-section print-page-break hidden space-y-6">
+
+      <!-- التخطيط للواجب المنزلي الأسبوعي -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6 space-y-5">
+        <div class="pb-4 border-b border-stone-200">
+          <span class="inline-block px-3 py-0.5 rounded-lg bg-gold-600 text-white text-xs font-bold mb-1.5">البند (ز) — جزء من التعيينات (٣٠٪)</span>
+          <h2 class="font-hadith text-2xl sm:text-3xl font-bold text-maroon-800">الواجب المنزلي الأسبوعي: التسجيل الصوتي للتخريج الرقمي</h2>
+          <p class="text-sm text-stone-700 mt-1 leading-relaxed">
+            يُجري الطالب تخريجاً لحديث واحد من اختياره عبر المكتبة الرقمية، ثم يسجِّل <strong>رسالة صوتية (١–٢ دقيقة)</strong> باللغة العربية الفصحى يشرح فيها خطوات البحث متسلسلةً مستخدماً مصطلحات البند (د.١) وأدوات الربط، مع ذكر نتيجة التخريج، ويرسلها عبر تطبيق <strong>واتساب (WhatsApp)</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <!-- العمود الأيمن: إعداد النص والمسودة -->
+          <div class="space-y-4">
+            <h3 class="text-base font-bold text-stone-900">أولاً: إعداد الحديث المختار ومسودة الإلقاء</h3>
+
+            <div>
+              <label for="mandiri-hadis" class="block text-xs font-bold text-stone-700 mb-1">نص الحديث المختار للتخريج</label>
+              <textarea id="mandiri-hadis" rows="2" oninput="handleStateChange()" placeholder="اكتب متن الحديث الذي اخترته للتخريج..." class="font-hadith w-full px-3.5 py-2 rounded-xl bg-parchment border border-stone-300 text-lg focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+            </div>
+
+            <div>
+              <label for="mandiri-hasil" class="block text-xs font-bold text-stone-700 mb-1">النتيجة المستخلصة (الراوي، المصدر والرقم، وخلاصة الحكم)</label>
+              <input id="mandiri-hasil" type="text" oninput="handleStateChange()" placeholder="مثال: الراوي أبو هريرة رضي الله عنه، أخرجه مسلم رقم ٢٦٩٩، والحكم: صحيح" class="w-full px-3.5 py-2.5 rounded-xl bg-parchment border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </div>
+
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <label for="mandiri-skrip" class="text-xs font-bold text-stone-700">مسودة الشرح الشفهي (١–٢ دقيقة)</label>
+                <button type="button" onclick="insertTemplateSkrip()" class="no-print text-xs font-bold text-maroon-800 hover:text-maroon-700 bg-maroon-50 px-2.5 py-1 rounded-lg border border-maroon-800/20 cursor-pointer">+ إدراج قالب أدوات الربط</button>
+              </div>
+              <textarea id="mandiri-skrip" rows="5" oninput="handleStateChange()" placeholder="أولاً: افتح موقع الدرر السنية... ثم اكتب... بعد ذلك... وأخيراً..." class="font-hadith w-full px-3.5 py-2.5 rounded-xl bg-parchment border border-stone-300 text-lg focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+            </div>
+          </div>
+
+          <!-- العمود الأيسر: قائمة التحقق من الجاهزية (١١ بنداً) -->
+          <div class="bg-parchment rounded-2xl border border-stone-200 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <h3 class="text-base font-bold text-maroon-900">ثانياً: قائمة التحقق قبل الإرسال عبر واتساب</h3>
+                <span id="checklist-badge" class="px-2.5 py-0.5 rounded-full bg-maroon-800 text-white text-xs font-bold">٠ / ١١</span>
+              </div>
+              <p class="text-xs text-stone-500 mb-3">تحقّق من استيفاء جميع العناصر الآتية في تسجيلك الصوتي:</p>
+
+              <div id="mandiri-checklist-container" class="space-y-2 text-xs sm:text-sm"></div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-stone-200">
+              <div class="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
+                <div id="checklist-bar" class="h-full bg-maroon-800 transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- استوديو التسجيل الصوتي المدمج في المتصفح -->
+        <div class="no-print p-5 rounded-2xl bg-gradient-to-l from-maroon-950 to-maroon-800 text-white shadow-xs">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded-md bg-gold-600 text-white text-[11px] font-bold mb-1.5">استوديو التسجيل الصوتي</span>
+              <h3 class="font-hadith text-xl sm:text-2xl font-bold">التدريب على تسجيل الرسالة الصوتية (المدة المستهدفة: ٠١:٠٠ – ٠٢:٠٠)</h3>
+              <p class="text-xs text-rose-100/85 mt-0.5">سجِّل صوتك مباشرة من المتصفح، واستمع إليه لمراجعته، ثم نزِّل الملف الصوتي لإرساله عبر واتساب.</p>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+              <div class="px-4 py-2 rounded-xl bg-black/30 border border-white/15 text-center min-w-[115px]">
+                <div id="rec-status-label" class="text-[11px] text-gold-100 font-bold">جاهز للتسجيل</div>
+                <div id="rec-timer" class="text-xl font-bold text-white">٠٠:٠٠</div>
+              </div>
+
+              <button type="button" id="btn-rec-start" onclick="startAudioRecording()" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                <span>بدء التسجيل</span>
+              </button>
+              <button type="button" id="btn-rec-stop" onclick="stopAudioRecording()" class="hidden px-4 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-stone-950 text-xs font-extrabold shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                <span class="w-2.5 h-2.5 bg-stone-950"></span>
+                <span>إيقاف التسجيل</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="rec-message" class="hidden mt-3 p-3 rounded-xl bg-white/10 border border-white/20 text-xs text-gold-100"></div>
+
+          <div id="rec-playback-box" class="hidden mt-4 pt-4 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <audio id="rec-audio-player" controls class="w-full sm:max-w-md h-10"></audio>
+            <div class="flex items-center gap-2 shrink-0">
+              <a id="btn-rec-download" download="تخريج_رقمي_تسجيل_صوتي.webm" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gold-600 hover:bg-gold-700 text-white text-xs font-bold transition cursor-pointer">
+                ⬇ تنزيل الملف الصوتي
+              </a>
+              <button type="button" onclick="clearAudioRecording()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold cursor-pointer">حذف</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- التأمل الختامي (نشاط الاختتام) -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-xs p-5 sm:p-6 space-y-4">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-maroon-50 text-maroon-800 text-xs font-bold mb-1">نشاط الاختتام</span>
+          <h3 class="font-hadith text-2xl font-bold text-maroon-800">التأمل الختامي النقدي في التخريج الرقمي</h3>
+          <p class="text-xs text-stone-500 mt-0.5">تذكّر دائماً أن نتائج محركات البحث الحديثة أداة مساعدة لا تغني عن الرجوع إلى المصادر الحديثية الأصلية ومراجعتها.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-parchment border border-stone-200">
+            <label for="refleksi-1" class="block text-sm font-bold text-maroon-900 mb-1.5">
+              ١. ما مميزات المكتبات الرقمية وحدودها مقارنة بالتخريج اليدوي؟
+            </label>
+            <textarea id="refleksi-1" rows="4" oninput="handleStateChange()" placeholder="المميزات: سرعة الوصول وسعة الشمول... والحدود: احتمالية التصحيف في الإدخال الرقمي، واختلاف الترقيم، وعدم إغنائها عن دراسة الأسانيد في المصادر..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+          </div>
+
+          <div class="p-4 rounded-xl bg-parchment border border-stone-200">
+            <label for="refleksi-2" class="block text-sm font-bold text-maroon-900 mb-1.5">
+              ٢. لماذا ينبغي قراءة حكم المحدِّث مقروناً بمصدر الحديث وإسناده؟
+            </label>
+            <textarea id="refleksi-2" rows="4" oninput="handleStateChange()" placeholder="لأن الحديث الواحد قد يُروى بأسانيد متعددة تتفاوت صحةً وضعفاً، ولكل إمام منهجه الخاص في التصحيح والتعليل..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== التذييل الأكاديمي ==================== -->
+  <footer class="mt-auto border-t border-stone-200 bg-white py-4 text-center text-xs text-stone-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>المعهد العالي هاشم أشعري تبوإيرنج • قسم تخصص الحديث وعلومه</span>
+      <span>اللغة العربية التطبيقية (مهارة الاستماع والحوار) — اللقاء العاشر: التخريج الرقمي</span>
+    </div>
+  </footer>
+
+  <!-- ==================== نافذة قاموس المفردات السريع (د) ==================== -->
+  <div id="kamus-overlay" class="hidden fixed inset-0 z-50 no-print">
+    <div onclick="closeKamusDrawer()" class="absolute inset-0 bg-stone-900/50 backdrop-blur-xs"></div>
+    <aside class="absolute left-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-4 bg-maroon-800 text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-hadith text-xl font-bold">قاموس المفردات السريع (البند د)</h3>
+          <p class="text-[11px] text-gold-100">مرجع فوري لمصطلحات الواجهة وصيغ فعل الأمر</p>
+        </div>
+        <button type="button" onclick="closeKamusDrawer()" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-white/25 flex items-center justify-center text-white font-bold cursor-pointer">✕</button>
+      </div>
+
+      <div class="p-3 border-b border-stone-200 bg-parchment">
+        <input id="kamus-drawer-search" type="text" oninput="renderKamusDrawer()" placeholder="ابحث عن مصطلح أو فعل أمر..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+      </div>
+
+      <div id="kamus-drawer-list" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
+
+      <div class="p-3.5 bg-gold-50 border-t border-gold-600/25 text-xs text-stone-800 leading-relaxed">
+        <strong class="text-maroon-800">تذكير بصيغة فعل الأمر:</strong>
+        المذكر (<span class="font-hadith font-bold text-base">اكتبْ، اختَرْ، اضغطْ</span>) •
+        المؤنث (<span class="font-hadith font-bold text-base">اكتبي، اختاري، اضغطي</span>) •
+        الجمع (<span class="font-hadith font-bold text-base">اكتبوا، اختاروا، اضغطوا</span>)
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== نافذة تأكيد مسح البيانات ==================== -->
+  <div id="reset-modal" class="hidden fixed inset-0 z-50 no-print flex items-center justify-center p-4">
+    <div onclick="closeResetModal()" class="absolute inset-0 bg-stone-900/50 backdrop-blur-xs"></div>
+    <div class="relative bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-stone-200">
+      <h3 class="font-hadith text-2xl font-bold text-maroon-900">تأكيد مسح جميع البيانات المحفوظة</h3>
+      <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+        سيؤدي هذا الإجراء إلى حذف جميع المدخلات المحفوظة في المتصفح (بيانات الفريق، وورقة الاستماع، ونتائج التخريج، وبطاقة التقييم، والواجب المنزلي). هل ترغب في المتابعة؟
+      </p>
+      <div class="flex items-center justify-end gap-2 mt-5">
+        <button type="button" onclick="closeResetModal()" class="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold cursor-pointer">إلغاء</button>
+        <button type="button" onclick="confirmResetAll()" class="px-4 py-2 rounded-xl bg-maroon-800 hover:bg-maroon-700 text-white text-xs font-bold cursor-pointer">نعم، امسح الكل</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== إشعار منبثق (Toast) ==================== -->
+  <div id="toast-box" class="fixed bottom-5 left-5 z-50 no-print pointer-events-none transition-all duration-300 opacity-0 translate-y-3">
+    <div id="toast-content" class="px-4 py-2.5 rounded-xl bg-maroon-950 text-white text-xs sm:text-sm font-semibold shadow-xl border border-gold-500/50"></div>
+  </div>
+
+  <!-- ==================== البرمجة التفاعلية ==================== -->
+  <script>
+    /* =========================================================================
+       ١. البيانات المرجعية للقاء العاشر (التخريج الرقمي)
+       ========================================================================= */
+    const STORAGE_KEY = 'mahad_aly_tebuireng_takhrij_ar_p10_v1';
+
+    // تحويل الأرقام الإنجليزية إلى أرقام عربية مشرقية للعرض الجمالي
+    function toArabicDigits(val) {
+      const map = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+      return String(val).replace(/\d/g, (d) => map[Number(d)]);
+    }
+
+    // مفردات البند (د.١): مصطلحات الواجهة
+    const MUFRADAT_D1 = [
+      {
+        id: 'd1_1',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'مربع البحث',
+        meaning: 'خانة إدخال الكلمات المفتاحية أو ألفاظ الحديث في الصفحة.',
+        example: 'اكتبْ لفظ الحديث في مربع البحث.',
+      },
+      {
+        id: 'd1_2',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'ابحث / اكتب',
+        meaning: 'الأمر بتدوين اللفظ المطلوب وتشغيل محرك البحث.',
+        example: 'اكتبْ كلمة «النية» ثم ابحثْ عنها.',
+      },
+      {
+        id: 'd1_3',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'نتائج البحث',
+        meaning: 'القائمة التي يعرضها الموقع للأحاديث المطابقة لمدخلات البحث.',
+        example: 'ظهرت نتائج البحث في أسفل الصفحة.',
+      },
+      {
+        id: 'd1_4',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'بحث مطابق',
+        meaning: 'خيار البحث عن العبارة بنصها الحرفي دون زيادة أو تغيير.',
+        example: 'اخترْ خيار بحث مطابق لدقة النتيجة.',
+      },
+      {
+        id: 'd1_5',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'اختر الكتاب / المؤلف',
+        meaning: 'تحديد مصدر حديثي معيّن (كالبخاري) أو إمام محدّد.',
+        example: 'اختر الكتاب: صحيح البخاري.',
+      },
+      {
+        id: 'd1_6',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'الصفحة التالية / السابقة',
+        meaning: 'أزرار التنقّل بين صفحات نتائج البحث المتعددة.',
+        example: 'اضغطْ على الصفحة التالية لمطالعة بقية المصادر.',
+      },
+      {
+        id: 'd1_7',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'تحميل / حفظ',
+        meaning: 'تنزيل بطاقة الحديث أو حفظ النتيجة في الجهاز.',
+        example: 'اضغطْ على حفظ للاحتفاظ بالنتيجة.',
+      },
+      {
+        id: 'd1_8',
+        cat: 'd1',
+        catLabel: 'د.١ مصطلحات الواجهة',
+        term: 'تصفية',
+        meaning: 'خاصية الفرز وتضييق نطاق النتائج (الفلتر) حسب الدرجة أو المصدر.',
+        example: 'استخدمْ خاصية التصفية لحصر الأحاديث الصحيحة.',
+      },
+    ];
+
+    // مفردات البند (د.٢): أفعال الأمر وأدوات الربط ومصطلحات النتائج
+    const MUFRADAT_D2 = [
+      {
+        id: 'd2_1',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'افتح / اضغط على',
+        meaning: 'تشغيل الموقع أو التطبيق والنقر على زر أو تبويب محدد.',
+        example: 'افتحْ موقع الدرر السنية واضغطْ على الموسوعة الحديثية.',
+      },
+      {
+        id: 'd2_2',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'انسخ / الصق',
+        meaning: 'أخذ نسخة نصية من طرف الحديث ولصقها في خانة البحث.',
+        example: 'انسخْ طرف الحديث ثم الصقْه في مربع البحث.',
+      },
+      {
+        id: 'd2_3',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'حدِّد / مرِّر للأسفل',
+        meaning: 'اختيار عنصر معين أو تحريك الشاشة نحو الأسفل لقراءة بقية البيانات.',
+        example: 'مرِّرْ للأسفل لقراءة حكم المحدِّث كاملاً.',
+      },
+      {
+        id: 'd2_4',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'أولاً … ثم … بعد ذلك … وأخيراً',
+        meaning: 'أدوات الربط التتابعية لتنظيم خطوات التوجيه الشفهي بوضوح.',
+        example: 'أولاً افتح الموقع، ثم اكتب الحديث، وأخيراً اقرأ الحكم.',
+      },
+      {
+        id: 'd2_5',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'الراوي / المحدِّث',
+        meaning: 'الراوي هو الصحابي الذي روى الحديث، والمحدِّث هو الإمام المُخرِّج أو الحاكم عليه.',
+        example: 'الراوي: عمر بن الخطاب، والمحدِّث: البخاري.',
+      },
+      {
+        id: 'd2_6',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'المصدر / الصفحة أو الرقم',
+        meaning: 'الكتاب الذي أُخرج فيه الحديث وموضعه برقم الحديث أو الجزء والصفحة.',
+        example: 'المصدر: صحيح مسلم، رقم الحديث: ٥٥.',
+      },
+      {
+        id: 'd2_7',
+        cat: 'd2',
+        catLabel: 'د.٢ الأوامر والنتائج',
+        term: 'خلاصة حكم المحدِّث',
+        meaning: 'بيان درجة الحديث من حيث الصحة أو الحسن أو الضعف.',
+        example: 'خلاصة حكم المحدِّث: حديث صحيح.',
+      },
+    ];
+
+    const ALL_MUFRADAT = [...MUFRADAT_D1, ...MUFRADAT_D2];
+
+    // بيانات مبدِّل صيغة فعل الأمر حسب المخاطب
+    const AMR_MODES = {
+      male: {
+        label: 'المفرد المذكر',
+        verbs: 'اكتبْ، اختَرْ، اضغطْ',
+        sub: 'تُستعمل عند توجيه زميل واحد (مفرد مذكر).',
+        sentence: 'اكتبْ كلمة «النية» في مربع البحث، ثم اختَرْ بحث مطابق، واضغطْ على زر البحث.',
+      },
+      female: {
+        label: 'المفردة المؤنثة',
+        verbs: 'اكتبي، اختاري، اضغطي',
+        sub: 'تُستعمل عند توجيه زميلة واحدة (بإلحاق ياء المخاطبة).',
+        sentence: 'اكتبي كلمة «النية» في مربع البحث، ثم اختاري بحث مطابق، واضغطي على زر البحث.',
+      },
+      plural: {
+        label: 'الجمع (المخاطبون)',
+        verbs: 'اكتبوا، اختاروا، اضغطوا',
+        sub: 'تُستعمل عند توجيه مجموعة من الطلاب (بإلحاق واو الجماعة).',
+        sentence: 'اكتبوا كلمة «النية» في مربع البحث، ثم اختاروا بحث مطابق، واضغطوا على زر البحث.',
+      },
+    };
+
+    // أدوار الحوار الثمانية (الملحق ب) بصيغتي المذكر والمؤنث
+    const DIALOG_TURNS = [
+      {
+        role: 'الموجِّه',
+        male: 'افتحْ موقع الدرر السنية، ثم اختَرْ الموسوعة الحديثية.',
+        female: 'افتحي موقع الدرر السنية، ثم اختاري الموسوعة الحديثية.',
+      },
+      {
+        role: 'المُشغِّل',
+        male: 'فتحتُ الموقع. أين أكتب الحديث؟',
+        female: 'فتحتُ الموقع. أين أكتب الحديث؟',
+      },
+      {
+        role: 'الموجِّه',
+        male: 'اكتبْ كلمة «النية» في مربع البحث، ثم اختَرْ بحث مطابق، واضغطْ على زر البحث.',
+        female: 'اكتبي كلمة «النية» في مربع البحث، ثم اختاري بحث مطابق، واضغطي على زر البحث.',
+      },
+      {
+        role: 'المُشغِّل',
+        male: 'ظهرت نتائج البحث. ماذا أفعل الآن؟',
+        female: 'ظهرت نتائج البحث. ماذا أفعل الآن؟',
+      },
+      {
+        role: 'الموجِّه',
+        male: 'انظرْ إلى الراوي والمحدِّث والمصدر، ثم اقرأْ خلاصة حكم المحدِّث.',
+        female: 'انظري إلى الراوي والمحدِّث والمصدر، ثم اقرئي خلاصة حكم المحدِّث.',
+      },
+      {
+        role: 'المُشغِّل',
+        male: 'الراوي عمر بن الخطاب، والمصدر صحيح البخاري، والحكم: صحيح.',
+        female: 'الراوي عمر بن الخطاب، والمصدر صحيح البخاري، والحكم: صحيح.',
+      },
+      {
+        role: 'الموجِّه',
+        male: 'أحسنتَ. والآن اضغطْ على الصفحة التالية لترى مصادر أخرى، ثم احفظِ النتيجة.',
+        female: 'أحسنتِ. والآن اضغطي على الصفحة التالية لترَي مصادر أخرى، ثم احفظي النتيجة.',
+      },
+      {
+        role: 'المُشغِّل',
+        male: 'حفظتُ النتيجة. خلاصة القول: الحديث صحيح ومخرَّج في الصحيحين.',
+        female: 'حفظتُ النتيجة. خلاصة القول: الحديث صحيح ومخرَّج في الصحيحين.',
+      },
+    ];
+
+    // بطاقات مهام التخريج الثلاث (الملحق ج)
+    const TASK_CARDS = [
+      {
+        no: 1,
+        hadis: 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ',
+        tugas: 'ابحث بالبحث المطابق؛ واذكر الراوي والمصدر والحكم.',
+      },
+      {
+        no: 2,
+        hadis: 'الدِّينُ النَّصِيحَةُ',
+        tugas: 'ابحث بالكلمات المفتاحية؛ وقارن النتائج قبل استخدام التصفية (الفلتر) وبعدها.',
+      },
+      {
+        no: 3,
+        hadis: 'مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا',
+        tugas: 'ابحث بالكلمات المفتاحية؛ واذكر مصدرين على الأقل من المصادر الظاهرة.',
+      },
+    ];
+
+    // معايير بطاقة التقييم الخمسة (الملحق د)
+    const RUBRIK_ASPEK = [
+      {
+        id: 'ketepatan',
+        nama: 'دقة مصطلحات الواجهة',
+        desc: [
+          'أقل من ٤ مصطلحات صحيحة',
+          '٤–٥ مصطلحات صحيحة',
+          '٦–٧ مصطلحات صحيحة',
+          'جميع المصطلحات الثمانية دقيقة ومتنوعة',
+        ],
+      },
+      {
+        id: 'kejelasan',
+        nama: 'وضوح التعليمات وتسلسلها',
+        desc: [
+          'التعليمات عشوائية أو مربكة',
+          'واضحة نسبياً مع خلل في الترتيب',
+          'واضحة ومتسلسلة',
+          'بالغة الوضوح والتسلسل مع توظيف أدوات الربط',
+        ],
+      },
+      {
+        id: 'keberhasilan',
+        nama: 'نجاح عملية التخريج',
+        desc: [
+          'لم يصل المُشغِّل إلى النتيجة',
+          'وصل إلى النتيجة بمساعدة كثيرة',
+          'وصل إلى النتيجة بمساعدة يسيرة',
+          'وصل بسلاسة مع استيفاء جميع البيانات',
+        ],
+      },
+      {
+        id: 'kelancaran',
+        nama: 'الطلاقة وسلامة النطق',
+        desc: [
+          'تعثّر واضح وكثرة أخطاء النطق',
+          'طلاقة متوسطة مع بعض الأخطاء',
+          'طلاقة جيدة مع تردد يسير',
+          'طلاقة فائقة وفصاحة متميزة',
+        ],
+      },
+      {
+        id: 'amr',
+        nama: 'صيغة فعل الأمر والتعاون',
+        desc: [
+          'تكرار الخطأ في صيغة الأمر وضعف التعاون',
+          'إصابة صيغة الأمر في بعض المواضع',
+          'ضبط صيغة الأمر وحسن التعاون',
+          'ضبط تام ومراعاة للمخاطب مع تعاون مثالي',
+        ],
+      },
+    ];
+
+    // قائمة التحقق للواجب المنزلي (١١ بنداً)
+    const MANDIRI_CHECKLIST = [
+      { id: 'ck_1', label: 'توظيف مصطلح «مربع البحث» في موضعه الصحيح.' },
+      { id: 'ck_2', label: 'توظيف مصطلح «ابحث / اكتب» بصيغة أمر سليمة.' },
+      { id: 'ck_3', label: 'توظيف مصطلح «نتائج البحث» عند بيان مخرجات البحث.' },
+      { id: 'ck_4', label: 'توظيف مصطلح «بحث مطابق» أو بيان نوع البحث المختار.' },
+      { id: 'ck_5', label: 'توظيف مصطلح «اختر الكتاب / المؤلف» لتحديد المصدر.' },
+      { id: 'ck_6', label: 'توظيف مصطلح «الصفحة التالية / السابقة» عند التنقّل.' },
+      { id: 'ck_7', label: 'توظيف مصطلح «تحميل / حفظ» في ختام خطوات البحث.' },
+      { id: 'ck_8', label: 'توظيف مصطلح «تصفية» لفرز النتائج وتضييقها.' },
+      { id: 'ck_9', label: 'استخدام أدوات الربط التتابعية: «أولاً، ثم، بعد ذلك، وأخيراً».' },
+      { id: 'ck_10', label: 'ذكر الراوي (الصحابي)، والمصدر، وخلاصة حكم المحدِّث بوضوح.' },
+      { id: 'ck_11', label: 'الالتزام بالمدة الزمنية للتسجيل الصوتي (١–٢ دقيقة) قبل الإرسال عبر واتساب.' },
+    ];
+
+    /* =========================================================================
+       ٢. إدارة حالة التطبيق والتخزين المحلي (localStorage)
+       ========================================================================= */
+    function getDefaultState() {
+      return {
+        activeTab: 'tab-mufradat',
+        modeDosen: false,
+        identity: {
+          pemandu: '',
+          operator: '',
+          pengamat: '',
+          kelasTanggal: '',
+        },
+        istimaRows: Array.from({ length: 6 }, () => ({ ar: '', ui: '', meaning: '' })),
+        istimaQ: { q1: '', q2: '', q3: '' },
+        dialogGender: 'male',
+        dialogRoleMode: 'all',
+        takhrijDone: { 1: false, 2: false, 3: false },
+        takhrijResults: {
+          1: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+          2: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+          3: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+        },
+        kartu2FilterNote: '',
+        rubrikScores: { ketepatan: 0, kejelasan: 0, keberhasilan: 0, kelancaran: 0, amr: 0 },
+        rubrikFeedback: '',
+        mandiri: {
+          hadis: '',
+          hasil: '',
+          skrip: '',
+          checklist: {},
+        },
+        refleksi: { r1: '', r2: '' },
+      };
+    }
+
+    let appState = getDefaultState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        const def = getDefaultState();
+        appState = {
+          ...def,
+          ...parsed,
+          identity: { ...def.identity, ...(parsed.identity || {}) },
+          istimaQ: { ...def.istimaQ, ...(parsed.istimaQ || {}) },
+          takhrijDone: { ...def.takhrijDone, ...(parsed.takhrijDone || {}) },
+          takhrijResults: {
+            1: { ...def.takhrijResults[1], ...(parsed.takhrijResults?.[1] || {}) },
+            2: { ...def.takhrijResults[2], ...(parsed.takhrijResults?.[2] || {}) },
+            3: { ...def.takhrijResults[3], ...(parsed.takhrijResults?.[3] || {}) },
+          },
+          rubrikScores: { ...def.rubrikScores, ...(parsed.rubrikScores || {}) },
+          mandiri: {
+            ...def.mandiri,
+            ...(parsed.mandiri || {}),
+            checklist: { ...(parsed.mandiri?.checklist || {}) },
+          },
+          refleksi: { ...def.refleksi, ...(parsed.refleksi || {}) },
+        };
+        if (!Array.isArray(appState.istimaRows) || appState.istimaRows.length === 0) {
+          appState.istimaRows = def.istimaRows;
+        }
+      } catch (e) {
+        console.warn('تعذّر تحميل البيانات المحفوظة:', e);
+      }
+    }
+
+    let saveBadgeTimer = null;
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+        const dot = document.getElementById('autosave-dot');
+        const txt = document.getElementById('autosave-text');
+        if (dot && txt) {
+          dot.classList.remove('bg-emerald-400');
+          dot.classList.add('bg-gold-500');
+          txt.textContent = 'جارٍ الحفظ...';
+          clearTimeout(saveBadgeTimer);
+          saveBadgeTimer = setTimeout(() => {
+            dot.classList.remove('bg-gold-500');
+            dot.classList.add('bg-emerald-400');
+            const now = new Date();
+            const hh = toArabicDigits(String(now.getHours()).padStart(2, '0'));
+            const mm = toArabicDigits(String(now.getMinutes()).padStart(2, '0'));
+            txt.textContent = `تم الحفظ (${hh}:${mm})`;
+          }, 400);
+        }
+      } catch (e) {
+        console.warn('تعذّر حفظ البيانات:', e);
+      }
+    }
+
+    /* =========================================================================
+       ٣. الأدوات المساعدة: الإشعارات، النسخ الآمن، النطق الصوتي (ar-SA)
+       ========================================================================= */
+    let toastTimer = null;
+    function showToast(message) {
+      const box = document.getElementById('toast-box');
+      const content = document.getElementById('toast-content');
+      if (!box || !content) return;
+      content.textContent = message;
+      box.classList.remove('opacity-0', 'translate-y-3');
+      box.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.add('opacity-0', 'translate-y-3');
+        box.classList.remove('opacity-100', 'translate-y-0');
+      }, 2600);
+    }
+
+    function copyText(text) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) {
+          showToast('تم نسخ النص إلى الحافظة بنجاح.');
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast('تم نسخ النص إلى الحافظة.'));
+        }
+      } catch (e) {
+        showToast('تعذّر النسخ التلقائي، يُرجى النسخ يدوياً.');
+      }
+    }
+
+    function speakArabic(text, onEndCallback) {
+      try {
+        if (!('speechSynthesis' in window)) {
+          showToast('هذا المتصفح لا يدعم خاصية النطق الصوتي الآلي.');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'ar-SA';
+        utter.rate = 0.88;
+        const voices = window.speechSynthesis.getVoices();
+        const arVoice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('ar'));
+        if (arVoice) utter.voice = arVoice;
+        if (typeof onEndCallback === 'function') {
+          utter.onend = onEndCallback;
+          utter.onerror = onEndCallback;
+        }
+        window.speechSynthesis.speak(utter);
+      } catch (e) {
+        showToast('تعذّر تشغيل النطق الصوتي على هذا الجهاز.');
+      }
+    }
+
+    /* =========================================================================
+       ٤. التنقل بين التبويبات، بيانات الفريق، وضع المحاضر، والطباعة
+       ========================================================================= */
+    function switchTab(tabId) {
+      appState.activeTab = tabId;
+      document.querySelectorAll('.tab-panel').forEach((panel) => {
+        panel.classList.toggle('hidden', panel.id !== tabId);
+      });
+
+      document.querySelectorAll('.tab-btn').forEach((btn) => {
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('bg-maroon-800', 'text-white', 'shadow-xs');
+          btn.classList.remove('text-stone-700', 'hover:bg-parchment');
+        } else {
+          btn.classList.remove('bg-maroon-800', 'text-white', 'shadow-xs');
+          btn.classList.add('text-stone-700', 'hover:bg-parchment');
+        }
+      });
+      saveState();
+    }
+
+    function toggleIdentityPanel() {
+      document.getElementById('identity-panel-body').classList.toggle('hidden');
+      document.getElementById('identity-chevron').classList.toggle('rotate-180');
+    }
+
+    function updateIdentitySummary() {
+      const el = document.getElementById('identity-summary');
+      const p = appState.identity.pemandu.trim();
+      const o = appState.identity.operator.trim();
+      if (p || o) {
+        el.textContent = `— الموجِّه: ${p || 'غير محدد'} | المُشغِّل: ${o || 'غير محدد'}`;
+      } else {
+        el.textContent = '— انقر لتسجيل أسماء الفريق';
+      }
+    }
+
+    function applyModeDosenUI() {
+      const isOn = !!appState.modeDosen;
+      document.querySelectorAll('.dosen-only').forEach((el) => {
+        el.classList.toggle('hidden', !isOn);
+      });
+      document.getElementById('dosen-banner').classList.toggle('hidden', !isOn);
+      document.getElementById('dosen-label').textContent = isOn ? 'مُفعَّل' : 'مُغلق';
+      const dot = document.getElementById('dosen-dot');
+      dot.classList.toggle('bg-gold-500', isOn);
+      dot.classList.toggle('bg-stone-400', !isOn);
+    }
+
+    function toggleModeDosen() {
+      appState.modeDosen = !appState.modeDosen;
+      applyModeDosenUI();
+      saveState();
+      showToast(appState.modeDosen ? 'تم تفعيل وضع المحاضر: ظهرت مفاتيح الإجابة والملاحظات.' : 'تم إغلاق وضع المحاضر.');
+    }
+
+    function printWorksheet() {
+      document.getElementById('identity-panel-body').classList.remove('hidden');
+      window.print();
+    }
+
+    /* =========================================================================
+       ٥. التبويب ١: جدول المفردات، بطاقات الاستذكار، ومبدّل فعل الأمر
+       ========================================================================= */
+    function renderMufradatTable() {
+      const q = (document.getElementById('mufradat-search')?.value || '').trim().toLowerCase();
+      const cat = document.getElementById('mufradat-cat-filter')?.value || 'all';
+      const tbody = document.getElementById('mufradat-tbody');
+      if (!tbody) return;
+
+      const filtered = ALL_MUFRADAT.filter((item) => {
+        const matchCat = cat === 'all' || item.cat === cat;
+        const matchText =
+          !q ||
+          item.term.toLowerCase().includes(q) ||
+          item.meaning.toLowerCase().includes(q) ||
+          item.example.toLowerCase().includes(q);
+        return matchCat && matchText;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="px-4 py-6 text-center text-xs text-stone-400">لا توجد مفردات مطابقة لعبارة البحث.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered
+        .map(
+          (item) => `
+        <tr class="hover:bg-maroon-50/40 transition">
+          <td class="px-4 py-3">
+            <span class="inline-block px-2 py-0.5 rounded-md text-[11px] font-bold ${
+              item.cat === 'd1' ? 'bg-maroon-50 text-maroon-800 border border-maroon-800/20' : 'bg-gold-50 text-gold-800 border border-gold-600/25'
+            }">${item.catLabel}</span>
+          </td>
+          <td class="px-4 py-3 font-hadith text-xl font-bold text-maroon-950">${item.term}</td>
+          <td class="px-4 py-3 text-stone-700 leading-relaxed">
+            <div>${item.meaning}</div>
+            <div class="text-xs text-stone-500 mt-0.5"><strong>مثال:</strong> ${item.example}</div>
+          </td>
+          <td class="px-4 py-3 text-center">
+            <div class="inline-flex items-center gap-1.5">
+              <button type="button" onclick="speakArabic('${item.term.replace(/'/g, "\\'")}')" title="استماع للنطق" class="px-2.5 py-1.5 rounded-lg bg-maroon-50 hover:bg-maroon-100 text-maroon-800 text-xs font-bold cursor-pointer">🔊</button>
+              <button type="button" onclick="copyText('${item.term.replace(/'/g, "\\'")}')" title="نسخ المصطلح" class="px-2.5 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold cursor-pointer">📋</button>
+            </div>
+          </td>
+        </tr>`
+        )
+        .join('');
+    }
+
+    // بطاقات الاستذكار السريعة (Flashcards)
+    let fcDeck = [...ALL_MUFRADAT];
+    let fcIndex = 0;
+    let fcFlipped = false;
+
+    function toggleFlashcard() {
+      const panel = document.getElementById('flashcard-panel');
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        renderFlashcard();
+      }
+    }
+
+    function renderFlashcard() {
+      const item = fcDeck[fcIndex];
+      document.getElementById('fc-counter').textContent = `${toArabicDigits(fcIndex + 1)} / ${toArabicDigits(fcDeck.length)}`;
+      document.getElementById('fc-category').textContent = item.catLabel;
+      document.getElementById('fc-arabic').textContent = item.term;
+      document.getElementById('fc-arabic-back').textContent = item.term;
+      document.getElementById('fc-meaning').textContent = item.meaning;
+      document.getElementById('fc-example').textContent = `مثال تطبيقي: ${item.example}`;
+      document.getElementById('fc-front').classList.toggle('hidden', fcFlipped);
+      document.getElementById('fc-back').classList.toggle('hidden', !fcFlipped);
+    }
+
+    function flipFlashcard() {
+      fcFlipped = !fcFlipped;
+      renderFlashcard();
+    }
+
+    function nextFlashcard() {
+      fcIndex = (fcIndex + 1) % fcDeck.length;
+      fcFlipped = false;
+      renderFlashcard();
+    }
+
+    function prevFlashcard() {
+      fcIndex = (fcIndex - 1 + fcDeck.length) % fcDeck.length;
+      fcFlipped = false;
+      renderFlashcard();
+    }
+
+    function shuffleFlashcards() {
+      for (let i = fcDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fcDeck[i], fcDeck[j]] = [fcDeck[j], fcDeck[i]];
+      }
+      fcIndex = 0;
+      fcFlipped = false;
+      renderFlashcard();
+      showToast('تم خلط ترتيب بطاقات الاستذكار.');
+    }
+
+    function speakCurrentFlashcard() {
+      speakArabic(fcDeck[fcIndex].term);
+    }
+
+    // مبدِّل صيغة فعل الأمر
+    function setAmrMode(mode) {
+      const data = AMR_MODES[mode] || AMR_MODES.male;
+      document.getElementById('amr-label').textContent = data.label;
+      document.getElementById('amr-verbs').textContent = data.verbs;
+      document.getElementById('amr-verbs-sub').textContent = data.sub;
+      document.getElementById('rps-sentence-ar').textContent = data.sentence;
+
+      ['male', 'female', 'plural'].forEach((m) => {
+        const btn = document.getElementById(`amr-btn-${m}`);
+        if (m === mode) {
+          btn.classList.add('bg-maroon-800', 'text-white', 'shadow-xs');
+          btn.classList.remove('text-stone-600', 'hover:text-stone-900');
+        } else {
+          btn.classList.remove('bg-maroon-800', 'text-white', 'shadow-xs');
+          btn.classList.add('text-stone-600', 'hover:text-stone-900');
+        }
+      });
+    }
+
+    /* =========================================================================
+       ٦. التبويب ٢: الملحق أ — ورقة عمل الاستماع
+       ========================================================================= */
+    function renderIstimaRows() {
+      const tbody = document.getElementById('istima-rows-body');
+      if (!tbody) return;
+      tbody.innerHTML = appState.istimaRows
+        .map(
+          (row, idx) => `
+        <tr class="hover:bg-parchment/60">
+          <td class="px-3 py-2 text-center text-xs font-bold text-stone-500">${toArabicDigits(idx + 1)}</td>
+          <td class="px-2 py-2">
+            <input type="text" value="${escapeAttr(row.ar)}" oninput="updateIstimaRow(${idx}, 'ar', this.value)" placeholder="مثال: مربع البحث" class="font-hadith w-full px-3 py-1.5 rounded-lg border border-stone-200 text-lg focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+          </td>
+          <td class="px-2 py-2">
+            <input type="text" value="${escapeAttr(row.ui)}" oninput="updateIstimaRow(${idx}, 'ui', this.value)" placeholder="مثال: خانة الكتابة أعلى الصفحة" class="w-full px-3 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+          </td>
+          <td class="px-2 py-2">
+            <input type="text" value="${escapeAttr(row.meaning)}" oninput="updateIstimaRow(${idx}, 'meaning', this.value)" placeholder="مثال: إدخال الكلمة المفتاحية للبحث" class="w-full px-3 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+          </td>
+          <td class="no-print px-2 py-2 text-center">
+            ${
+              appState.istimaRows.length > 1
+                ? `<button type="button" onclick="deleteIstimaRow(${idx})" title="حذف الصف" class="text-stone-400 hover:text-rose-700 text-xs font-bold p-1 cursor-pointer">✕</button>`
+                : ''
+            }
+          </td>
+        </tr>`
+        )
+        .join('');
+      updateIstimaProgress();
+    }
+
+    function updateIstimaRow(idx, field, val) {
+      if (appState.istimaRows[idx]) {
+        appState.istimaRows[idx][field] = val;
+        updateIstimaProgress();
+        saveState();
+      }
+    }
+
+    function addIstimaRow() {
+      appState.istimaRows.push({ ar: '', ui: '', meaning: '' });
+      renderIstimaRows();
+      saveState();
+    }
+
+    function deleteIstimaRow(idx) {
+      if (appState.istimaRows.length <= 1) return;
+      appState.istimaRows.splice(idx, 1);
+      renderIstimaRows();
+      saveState();
+    }
+
+    function updateIstimaProgress() {
+      const total = appState.istimaRows.length + 3;
+      let filled = 0;
+      appState.istimaRows.forEach((r) => {
+        if (r.ar.trim() || r.ui.trim() || r.meaning.trim()) filled++;
+      });
+      if ((appState.istimaQ.q1 || '').trim()) filled++;
+      if ((appState.istimaQ.q2 || '').trim()) filled++;
+      if ((appState.istimaQ.q3 || '').trim()) filled++;
+
+      const pct = Math.round((filled / total) * 100);
+      document.getElementById('istima-progress-pct').textContent = `${toArabicDigits(pct)}٪`;
+      document.getElementById('istima-progress-bar').style.width = `${pct}%`;
+    }
+
+    /* =========================================================================
+       ٧. التبويب ٣: الملحق ب — الحوار التفاعلي
+       ========================================================================= */
+    let isPlayingAllDialog = false;
+
+    function setDialogGender(g) {
+      appState.dialogGender = g;
+      renderDialog();
+      saveState();
+    }
+
+    function setDialogRoleMode(mode) {
+      appState.dialogRoleMode = mode;
+      renderDialog();
+      saveState();
+    }
+
+    function revealDialogTurn(idx) {
+      const el = document.getElementById(`dlg-text-${idx}`);
+      if (el) el.classList.toggle('revealed');
+    }
+
+    function renderDialog() {
+      const g = appState.dialogGender || 'male';
+      const roleMode = appState.dialogRoleMode || 'all';
+
+      const btnM = document.getElementById('dlg-gender-m');
+      const btnF = document.getElementById('dlg-gender-f');
+      if (btnM && btnF) {
+        btnM.className = `px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${g === 'male' ? 'bg-maroon-800 text-white shadow-xs' : 'text-stone-600'}`;
+        btnF.className = `px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${g === 'female' ? 'bg-maroon-800 text-white shadow-xs' : 'text-stone-600'}`;
+      }
+
+      ['all', 'pemandu', 'operator'].forEach((m) => {
+        const b = document.getElementById(`role-btn-${m}`);
+        if (!b) return;
+        if (m === roleMode) {
+          b.className = 'px-3 py-1.5 rounded-xl text-xs font-bold border border-maroon-800 bg-maroon-50 text-maroon-900 transition cursor-pointer';
+        } else {
+          b.className = 'px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-200 bg-white text-stone-600 hover:bg-parchment transition cursor-pointer';
+        }
+      });
+
+      const container = document.getElementById('dialog-container');
+      if (!container) return;
+
+      container.innerHTML = DIALOG_TURNS.map((turn, idx) => {
+        const isPemandu = turn.role === 'الموجِّه';
+        const arText = g === 'female' ? turn.female : turn.male;
+        const shouldHide =
+          (roleMode === 'pemandu' && isPemandu) || (roleMode === 'operator' && !isPemandu);
+
+        return `
+          <div class="flex ${isPemandu ? 'justify-start' : 'justify-end'}">
+            <div class="w-full sm:w-[86%] rounded-2xl p-4 border shadow-xs ${
+              isPemandu
+                ? 'bg-maroon-50/75 border-maroon-800/25 rounded-tr-sm'
+                : 'bg-gold-50/70 border-gold-600/25 rounded-tl-sm'
+            }">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-0.5 rounded-full text-xs font-bold ${
+                    isPemandu ? 'bg-maroon-800 text-white' : 'bg-gold-600 text-white'
+                  }">${toArabicDigits(idx + 1)}. ${turn.role}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  ${
+                    shouldHide
+                      ? `<button type="button" onclick="revealDialogTurn(${idx})" class="px-2.5 py-1 rounded-lg bg-white hover:bg-stone-100 border border-stone-300 text-xs font-bold text-maroon-800 cursor-pointer">👁 إظهار التلميح</button>`
+                      : ''
+                  }
+                  <button type="button" onclick="speakArabic('${arText.replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-lg bg-white hover:bg-stone-100 border border-stone-200 text-xs font-bold text-stone-700 cursor-pointer">🔊 استماع للنطق</button>
+                </div>
+              </div>
+              <p id="dlg-text-${idx}" class="font-hadith text-2xl sm:text-[26px] font-bold text-stone-900 leading-loose ${
+                shouldHide ? 'role-blurred' : ''
+              }">${arText}</p>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function playAllDialog() {
+      if (!('speechSynthesis' in window)) {
+        showToast('هذا المتصفح لا يدعم خاصية النطق الصوتي الآلي.');
+        return;
+      }
+      const btn = document.getElementById('btn-play-all-dialog');
+      if (isPlayingAllDialog) {
+        window.speechSynthesis.cancel();
+        isPlayingAllDialog = false;
+        btn.innerHTML = '<span>🔊 تشغيل الحوار كاملاً</span>';
+        return;
+      }
+      isPlayingAllDialog = true;
+      btn.innerHTML = '<span>⏹ إيقاف التشغيل</span>';
+      const g = appState.dialogGender || 'male';
+      let idx = 0;
+
+      function playNext() {
+        if (!isPlayingAllDialog || idx >= DIALOG_TURNS.length) {
+          isPlayingAllDialog = false;
+          btn.innerHTML = '<span>🔊 تشغيل الحوار كاملاً</span>';
+          return;
+        }
+        const text = g === 'female' ? DIALOG_TURNS[idx].female : DIALOG_TURNS[idx].male;
+        idx++;
+        speakArabic(text, () => {
+          setTimeout(playNext, 350);
+        });
+      }
+      playNext();
+    }
+
+    /* =========================================================================
+       ٨. التبويب ٤: الملحق ج — المؤقت، بطاقات التخريج، وورقة النتائج
+       ========================================================================= */
+    let timerTotalSec = 12 * 60;
+    let timerRemainingSec = 12 * 60;
+    let timerInterval = null;
+
+    function updateTimerUI() {
+      const m = toArabicDigits(String(Math.floor(timerRemainingSec / 60)).padStart(2, '0'));
+      const s = toArabicDigits(String(timerRemainingSec % 60).padStart(2, '0'));
+      document.getElementById('timer-display').textContent = `${m}:${s}`;
+      const pct = timerTotalSec > 0 ? (timerRemainingSec / timerTotalSec) * 100 : 0;
+      document.getElementById('timer-bar').style.width = `${pct}%`;
+    }
+
+    function setTimerPreset(minutes, label) {
+      pauseTimer();
+      timerTotalSec = minutes * 60;
+      timerRemainingSec = minutes * 60;
+      document.getElementById('timer-label').textContent = `المرحلة الحالية: ${label}`;
+      updateTimerUI();
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        pauseTimer();
+      } else {
+        if (timerRemainingSec <= 0) timerRemainingSec = timerTotalSec;
+        document.getElementById('btn-timer-start').textContent = '⏸ إيقاف مؤقت';
+        timerInterval = setInterval(() => {
+          timerRemainingSec--;
+          updateTimerUI();
+          if (timerRemainingSec <= 0) {
+            pauseTimer();
+            playTimerBeep();
+            showToast('انتهى الوقت المخصص لهذه الجولة!');
+          }
+        }, 1000);
+      }
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      const btn = document.getElementById('btn-timer-start');
+      if (btn) btn.textContent = '▶ بدء المؤقت';
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      timerRemainingSec = timerTotalSec;
+      updateTimerUI();
+    }
+
+    function playTimerBeep() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(660, ctx.currentTime);
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.8);
+      } catch (e) {}
+    }
+
+    function renderTaskCards() {
+      const tbody = document.getElementById('task-cards-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = TASK_CARDS.map((card, idx) => {
+        const done = !!appState.takhrijDone[card.no];
+        return `
+          <tr class="${done ? 'bg-maroon-50/70' : idx % 2 === 1 ? 'bg-parchment/60' : 'bg-white'}">
+            <td class="px-3 py-3.5 text-center font-extrabold text-maroon-800 text-base">${toArabicDigits(card.no)}</td>
+            <td class="px-4 py-3.5 font-hadith text-2xl font-bold text-stone-950">${card.hadis}</td>
+            <td class="px-4 py-3.5 text-stone-800 leading-relaxed">${card.tugas}</td>
+            <td class="no-print px-3 py-3.5 text-center">
+              <div class="flex flex-col items-center gap-1.5">
+                <button type="button" onclick="copyText('${card.hadis}')" class="w-full px-2.5 py-1.5 rounded-lg bg-maroon-800 hover:bg-maroon-700 text-white text-xs font-bold transition cursor-pointer">📋 نسخ الحديث</button>
+                <label class="inline-flex items-center gap-1.5 text-xs font-bold cursor-pointer select-none ${done ? 'text-maroon-800' : 'text-stone-600'}">
+                  <input type="checkbox" ${done ? 'checked' : ''} onchange="toggleCardDone(${card.no}, this.checked)" class="w-4 h-4 rounded accent-maroon-800" />
+                  <span>${done ? 'مُنجَز ✓' : 'تم الإنجاز'}</span>
+                </label>
+              </div>
+            </td>
+          </tr>`;
+      }).join('');
+    }
+
+    function toggleCardDone(no, checked) {
+      appState.takhrijDone[no] = checked;
+      renderTaskCards();
+      saveState();
+    }
+
+    function renderTakhrijResultsTable() {
+      const tbody = document.getElementById('takhrij-results-body');
+      if (!tbody) return;
+      tbody.innerHTML = [1, 2, 3]
+        .map((no, idx) => {
+          const r = appState.takhrijResults[no] || {};
+          return `
+          <tr class="${idx % 2 === 1 ? 'bg-parchment/60' : 'bg-white'}">
+            <td class="px-3 py-2.5 text-center font-extrabold text-maroon-800">${toArabicDigits(no)}</td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.perawi)}" oninput="updateTakhrijResult(${no}, 'perawi', this.value)" placeholder="اسم الصحابي..." class="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.muhaddith)}" oninput="updateTakhrijResult(${no}, 'muhaddith', this.value)" placeholder="البخاري / مسلم..." class="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.sumber)}" oninput="updateTakhrijResult(${no}, 'sumber', this.value)" placeholder="صحيح البخاري..." class="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.noHal)}" oninput="updateTakhrijResult(${no}, 'noHal', this.value)" placeholder="رقم ١" class="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" list="hukum-options" value="${escapeAttr(r.hukum)}" oninput="updateTakhrijResult(${no}, 'hukum', this.value)" placeholder="اختر أو اكتب..." class="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-800" />
+            </td>
+          </tr>`;
+        })
+        .join('');
+    }
+
+    function updateTakhrijResult(no, field, val) {
+      appState.takhrijResults[no][field] = val;
+      saveState();
+    }
+
+    /* =========================================================================
+       ٩. التبويب ٥: الملحق د — بطاقة التقييم التفاعلية
+       ========================================================================= */
+    function renderRubrikTable() {
+      const tbody = document.getElementById('rubrik-table-body');
+      if (!tbody) return;
+      tbody.innerHTML = RUBRIK_ASPEK.map((aspek) => {
+        const selectedScore = appState.rubrikScores[aspek.id] || 0;
+        const cells = aspek.desc
+          .map((text, idx) => {
+            const score = idx + 1;
+            const isSelected = selectedScore === score;
+            return `
+              <td onclick="selectRubrikScore('${aspek.id}', ${score})" class="px-3 py-3 align-top cursor-pointer transition border-r border-stone-200 ${
+                isSelected
+                  ? 'rubrik-selected bg-maroon-100/80 text-maroon-950 font-bold ring-2 ring-inset ring-maroon-800'
+                  : 'hover:bg-parchment text-stone-700'
+              }">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[11px] font-extrabold px-2 py-0.5 rounded ${
+                    isSelected ? 'bg-maroon-800 text-white' : 'bg-stone-200 text-stone-700'
+                  }">${toArabicDigits(score)} درجات</span>
+                  ${isSelected ? '<span class="text-maroon-800 text-sm">✓</span>' : ''}
+                </div>
+                <p class="leading-snug">${text}</p>
+              </td>`;
+          })
+          .join('');
+        return `
+          <tr>
+            <td class="px-3.5 py-3 font-bold text-maroon-950 bg-parchment/80 align-top">
+              <div>${aspek.nama}</div>
+              <div class="text-[11px] font-semibold mt-1 ${selectedScore ? 'text-maroon-800' : 'text-stone-400'}">
+                ${selectedScore ? `الدرجة المختارة: ${toArabicDigits(selectedScore)} من ٤` : 'انقر لاختيار الدرجة'}
+              </div>
+            </td>
+            ${cells}
+          </tr>`;
+      }).join('');
+      updateRubrikSummary();
+    }
+
+    function selectRubrikScore(aspekId, score) {
+      appState.rubrikScores[aspekId] = score;
+      renderRubrikTable();
+      saveState();
+    }
+
+    function updateRubrikSummary() {
+      const scores = Object.values(appState.rubrikScores);
+      const total = scores.reduce((a, b) => a + (Number(b) || 0), 0);
+      const ratedCount = scores.filter((s) => s > 0).length;
+      const nilaiAkhir = Math.round((total / 20) * 100);
+      const bobot20 = (nilaiAkhir * 0.2).toFixed(1).replace('.', '٫');
+
+      document.getElementById('rubrik-total').textContent = toArabicDigits(total);
+      document.getElementById('rubrik-nilai').textContent = toArabicDigits(nilaiAkhir);
+      document.getElementById('rubrik-bobot').textContent = toArabicDigits(bobot20);
+      document.getElementById('rubrik-aspek-count').textContent = `تم تقييم ${toArabicDigits(ratedCount)} من ٥ معايير`;
+
+      let predikat = 'لم يُقيَّم بعد';
+      let colorClass = 'text-stone-600';
+      if (ratedCount > 0) {
+        if (nilaiAkhir >= 85) {
+          predikat = 'ممتاز';
+          colorClass = 'text-emerald-700';
+        } else if (nilaiAkhir >= 75) {
+          predikat = 'جيد جداً';
+          colorClass = 'text-maroon-800';
+        } else if (nilaiAkhir >= 60) {
+          predikat = 'جيد';
+          colorClass = 'text-gold-800';
+        } else {
+          predikat = 'مقبول';
+          colorClass = 'text-rose-700';
+        }
+      }
+      const pEl = document.getElementById('rubrik-predikat');
+      pEl.textContent = predikat;
+      pEl.className = `text-lg font-extrabold mt-1 ${colorClass}`;
+    }
+
+    function resetRubrik() {
+      appState.rubrikScores = { ketepatan: 0, kejelasan: 0, keberhasilan: 0, kelancaran: 0, amr: 0 };
+      renderRubrikTable();
+      saveState();
+      showToast('تم تصفير درجات بطاقة التقييم.');
+    }
+
+    /* =========================================================================
+       ١٠. التبويب ٦: الواجب المنزلي واستوديو التسجيل الصوتي
+       ========================================================================= */
+    function renderMandiriChecklist() {
+      const container = document.getElementById('mandiri-checklist-container');
+      if (!container) return;
+      container.innerHTML = MANDIRI_CHECKLIST.map((item) => {
+        const checked = !!appState.mandiri.checklist[item.id];
+        return `
+          <label class="flex items-start gap-2.5 p-2 rounded-xl border cursor-pointer transition ${
+            checked ? 'bg-maroon-50 border-maroon-800/30 text-maroon-950 font-semibold' : 'bg-white border-stone-200 text-stone-700 hover:bg-stone-50'
+          }">
+            <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMandiriCheck('${item.id}', this.checked)" class="mt-0.5 w-4 h-4 rounded accent-maroon-800 shrink-0" />
+            <span class="leading-snug">${item.label}</span>
+          </label>`;
+      }).join('');
+      updateChecklistProgress();
+    }
+
+    function toggleMandiriCheck(id, checked) {
+      appState.mandiri.checklist[id] = checked;
+      renderMandiriChecklist();
+      saveState();
+    }
+
+    function updateChecklistProgress() {
+      const total = MANDIRI_CHECKLIST.length;
+      const checkedCount = MANDIRI_CHECKLIST.filter((i) => appState.mandiri.checklist[i.id]).length;
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('checklist-badge').textContent = `${toArabicDigits(checkedCount)} / ${toArabicDigits(total)}`;
+      document.getElementById('checklist-bar').style.width = `${pct}%`;
+    }
+
+    function insertTemplateSkrip() {
+      const el = document.getElementById('mandiri-skrip');
+      const template = `بسم الله الرحمن الرحيم.\nأولاً: افتحْ موقع الدرر السنية، ثم اختَرْ الموسوعة الحديثية.\nثم اكتبْ كلمة «...» في مربع البحث، واختَرْ بحث مطابق، واضغطْ على زر البحث.\nبعد ذلك: انظرْ إلى نتائج البحث واستخدمْ خاصية التصفية، أو اضغطْ على الصفحة التالية لمطالعة مصادر أخرى، ثم احفظِ النتيجة.\nوأخيراً: خلاصة القول أن هذا الحديث رواه الصحابي الجليل ...، وأخرجه الإمام ... في كتابه ... برقم ...، وخلاصة حكم المحدِّث أنه حديث ...`;
+      el.value = el.value.trim() ? el.value + '\n' + template : template;
+      handleStateChange();
+      showToast('تم إدراج قالب أدوات الربط في مسودة الإلقاء.');
+    }
+
+    // استوديو التسجيل الصوتي عبر واجهة MediaRecorder
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recTimerInterval = null;
+    let recSeconds = 0;
+    let recAudioUrl = null;
+
+    function formatArabicMMSS(sec) {
+      const m = toArabicDigits(String(Math.floor(sec / 60)).padStart(2, '0'));
+      const s = toArabicDigits(String(sec % 60).padStart(2, '0'));
+      return `${m}:${s}`;
+    }
+
+    async function startAudioRecording() {
+      const msgBox = document.getElementById('rec-message');
+      msgBox.classList.add('hidden');
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === 'undefined') {
+        msgBox.textContent = 'عذراً، هذا المتصفح لا يدعم التسجيل الصوتي المباشر. يمكنك تسجيل الرسالة الصوتية مباشرة عبر تطبيق واتساب أو مسجل الصوت في هاتفك.';
+        msgBox.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioChunks = [];
+        let mimeType = '';
+        if (MediaRecorder.isTypeSupported('audio/webm')) mimeType = 'audio/webm';
+        else if (MediaRecorder.isTypeSupported('audio/ogg')) mimeType = 'audio/ogg';
+
+        mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          stream.getTracks().forEach((t) => t.stop());
+          const blobType = mimeType || 'audio/webm';
+          const ext = blobType.includes('ogg') ? 'ogg' : 'webm';
+          const blob = new Blob(audioChunks, { type: blobType });
+          if (recAudioUrl) URL.revokeObjectURL(recAudioUrl);
+          recAudioUrl = URL.createObjectURL(blob);
+
+          const player = document.getElementById('rec-audio-player');
+          const dl = document.getElementById('btn-rec-download');
+          player.src = recAudioUrl;
+          dl.href = recAudioUrl;
+          dl.download = `تخريج_رقمي_تسجيل_صوتي.${ext}`;
+          document.getElementById('rec-playback-box').classList.remove('hidden');
+          document.getElementById('rec-status-label').textContent = 'اكتمل التسجيل';
+
+          if (recSeconds < 60) {
+            msgBox.textContent = `مدة التسجيل (${formatArabicMMSS(recSeconds)}) أقل من دقيقة واحدة؛ والمدة المطلوبة للواجب تتراوح بين دقيقة ودقيقتين (٠١:٠٠ – ٠٢:٠٠).`;
+            msgBox.classList.remove('hidden');
+          } else {
+            msgBox.textContent = `أحسنت! مدة التسجيل (${formatArabicMMSS(recSeconds)}) مطابقة للمطلوب (١–٢ دقيقة). يمكنك الاستماع إليه ثم تنزيله لإرساله عبر واتساب.`;
+            msgBox.classList.remove('hidden');
+          }
+        };
+
+        mediaRecorder.start();
+        recSeconds = 0;
+        document.getElementById('rec-timer').textContent = '٠٠:٠٠';
+        document.getElementById('rec-status-label').textContent = 'جارٍ التسجيل...';
+        document.getElementById('btn-rec-start').classList.add('hidden');
+        document.getElementById('btn-rec-stop').classList.remove('hidden');
+
+        clearInterval(recTimerInterval);
+        recTimerInterval = setInterval(() => {
+          recSeconds++;
+          document.getElementById('rec-timer').textContent = formatArabicMMSS(recSeconds);
+          if (recSeconds >= 120) {
+            stopAudioRecording();
+            showToast('بلغ التسجيل الحد الأقصى (٠٢:٠٠) وتم إيقافه تلقائياً.');
+          }
+        }, 1000);
+      } catch (err) {
+        msgBox.textContent = 'تعذّر الوصول إلى الميكروفون. يُرجى منح إذن الميكروفون للمتصفح، أو استخدام مسجل الصوت في تطبيق واتساب.';
+        msgBox.classList.remove('hidden');
+      }
+    }
+
+    function stopAudioRecording() {
+      clearInterval(recTimerInterval);
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+      }
+      document.getElementById('btn-rec-start').classList.remove('hidden');
+      document.getElementById('btn-rec-stop').classList.add('hidden');
+    }
+
+    function clearAudioRecording() {
+      if (recAudioUrl) {
+        URL.revokeObjectURL(recAudioUrl);
+        recAudioUrl = null;
+      }
+      document.getElementById('rec-audio-player').src = '';
+      document.getElementById('rec-playback-box').classList.add('hidden');
+      document.getElementById('rec-message').classList.add('hidden');
+      document.getElementById('rec-timer').textContent = '٠٠:٠٠';
+      document.getElementById('rec-status-label').textContent = 'جاهز للتسجيل';
+    }
+
+    /* =========================================================================
+       ١١. نافذة القاموس السريع ونافذة مسح البيانات
+       ========================================================================= */
+    function openKamusDrawer() {
+      document.getElementById('kamus-overlay').classList.remove('hidden');
+      renderKamusDrawer();
+      document.getElementById('kamus-drawer-search').focus();
+    }
+
+    function closeKamusDrawer() {
+      document.getElementById('kamus-overlay').classList.add('hidden');
+    }
+
+    function renderKamusDrawer() {
+      const q = (document.getElementById('kamus-drawer-search')?.value || '').trim().toLowerCase();
+      const list = document.getElementById('kamus-drawer-list');
+      const items = ALL_MUFRADAT.filter(
+        (m) =>
+          !q ||
+          m.term.toLowerCase().includes(q) ||
+          m.meaning.toLowerCase().includes(q) ||
+          m.example.toLowerCase().includes(q)
+      );
+      if (items.length === 0) {
+        list.innerHTML = `<p class="text-center text-xs text-stone-400 py-6">لا توجد نتائج مطابقة.</p>`;
+        return;
+      }
+      list.innerHTML = items
+        .map(
+          (m) => `
+        <div class="p-3 rounded-xl border border-stone-200 bg-white hover:border-maroon-800/40 transition flex items-start justify-between gap-3">
+          <div>
+            <span class="text-[10px] font-bold text-gold-700">${m.catLabel}</span>
+            <div class="font-hadith text-xl font-bold text-maroon-900">${m.term}</div>
+            <div class="text-xs text-stone-600 mt-0.5 leading-relaxed">${m.meaning}</div>
+          </div>
+          <div class="flex flex-col gap-1 shrink-0">
+            <button type="button" onclick="speakArabic('${m.term.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded bg-maroon-50 hover:bg-maroon-100 text-xs cursor-pointer">🔊</button>
+            <button type="button" onclick="copyText('${m.term.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded bg-stone-100 hover:bg-stone-200 text-xs cursor-pointer">📋</button>
+          </div>
+        </div>`
+        )
+        .join('');
+    }
+
+    function openResetModal() {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('reset-modal').classList.add('hidden');
+    }
+
+    function confirmResetAll() {
+      localStorage.removeItem(STORAGE_KEY);
+      appState = getDefaultState();
+      hydrateStaticInputs();
+      renderAllDynamicSections();
+      applyModeDosenUI();
+      switchTab('tab-mufradat');
+      closeResetModal();
+      showToast('تم مسح جميع البيانات وإعادة الورقة إلى وضعها الأصلي.');
+    }
+
+    /* =========================================================================
+       ١٢. المزامنة والتهيئة عند تحميل الصفحة
+       ========================================================================= */
+    function handleStateChange() {
+      appState.identity.pemandu = document.getElementById('id-pemandu').value;
+      appState.identity.operator = document.getElementById('id-operator').value;
+      appState.identity.pengamat = document.getElementById('id-pengamat').value;
+      appState.identity.kelasTanggal = document.getElementById('id-kelas-tanggal').value;
+
+      appState.istimaQ.q1 = document.getElementById('istima-q1').value;
+      appState.istimaQ.q2 = document.getElementById('istima-q2').value;
+      appState.istimaQ.q3 = document.getElementById('istima-q3').value;
+
+      appState.kartu2FilterNote = document.getElementById('kartu2-filter-note').value;
+      appState.rubrikFeedback = document.getElementById('rubrik-feedback').value;
+
+      appState.mandiri.hadis = document.getElementById('mandiri-hadis').value;
+      appState.mandiri.hasil = document.getElementById('mandiri-hasil').value;
+      appState.mandiri.skrip = document.getElementById('mandiri-skrip').value;
+
+      appState.refleksi.r1 = document.getElementById('refleksi-1').value;
+      appState.refleksi.r2 = document.getElementById('refleksi-2').value;
+
+      updateIdentitySummary();
+      updateIstimaProgress();
+      saveState();
+    }
+
+    function hydrateStaticInputs() {
+      document.getElementById('id-pemandu').value = appState.identity.pemandu || '';
+      document.getElementById('id-operator').value = appState.identity.operator || '';
+      document.getElementById('id-pengamat').value = appState.identity.pengamat || '';
+      document.getElementById('id-kelas-tanggal').value = appState.identity.kelasTanggal || '';
+
+      document.getElementById('istima-q1').value = appState.istimaQ.q1 || '';
+      document.getElementById('istima-q2').value = appState.istimaQ.q2 || '';
+      document.getElementById('istima-q3').value = appState.istimaQ.q3 || '';
+
+      document.getElementById('kartu2-filter-note').value = appState.kartu2FilterNote || '';
+      document.getElementById('rubrik-feedback').value = appState.rubrikFeedback || '';
+
+      document.getElementById('mandiri-hadis').value = appState.mandiri.hadis || '';
+      document.getElementById('mandiri-hasil').value = appState.mandiri.hasil || '';
+      document.getElementById('mandiri-skrip').value = appState.mandiri.skrip || '';
+
+      document.getElementById('refleksi-1').value = appState.refleksi.r1 || '';
+      document.getElementById('refleksi-2').value = appState.refleksi.r2 || '';
+
+      updateIdentitySummary();
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str).replace(/"/g, '&quot;');
+    }
+
+    function renderAllDynamicSections() {
+      renderMufradatTable();
+      setAmrMode('male');
+      renderIstimaRows();
+      renderDialog();
+      renderTaskCards();
+      renderTakhrijResultsTable();
+      renderRubrikTable();
+      renderMandiriChecklist();
+      updateTimerUI();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      hydrateStaticInputs();
+      renderAllDynamicSections();
+      applyModeDosenUI();
+      switchTab(appState.activeTab || 'tab-mufradat');
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+      }
+    });
+  </script>
+</body>
+</html>
