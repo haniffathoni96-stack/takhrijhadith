@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lembar Tugas Pertemuan 10: Praktik Takhrij Digital — Ma'had Aly Hasyim Asy'ari Tebuireng</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Latin/UI) & Amiri + Noto Naskh Arabic (Arab) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            arabic: ['"Amiri"', '"Noto Naskh Arabic"', 'serif'],
+            arabicUi: ['"Noto Naskh Arabic"', '"Amiri"', 'serif'],
+          },
+          colors: {
+            tebuireng: {
+              950: '#022c22',
+              900: '#064e3b',
+              800: '#065f46',
+              700: '#047857',
+              600: '#059669',
+              100: '#d1fae5',
+              50: '#ecfdf5',
+            },
+            emas: {
+              700: '#b45309',
+              600: '#d97706',
+              500: '#f59e0b',
+              100: '#fef3c7',
+              50: '#fffbeb',
+            },
+            kertas: '#f4f7f5',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Tipografi Arab yang lega & nyaman dibaca */
+    .arab {
+      font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+      direction: rtl;
+      unicode-bidi: isolate;
+      line-height: 2;
+    }
+    .arab-ui {
+      font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+      direction: rtl;
+      unicode-bidi: isolate;
+      line-height: 1.9;
+    }
+
+    /* Pola geometris halus pada header */
+    .islamic-pattern {
+      background-color: #064e3b;
+      background-image: radial-gradient(rgba(217, 119, 6, 0.16) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+    }
+
+    /* Efek blur untuk mode latihan peran di Lampiran B */
+    .role-hidden {
+      filter: blur(7px);
+      user-select: none;
+      transition: filter 0.2s ease;
+      cursor: pointer;
+    }
+    .role-hidden:hover,
+    .role-hidden.peeked {
+      filter: blur(0);
+    }
+
+    /* Scrollbar halus untuk tab navigasi di ponsel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Pengaturan Cetak / Ekspor PDF yang rapi dan profesional */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 14mm 12mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        font-size: 11pt !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      /* Tampilkan semua bagian lembar kerja yang relevan saat dicetak */
+      .print-section {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 16px !important;
+        box-shadow: none !important;
+        border: 1px solid #d1d5db !important;
+      }
+      .print-page-break {
+        page-break-before: always;
+      }
+      .islamic-pattern {
+        background: #064e3b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      input, textarea, select {
+        border: 1px solid #cbd5e1 !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+      }
+      .tab-panel-nonprint {
+        display: none !important;
+      }
+      .rubrik-selected {
+        background-color: #d1fae5 !important;
+        border: 2px solid #047857 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-kertas text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- ==================== HEADER INSTITUSI ==================== -->
+  <header class="islamic-pattern text-white shadow-lg border-b-4 border-emas-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5">
+      <!-- Baris Atas: Identitas Institusi & Aksi Cepat -->
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+        <div class="flex items-start gap-3.5">
+          <!-- Lambang / Emblem Akademik SVG -->
+          <div class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-emas-500/40 flex items-center justify-center shadow-inner">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-emas-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+              <path d="M8 7h8" />
+              <path d="M8 11h6" />
+              <circle cx="15.5" cy="14.5" r="1.5" />
+            </svg>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wide uppercase text-emas-100">
+              <span>Ma'had Aly Hasyim Asy'ari Tebuireng</span>
+              <span class="opacity-50">•</span>
+              <span>Prodi Takhassus Hadis wa Ulumuhu</span>
+            </div>
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight mt-1 text-white">
+              Lembar Tugas Pertemuan 10: Praktik Takhrij Digital
+              <span class="arab font-bold text-emas-100 inline-block mr-1 ml-1 text-2xl sm:text-3xl">(التخريج الرقمي)</span>
+            </h1>
+            <p class="text-emerald-100/90 text-xs sm:text-sm mt-1 leading-relaxed">
+              Istilah Antarmuka Maktabah Digital Berbahasa Arab (Syamilah/Dorar) &amp; Memandu Takhrij Secara Lisan
+              <span class="mx-1.5 text-emas-500">|</span>
+              <strong>Alokasi:</strong> 2 × 50 Menit
+              <span class="mx-1.5 text-emas-500">|</span>
+              <strong>Dosen:</strong> Hanif Fathoni, M.Pd
+            </p>
+          </div>
+        </div>
+
+        <!-- Panel Tombol Header (Tidak dicetak) -->
+        <div class="no-print flex flex-wrap items-center gap-2 lg:justify-end shrink-0">
+          <!-- Indikator Auto-save -->
+          <div id="autosave-badge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-xs font-medium text-emerald-100">
+            <span id="autosave-dot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="autosave-text">Tersimpan otomatis</span>
+          </div>
+
+          <!-- Toggle Mode Dosen -->
+          <button type="button" id="btn-mode-dosen" onclick="toggleModeDosen()" class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition cursor-pointer" title="Aktifkan untuk melihat Kunci Jawaban Lampiran C & Catatan Dosen">
+            <span id="dosen-indicator" class="w-2.5 h-2.5 rounded-full bg-slate-400 transition"></span>
+            <span>Mode Dosen: <strong id="dosen-status-label">OFF</strong></span>
+          </button>
+
+          <!-- Tombol Kamus Mufradat Cepat -->
+          <button type="button" onclick="openKamusDrawer()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emas-600 hover:bg-emas-700 text-white text-xs font-bold shadow-sm transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>Kamus Mufradat (D)</span>
+          </button>
+
+          <!-- Tombol Cetak / Ekspor PDF -->
+          <button type="button" onclick="printWorksheet()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-tebuireng-900 hover:bg-emerald-50 text-xs font-bold shadow-sm transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            <span>Cetak / Ekspor PDF</span>
+          </button>
+
+          <!-- Tombol Reset -->
+          <button type="button" onclick="openResetModal()" class="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl bg-rose-600/80 hover:bg-rose-600 text-white text-xs font-semibold transition cursor-pointer" title="Hapus semua isian lembar kerja">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span class="hidden sm:inline">Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel Identitas Pasangan / Trio (Collapsible di layar, selalu tampil saat print) -->
+      <div class="mt-4 bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl overflow-hidden">
+        <button type="button" onclick="toggleIdentityPanel()" class="no-print w-full px-4 py-2.5 flex items-center justify-between text-left text-xs sm:text-sm font-semibold text-emerald-50 hover:bg-white/5 transition cursor-pointer">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emas-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>Identitas Pasangan / Trio Mahasantri</span>
+            <span id="identity-summary" class="text-xs font-normal text-emerald-200 hidden sm:inline"></span>
+          </span>
+          <svg id="identity-chevron" class="w-4 h-4 text-emas-100 transform transition-transform duration-200 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+
+        <div id="identity-panel-body" class="px-4 pb-4 pt-2 border-t border-white/10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div>
+              <label for="id-pemandu" class="block text-[11px] font-semibold text-emerald-100 uppercase tracking-wider mb-1">Nama Pemandu</label>
+              <input id="id-pemandu" type="text" placeholder="Contoh: Ahmad Zaki" oninput="handleStateChange()" class="w-full px-3 py-2 rounded-xl bg-white text-slate-800 text-sm border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emas-500" />
+            </div>
+            <div>
+              <label for="id-operator" class="block text-[11px] font-semibold text-emerald-100 uppercase tracking-wider mb-1">Nama Operator</label>
+              <input id="id-operator" type="text" placeholder="Contoh: M. Faizal" oninput="handleStateChange()" class="w-full px-3 py-2 rounded-xl bg-white text-slate-800 text-sm border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emas-500" />
+            </div>
+            <div>
+              <label for="id-pengamat" class="block text-[11px] font-semibold text-emerald-100 uppercase tracking-wider mb-1">Pengamat (Opsional/Trio)</label>
+              <input id="id-pengamat" type="text" placeholder="Jika formasi trio" oninput="handleStateChange()" class="w-full px-3 py-2 rounded-xl bg-white text-slate-800 text-sm border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emas-500" />
+            </div>
+            <div>
+              <label for="id-nim" class="block text-[11px] font-semibold text-emerald-100 uppercase tracking-wider mb-1">NIM / Semester</label>
+              <input id="id-nim" type="text" placeholder="Contoh: 230101 / Sem. 4" oninput="handleStateChange()" class="w-full px-3 py-2 rounded-xl bg-white text-slate-800 text-sm border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emas-500" />
+            </div>
+            <div>
+              <label for="id-tanggal" class="block text-[11px] font-semibold text-emerald-100 uppercase tracking-wider mb-1">Tanggal Praktik</label>
+              <input id="id-tanggal" type="date" oninput="handleStateChange()" class="w-full px-3 py-2 rounded-xl bg-white text-slate-800 text-sm border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-emas-500" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== BANNER MODE DOSEN (Tampil jika aktif) ==================== -->
+  <div id="dosen-banner" class="hidden no-print bg-emas-50 border-b border-emas-500/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-emas-700">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded-md bg-emas-600 text-white font-bold uppercase tracking-wider text-[10px]">Mode Dosen Aktif</span>
+        <span>Kunci Jawaban Lampiran C dan Catatan Pengampu (Bagian H) sekarang ditampilkan.</span>
+      </div>
+      <button type="button" onclick="toggleModeDosen()" class="text-emas-700 underline font-semibold hover:text-emas-600 self-start sm:self-auto cursor-pointer">Sembunyikan Mode Dosen</button>
+    </div>
+  </div>
+
+  <!-- ==================== NAVIGASI TAB UTAMA ==================== -->
+  <nav class="no-print sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-2 sm:px-6">
+      <div class="flex items-center gap-1 overflow-x-auto no-scrollbar py-2" role="tablist" aria-label="Navigasi Lembar Tugas">
+        <button type="button" role="tab" data-tab="tab-mufradat" onclick="switchTab('tab-mufradat')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">1</span>
+          <span>Mufradat &amp; Referensi</span>
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-a" onclick="switchTab('tab-lampiran-a')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">A</span>
+          <span>Lampiran A: Istima'</span>
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-b" onclick="switchTab('tab-lampiran-b')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">B</span>
+          <span>Lampiran B: Dialog Hiwar</span>
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-c" onclick="switchTab('tab-lampiran-c')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">C</span>
+          <span>Lampiran C: Takhrij</span>
+        </button>
+        <button type="button" role="tab" data-tab="tab-lampiran-d" onclick="switchTab('tab-lampiran-d')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">D</span>
+          <span>Lampiran D: Rubrik</span>
+        </button>
+        <button type="button" role="tab" data-tab="tab-mandiri" onclick="switchTab('tab-mandiri')" class="tab-btn shrink-0 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 cursor-pointer">
+          <span class="w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tab-badge">G</span>
+          <span>Tugas Mandiri &amp; Refleksi</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== KONTEN UTAMA ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- ================================================================ -->
+    <!-- TAB 1: MUFRADAT & REFERENSI (MATERI D & SUMBER)                  -->
+    <!-- ================================================================ -->
+    <section id="tab-mufradat" class="tab-panel tab-panel-nonprint space-y-6">
+
+      <!-- Catatan untuk Dosen (Hanya tampil jika Mode Dosen aktif) -->
+      <div class="dosen-only hidden bg-emas-50 border border-emas-500/40 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-emas-600 text-white text-xs font-bold">Bagian H — Catatan untuk Dosen</span>
+        </div>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-amber-950 leading-relaxed">
+          <li>Cobalah seluruh langkah takhrij pada perangkat dan koneksi yang akan dipakai di kelas; antarmuka maktabah digital sering berubah sehingga istilah pada modul perlu disesuaikan dengan tampilan terbaru.</li>
+          <li>Video Opsi 1 (2016) relatif lama; jika tampilannya jauh berbeda, gunakan Opsi 3 (rekaman layar buatan dosen berdurasi 3–5 menit dengan istilah Bagian D).</li>
+          <li>Jika tidak semua mahasantri memiliki perangkat, bentuk <strong>trio</strong> (pemandu, operator, pengamat pencatat kesalahan istilah).</li>
+          <li>Penekanan penilaian ada pada <strong>bahasa lisan memandu</strong>, bukan pada kecepatan menemukan hadis.</li>
+        </ul>
+      </div>
+
+      <!-- Tautan Cepat Sumber Belajar & Ringkasan Takhrij -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <!-- Kartu Sumber Belajar -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 flex flex-col justify-between">
+          <div>
+            <span class="inline-block px-2.5 py-1 rounded-lg bg-tebuireng-50 text-tebuireng-800 text-xs font-bold mb-2">Materi C &amp; E — Sumber Belajar</span>
+            <h2 class="text-lg font-bold text-slate-900">Akses Cepat Maktabah Digital</h2>
+            <p class="text-xs text-slate-500 mt-1 mb-4">Buka salah satu platform berikut pada perangkat Operator saat sesi praktik.</p>
+          </div>
+          <div class="space-y-2.5">
+            <a href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-tebuireng-50 hover:bg-tebuireng-100/80 border border-tebuireng-700/20 transition group">
+              <div>
+                <div class="text-sm font-bold text-tebuireng-900">Al-Mawsu'ah al-Hadithiyyah (Dorar)</div>
+                <div class="text-xs text-tebuireng-700">dorar.net/hadith • <span class="arab-ui">الموسوعة الحديثية</span></div>
+              </div>
+              <svg class="w-4 h-4 text-tebuireng-700 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://shamela.ws" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition group">
+              <div>
+                <div class="text-sm font-bold text-slate-800">Maktabah Syamilah (Web)</div>
+                <div class="text-xs text-slate-500">shamela.ws • <span class="arab-ui">المكتبة الشاملة</span></div>
+              </div>
+              <svg class="w-4 h-4 text-slate-500 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="https://www.youtube.com/watch?v=4nUMczAtNNQ" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-emas-50 hover:bg-emas-100/70 border border-emas-600/20 transition group">
+              <div>
+                <div class="text-sm font-bold text-amber-900">Video Pengenalan Dorar (Opsi 1)</div>
+                <div class="text-xs text-emas-700 arab-ui">تعرف على موسوعات الدرر السنية – الموسوعة الحديثية</div>
+              </div>
+              <svg class="w-4 h-4 text-emas-700 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Ringkasan Materi Takhrij & 5 Jalur Klasik -->
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5">
+          <span class="inline-block px-2.5 py-1 rounded-lg bg-emas-50 text-emas-700 text-xs font-bold mb-2">Ringkasan Materi</span>
+          <h2 class="text-lg font-bold text-slate-900">Takhrij Hadis &amp; 5 Jalur Takhrij Klasik</h2>
+          <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+            <strong>Takhrij hadis</strong> berarti menelusuri sebuah hadis ke sumber-sumber aslinya (kitab hadis) beserta penjelasan sanad dan derajatnya. Maktabah digital mempercepat penelusuran yang dahulu dilakukan lewat kamus dan indeks, dan pada praktiknya paling sering menggunakan <em>kata kunci</em> dan <em>lafaz matan</em>.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5 mt-4">
+            <div class="p-3 rounded-xl bg-kertas border border-slate-200/70">
+              <div class="text-xs font-extrabold text-tebuireng-800 mb-1">1. Perawi Sahabat</div>
+              <p class="text-[11px] text-slate-600">Menelusuri lewat nama perawi tertinggi (sahabat).</p>
+            </div>
+            <div class="p-3 rounded-xl bg-kertas border border-slate-200/70">
+              <div class="text-xs font-extrabold text-tebuireng-800 mb-1">2. Lafaz Pertama</div>
+              <p class="text-[11px] text-slate-600">Lewat kata awal pada matan hadis.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-tebuireng-50 border border-tebuireng-700/25">
+              <div class="text-xs font-extrabold text-tebuireng-900 mb-1">3. Kata Kunci</div>
+              <p class="text-[11px] text-tebuireng-800">Lewat lafaz/kata kunci pilihan di dalam matan.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-kertas border border-slate-200/70">
+              <div class="text-xs font-extrabold text-tebuireng-800 mb-1">4. Topik</div>
+              <p class="text-[11px] text-slate-600">Lewat tema atau pembahasan fikih/akidah.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-kertas border border-slate-200/70">
+              <div class="text-xs font-extrabold text-tebuireng-800 mb-1">5. Sifat Khusus</div>
+              <p class="text-[11px] text-slate-600">Lewat ciri khusus pada sanad atau matan.</p>
+            </div>
+          </div>
+
+          <div class="mt-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+            <strong class="text-slate-800">Informasi Hasil Pencarian Digital:</strong> Umumnya menampilkan <em>teks hadis</em>, <em>perawi (sahabat)</em>, <em>pentakhrij/muhaddith</em>, <em>sumber kitab</em>, <em>nomor/halaman</em>, dan <em>ringkasan hukum muhaddith</em>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Pencarian Mufradat & Mini Flashcard -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Bagian D — Mufradat Kunci Takhrij Digital</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Cari istilah dalam bahasa Arab, transliterasi, atau Indonesia, atau uji hafalan lewat Flashcard Mini.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="relative flex-1 sm:flex-none">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <input id="mufradat-search" type="text" placeholder="Filter mufradat..." oninput="renderMufradatTables()" class="w-full sm:w-56 pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </div>
+            <button type="button" id="btn-toggle-flashcard" onclick="toggleFlashcard()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-tebuireng-900 hover:bg-tebuireng-800 text-white text-xs font-bold transition cursor-pointer">
+              <svg class="w-4 h-4 text-emas-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              <span>Flashcard Hafalan</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Panel Mini Flashcard (Toggleable) -->
+        <div id="flashcard-panel" class="hidden my-5 p-5 rounded-2xl bg-gradient-to-br from-tebuireng-900 to-tebuireng-800 text-white shadow-md">
+          <div class="flex items-center justify-between text-xs text-emerald-200 mb-3">
+            <span class="font-bold uppercase tracking-wider">Latihan Hafalan Mufradat (D.1 &amp; D.2)</span>
+            <span id="fc-counter" class="px-2.5 py-0.5 rounded-full bg-white/15 font-semibold">1 / 15</span>
+          </div>
+          <div onclick="flipFlashcard()" class="min-h-[155px] bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition select-none">
+            <span id="fc-category" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emas-600/90 text-white font-semibold mb-2"></span>
+            <div id="fc-front" class="space-y-1">
+              <div id="fc-arabic" class="arab text-3xl sm:text-4xl font-bold text-white"></div>
+              <p class="text-xs text-emerald-200 mt-2">Klik kartu untuk melihat transliterasi &amp; artinya</p>
+            </div>
+            <div id="fc-back" class="hidden space-y-1.5">
+              <div id="fc-arabic-back" class="arab text-2xl font-bold text-emas-100"></div>
+              <div id="fc-translit" class="text-sm italic text-emerald-100"></div>
+              <div id="fc-meaning" class="text-lg font-extrabold text-white"></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mt-4">
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="prevFlashcard()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold transition cursor-pointer">← Sebelumnya</button>
+              <button type="button" onclick="nextFlashcard()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold transition cursor-pointer">Selanjutnya →</button>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="speakCurrentFlashcard()" class="px-3.5 py-2 rounded-xl bg-emas-600 hover:bg-emas-700 text-xs font-bold transition cursor-pointer">🔊 Dengarkan</button>
+              <button type="button" onclick="shuffleFlashcards()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition cursor-pointer">🔀 Acak</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dua Tabel Mufradat D.1 dan D.2 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-5">
+          <!-- Tabel D.1 -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <h3 class="text-sm font-bold text-tebuireng-900 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-md bg-tebuireng-900 text-white text-xs">D.1</span>
+                <span>Istilah Antarmuka (Lampiran 1 RPS)</span>
+              </h3>
+              <span class="text-xs text-slate-500">8 Istilah Wajib</span>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-tebuireng-900 text-white text-xs">
+                  <tr>
+                    <th class="px-3 py-2.5 text-right">Bahasa Arab</th>
+                    <th class="px-3 py-2.5">Transliterasi</th>
+                    <th class="px-3 py-2.5">Arti</th>
+                    <th class="px-2 py-2.5 text-center w-16">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-d1" class="divide-y divide-slate-100 text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tabel D.2 -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <h3 class="text-sm font-bold text-emas-700 flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-md bg-emas-600 text-white text-xs">D.2</span>
+                <span>Kata Kerja Perintah, Urutan &amp; Hasil Takhrij</span>
+              </h3>
+              <span class="text-xs text-slate-500">7 Kelompok</span>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-emas-700 text-white text-xs">
+                  <tr>
+                    <th class="px-3 py-2.5 text-right">Bahasa Arab</th>
+                    <th class="px-3 py-2.5">Transliterasi</th>
+                    <th class="px-3 py-2.5">Arti</th>
+                    <th class="px-2 py-2.5 text-center w-16">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-d2" class="divide-y divide-slate-100 text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kartu Interaktif Catatan Tata Bahasa Fi'l Amr & Contoh Kalimat RPS -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-50 text-tebuireng-800 text-xs font-bold mb-1">Tata Bahasa Praktis (قواعد الفعل الأمر)</span>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">Penyesuaian Kalimat Perintah (Fi'l Amr) Sesuai Mitra</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Biasakan menyesuaikan bentuk fi'l amr dengan lawan bicara yang sedang dipandu.</p>
+          </div>
+          <!-- Switcher Mitra -->
+          <div class="inline-flex rounded-xl bg-slate-100 p-1 self-start">
+            <button type="button" onclick="setAmrMode('male')" id="amr-btn-male" class="amr-switch px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">Laki-laki (1)</button>
+            <button type="button" onclick="setAmrMode('female')" id="amr-btn-female" class="amr-switch px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">Perempuan (1)</button>
+            <button type="button" onclick="setAmrMode('plural')" id="amr-btn-plural" class="amr-switch px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">Jamak (&gt;2)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Contoh 3 Fi'l Amr Inti -->
+          <div class="p-4 rounded-2xl bg-tebuireng-50 border border-tebuireng-700/20 flex flex-col justify-center">
+            <div id="amr-label" class="text-xs font-bold text-tebuireng-800 uppercase tracking-wider mb-2">Mitra Laki-laki (المفرد المذكر)</div>
+            <div id="amr-verbs" class="arab text-2xl sm:text-3xl font-bold text-tebuireng-950 text-right">اكتبْ، اختَرْ، اضغطْ</div>
+            <div id="amr-verbs-sub" class="text-xs text-tebuireng-800 mt-2">Ketiklah, pilihlah, tekanlah (untuk satu mitra laki-laki).</div>
+          </div>
+
+          <!-- Contoh Kalimat RPS Dinamis -->
+          <div class="md:col-span-2 p-4 rounded-2xl bg-emas-50/70 border border-emas-600/25 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold text-emas-700 uppercase tracking-wider">Contoh Kalimat (dari RPS)</span>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="speakArabic(document.getElementById('rps-sentence-ar').textContent)" class="px-2.5 py-1 rounded-lg bg-white border border-emas-600/30 hover:bg-emas-100 text-xs font-semibold text-emas-700 cursor-pointer">🔊 Audio</button>
+                  <button type="button" onclick="copyText(document.getElementById('rps-sentence-ar').textContent)" class="px-2.5 py-1 rounded-lg bg-white border border-emas-600/30 hover:bg-emas-100 text-xs font-semibold text-emas-700 cursor-pointer">📋 Salin</button>
+                </div>
+              </div>
+              <p id="rps-sentence-ar" class="arab text-2xl sm:text-[26px] font-bold text-slate-900 text-right leading-loose">
+                اكتب كلمة «النية» في مربع البحث، ثم اختر بحث مطابق، واضغط على زر البحث.
+              </p>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 mt-2 pt-2 border-t border-emas-600/15">
+              <strong>Artinya:</strong> “Ketik kata «niyyah» di kotak pencarian, lalu pilih pencarian sama persis, dan tekan tombol cari.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- TAB 2: LAMPIRAN A — LEMBAR KERJA ISTIMA'                         -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-a" class="tab-panel print-section hidden bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-900 text-white text-xs font-bold mb-1.5">Lampiran A</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Lembar Kerja Istima' (Simakan Tutorial Maktabah Digital)</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            Simak video/rekaman tutorial pengoperasian maktabah digital berbahasa Arab, lalu catat istilah antarmuka dan perintah yang terdengar.
+          </p>
+        </div>
+        <!-- Indikator Progres Lampiran A -->
+        <div class="no-print shrink-0 bg-tebuireng-50 border border-tebuireng-700/20 rounded-xl px-4 py-2.5 min-w-[190px]">
+          <div class="flex items-center justify-between text-xs font-bold text-tebuireng-900 mb-1">
+            <span>Progres Pengisian</span>
+            <span id="istima-progress-pct">0%</span>
+          </div>
+          <div class="w-full h-2 bg-emerald-200/70 rounded-full overflow-hidden">
+            <div id="istima-progress-bar" class="h-full bg-tebuireng-700 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bagian 1: Tabel Istilah/Perintah yang Terdengar -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h3 class="text-sm sm:text-base font-bold text-slate-800">1. Pencatatan Istilah / Perintah yang Terdengar</h3>
+          <button type="button" onclick="addIstimaRow()" class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-tebuireng-700 hover:bg-tebuireng-800 text-white text-xs font-bold transition cursor-pointer">
+            <span>+ Tambah Baris</span>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left border-collapse min-w-[640px]">
+            <thead class="bg-tebuireng-900 text-white text-xs">
+              <tr>
+                <th class="px-3 py-3 w-12 text-center">No</th>
+                <th class="px-3 py-3 w-1/3 text-right">Istilah/Perintah yang Terdengar (Arab)</th>
+                <th class="px-3 py-3 w-1/3">Elemen Antarmuka yang Dimaksud</th>
+                <th class="px-3 py-3 w-1/3">Arti dalam Bahasa Indonesia</th>
+                <th class="no-print px-2 py-3 w-10 text-center"></th>
+              </tr>
+            </thead>
+            <tbody id="istima-rows-body" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bagian 2: Pertanyaan Hasil Simakan -->
+      <div class="space-y-4 pt-2">
+        <h3 class="text-sm sm:text-base font-bold text-slate-800">2. Pertanyaan Hasil Simakan</h3>
+        <div class="grid grid-cols-1 gap-4">
+          <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="istima-q1" class="block text-sm font-bold text-slate-800 mb-1.5">
+              1. Situs/aplikasi apa yang digunakan dalam tutorial?
+            </label>
+            <textarea id="istima-q1" rows="2" oninput="handleStateChange()" placeholder="Tuliskan nama situs/aplikasi (misal: Al-Mawsu'ah al-Hadithiyyah / Dorar.net / Maktabah Syamilah)..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+
+          <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="istima-q2" class="block text-sm font-bold text-slate-800 mb-1.5">
+              2. Tuliskan urutan langkah pencarian yang disebutkan.
+            </label>
+            <textarea id="istima-q2" rows="3" oninput="handleStateChange()" placeholder="Contoh: Pertama buka situs, lalu ketik kata kunci di kotak pencarian (مربع البحث), pilih pencarian sama persis (بحث مطابق), kemudian klik cari..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+
+          <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="istima-q3" class="block text-sm font-bold text-slate-800 mb-1.5">
+              3. Informasi apa saja yang tampil pada hasil pencarian?
+            </label>
+            <textarea id="istima-q3" rows="3" oninput="handleStateChange()" placeholder="Contoh: Teks hadis, perawi (الراوي), muhaddith (المحدث), sumber (المصدر), halaman/nomor (الصفحة أو الرقم), dan ringkasan hukum muhaddith (خلاصة حكم المحدث)..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- TAB 3: LAMPIRAN B — SKRIP DIALOG HIWAR                           -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-b" class="tab-panel tab-panel-nonprint hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6">
+        <!-- Header & Kontrol Dialog -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-slate-200">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-900 text-white text-xs font-bold mb-1.5">Lampiran B</span>
+            <h2 class="text-xl font-extrabold text-slate-900">Skrip Dialog Memandu Takhrij</h2>
+            <p class="text-xs sm:text-sm text-slate-600 mt-0.5">Mahasantri dapat memvariasikan kalimat sesuai tampilan perangkat yang dipakai.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Switcher Gender -->
+            <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200">
+              <button type="button" id="dlg-gender-m" onclick="setDialogGender('male')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">Mitra Laki-laki</button>
+              <button type="button" id="dlg-gender-f" onclick="setDialogGender('female')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer">Mitra Perempuan</button>
+            </div>
+
+            <!-- Tombol Putar Semua Dialog -->
+            <button type="button" id="btn-play-all-dialog" onclick="playAllDialog()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emas-600 hover:bg-emas-700 text-white text-xs font-bold transition cursor-pointer">
+              <span>🔊 Putar Semua</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Baris Kontrol Latihan Peran & Terjemahan -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-4">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span class="text-xs font-bold text-slate-500 mr-1">Mode Latihan:</span>
+            <button type="button" onclick="setDialogRoleMode('all')" id="role-btn-all" class="role-mode-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">Semua Terlihat</button>
+            <button type="button" onclick="setDialogRoleMode('pemandu')" id="role-btn-pemandu" class="role-mode-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">Latihan Pemandu</button>
+            <button type="button" onclick="setDialogRoleMode('operator')" id="role-btn-operator" class="role-mode-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer">Latihan Operator</button>
+          </div>
+
+          <label class="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer select-none">
+            <input type="checkbox" id="toggle-dialog-trans" onchange="renderDialog()" class="w-4 h-4 rounded text-tebuireng-700 focus:ring-tebuireng-700 accent-tebuireng-700" />
+            <span>Tampilkan Terjemahan Indonesia</span>
+          </label>
+        </div>
+
+        <!-- Percakapan Interaktif (8 Giliran) -->
+        <div id="dialog-container" class="space-y-3.5 py-2"></div>
+
+        <!-- Catatan Modul -->
+        <div class="mt-5 p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-emas-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span><strong>Catatan:</strong> Jawaban Operator di atas adalah contoh hasil yang diharapkan; tampilan dan urutan data pada situs dapat berbeda. Pada mode latihan peran, klik balon teks yang diburamkan untuk mengintip lafaz Arabnya.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- TAB 4: LAMPIRAN C — KARTU TUGAS & LEMBAR HASIL TAKHRIJ           -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-c" class="tab-panel print-section print-page-break hidden space-y-6">
+
+      <!-- Timer Praktik Berpasangan & Pengingat Aturan Main (Tidak dicetak) -->
+      <div class="no-print bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="px-4 py-2.5 rounded-2xl bg-tebuireng-950 text-white text-center min-w-[120px] shadow-inner">
+              <div class="text-[10px] uppercase tracking-widest text-emerald-300 font-semibold">Timer Praktik</div>
+              <div id="timer-display" class="text-2xl sm:text-3xl font-extrabold font-mono tracking-wider text-emas-500">12:00</div>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button type="button" onclick="setTimerPreset(12, 'Putaran 1 (Kartu 1 & 2)')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-tebuireng-50 text-slate-700 hover:text-tebuireng-900 text-xs font-semibold border border-slate-200 cursor-pointer">12 Mnt Putaran 1</button>
+                <button type="button" onclick="setTimerPreset(12, 'Putaran 2 (Tukar Peran — Kartu 3)')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-tebuireng-50 text-slate-700 hover:text-tebuireng-900 text-xs font-semibold border border-slate-200 cursor-pointer">12 Mnt Putaran 2</button>
+                <button type="button" onclick="setTimerPreset(6, 'Sesi Tampil di Depan Kelas')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-tebuireng-50 text-slate-700 hover:text-tebuireng-900 text-xs font-semibold border border-slate-200 cursor-pointer">6 Mnt Tampil</button>
+              </div>
+              <div id="timer-label" class="text-xs text-slate-500 font-medium">Mode: Putaran 1 (Kartu 1 &amp; 2)</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" id="btn-timer-start" onclick="toggleTimer()" class="px-4 py-2 rounded-xl bg-tebuireng-700 hover:bg-tebuireng-800 text-white text-xs font-bold transition cursor-pointer">▶ Mulai</button>
+            <button type="button" onclick="resetTimer()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">↺ Reset</button>
+          </div>
+        </div>
+
+        <!-- Progress bar timer -->
+        <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-3">
+          <div id="timer-bar" class="h-full bg-emas-600 transition-all duration-500" style="width: 100%"></div>
+        </div>
+
+        <!-- Aturan Main Hiwar -->
+        <div class="mt-3.5 p-3 rounded-xl bg-tebuireng-50 border border-tebuireng-700/20 text-xs sm:text-sm text-tebuireng-950 flex items-start gap-2.5">
+          <span class="px-2 py-0.5 rounded-md bg-tebuireng-900 text-white text-[10px] font-bold uppercase shrink-0 mt-0.5">Aturan Main</span>
+          <span><strong>Pemandu</strong> hanya boleh memberi instruksi lisan dalam bahasa Arab dan <u>tidak menyentuh perangkat</u>; <strong>Operator</strong> hanya boleh bertanya dalam bahasa Arab dan bertugas mengisi Lembar Hasil Takhrij.</span>
+        </div>
+      </div>
+
+      <!-- 3 Kartu Tugas Takhrij -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6">
+        <div class="mb-4">
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-900 text-white text-xs font-bold mb-1.5">Lampiran C</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Kartu Tugas Takhrij &amp; Lembar Hasil</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="task-cards-grid">
+          <!-- Dirender via JS agar tersinkronisasi dengan state selesai -->
+        </div>
+
+        <!-- Lembar Hasil Takhrij (diisi Operator) -->
+        <div class="pt-2">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <h3 class="text-base font-bold text-slate-900">Lembar Hasil Takhrij <span class="font-normal text-slate-500 text-sm">(diisi Operator)</span></h3>
+            <a href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer" class="no-print text-xs font-bold text-tebuireng-700 hover:text-tebuireng-900 underline">Buka dorar.net/hadith ↗</a>
+          </div>
+
+          <!-- Datalist pilihan Hukum Hadis -->
+          <datalist id="hukum-options">
+            <option value="Sahih (صحيح)"></option>
+            <option value="Sahih — Muttafaq 'Alaih"></option>
+            <option value="Mutawatir / Sahih"></option>
+            <option value="Hasan (حسن)"></option>
+            <option value="Hasan Sahih (حسن صحيح)"></option>
+            <option value="Sahih li-Ghairihi"></option>
+            <option value="Dha'if (ضعيف)"></option>
+          </datalist>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left border-collapse min-w-[740px]">
+              <thead class="bg-tebuireng-900 text-white text-xs">
+                <tr>
+                  <th class="px-3 py-3 w-16 text-center">Kartu</th>
+                  <th class="px-3 py-3">Perawi (Sahabat)</th>
+                  <th class="px-3 py-3">Muhaddith/Pentakhrij</th>
+                  <th class="px-3 py-3">Sumber</th>
+                  <th class="px-3 py-3 w-28">No./Hal.</th>
+                  <th class="px-3 py-3 w-40">Hukum</th>
+                </tr>
+              </thead>
+              <tbody id="takhrij-results-body" class="divide-y divide-slate-200 text-sm"></tbody>
+            </table>
+          </div>
+
+          <!-- Catatan Perbandingan Filter (Khusus Kartu 2) -->
+          <div class="mt-4 p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="kartu2-filter-note" class="block text-sm font-bold text-slate-800 mb-1">
+              Catatan Perbandingan Filter — Khusus Kartu 2 (<span class="arab-ui text-base text-tebuireng-900">الدِّينُ النَّصِيحَةُ</span>)
+            </label>
+            <p class="text-xs text-slate-500 mb-2">Tuliskan perbandingan jumlah/jenis hasil pencarian sebelum dan sesudah memakai fitur filter (<span class="arab-ui">تصفية</span>).</p>
+            <textarea id="kartu2-filter-note" rows="2" oninput="handleStateChange()" placeholder="Sebelum filter: ... hasil muncul dari berbagai kitab. Sesudah memakai filter (misal: hanya kitab Sahih / derajat Sahih): hasil menyusut menjadi ... sehingga lebih mudah menemukan riwayat Muslim..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel Kunci Jawaban untuk Dosen (HANYA tampil jika Mode Dosen aktif) -->
+      <div class="dosen-only hidden bg-emas-50 rounded-2xl border-2 border-emas-600/50 shadow-sm p-5 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h3 class="text-base sm:text-lg font-extrabold text-amber-950">Kunci untuk Dosen (Verifikasi pada Perangkat Sebelum Dipakai)</h3>
+          <span class="px-2.5 py-1 rounded-lg bg-emas-600 text-white text-[11px] font-bold uppercase tracking-wider">Khusus Dosen</span>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-amber-300 bg-white">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead class="bg-emas-700 text-white text-xs">
+              <tr>
+                <th class="px-3 py-2.5 w-20 text-center">Kartu</th>
+                <th class="px-3 py-2.5">Perkiraan Hasil</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-amber-100">
+              <tr>
+                <td class="px-3 py-3 text-center font-bold text-amber-900">1</td>
+                <td class="px-3 py-3 text-slate-800"><strong>Perawi:</strong> ‘Umar bin al-Khaththab. Dikeluarkan antara lain oleh al-Bukhari (no. 1) dan Muslim (no. 1907). <strong>Hukum:</strong> sahih.</td>
+              </tr>
+              <tr class="bg-amber-50/40">
+                <td class="px-3 py-3 text-center font-bold text-amber-900">2</td>
+                <td class="px-3 py-3 text-slate-800"><strong>Perawi:</strong> Tamim ad-Dari. Dikeluarkan antara lain oleh Muslim (no. 55). <strong>Hukum:</strong> sahih.</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-3 text-center font-bold text-amber-900">3</td>
+                <td class="px-3 py-3 text-slate-800">Diriwayatkan banyak sahabat dalam al-Bukhari dan Muslim; termasuk hadis mutawatir. Nomor bervariasi menurut jalur dan edisi.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-amber-900 leading-relaxed">
+          <strong>Catatan penting:</strong> Nomor hadis dapat berbeda antar edisi dan antar maktabah digital; pegangan utama adalah <strong>nama kitab, bab, dan hukum muhaddith</strong>, bukan angka semata.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- TAB 5: LAMPIRAN D — RUBRIK PENILAIAN                             -->
+    <!-- ================================================================ -->
+    <section id="tab-lampiran-d" class="tab-panel print-section print-page-break hidden bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-900 text-white text-xs font-bold mb-1.5">Lampiran D</span>
+          <h2 class="text-xl font-extrabold text-slate-900">Rubrik Penilaian Praktik Memandu Takhrij</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-0.5">Klik langsung sel skor (1–4) pada setiap aspek untuk menghitung nilai akhir pertemuan secara otomatis.</p>
+        </div>
+        <button type="button" onclick="resetRubrik()" class="no-print self-start sm:self-auto px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">↺ Reset Skor</button>
+      </div>
+
+      <!-- Dasbor Kalkulasi Nilai Otomatis -->
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div class="p-4 rounded-2xl bg-kertas border border-slate-200">
+          <div class="text-xs font-semibold text-slate-500">Total Skor Mentah</div>
+          <div class="text-2xl font-extrabold text-slate-900 mt-1"><span id="rubrik-total">0</span> <span class="text-sm font-semibold text-slate-400">/ 20</span></div>
+        </div>
+        <div class="p-4 rounded-2xl bg-tebuireng-900 text-white shadow-sm">
+          <div class="text-xs font-semibold text-emerald-200">Nilai Akhir Pertemuan</div>
+          <div class="text-2xl font-extrabold text-white mt-1"><span id="rubrik-nilai">0</span> <span class="text-sm font-medium text-emas-500">/ 100</span></div>
+          <div class="text-[11px] text-emerald-200 mt-0.5">Rumus: (Total Skor / 20) × 100</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-emas-50 border border-emas-600/30">
+          <div class="text-xs font-semibold text-emas-700">Kontribusi Partisipasi (20%)</div>
+          <div class="text-2xl font-extrabold text-amber-950 mt-1"><span id="rubrik-bobot">0.0</span> <span class="text-sm font-semibold text-emas-700">poin</span></div>
+          <div class="text-[11px] text-amber-800 mt-0.5">Dari bobot 20% Partisipasi Kelas</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-kertas border border-slate-200">
+          <div class="text-xs font-semibold text-slate-500">Predikat</div>
+          <div id="rubrik-predikat" class="text-lg font-extrabold text-slate-700 mt-1.5">Belum Dinilai</div>
+          <div id="rubrik-aspek-count" class="text-[11px] text-slate-500 mt-0.5">0 dari 5 aspek dinilai</div>
+        </div>
+      </div>
+
+      <!-- Tabel Rubrik Interaktif -->
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left border-collapse min-w-[760px]">
+          <thead class="bg-tebuireng-900 text-white text-xs">
+            <tr>
+              <th class="px-3.5 py-3 w-48">Aspek Penilaian</th>
+              <th class="px-3 py-3 text-center">Skor 1 (Kurang)</th>
+              <th class="px-3 py-3 text-center">Skor 2 (Cukup)</th>
+              <th class="px-3 py-3 text-center">Skor 3 (Baik)</th>
+              <th class="px-3 py-3 text-center">Skor 4 (Sangat Baik)</th>
+            </tr>
+          </thead>
+          <tbody id="rubrik-table-body" class="divide-y divide-slate-200 text-xs sm:text-sm"></tbody>
+        </table>
+      </div>
+
+      <!-- Umpan Balik Dosen / Pengamat -->
+      <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+        <label for="rubrik-feedback" class="block text-sm font-bold text-slate-800 mb-1.5">
+          Catatan / Umpan Balik Dosen atau Pengamat
+        </label>
+        <p class="text-xs text-slate-500 mb-2">Catat kesalahan istilah antarmuka, penyesuaian bentuk fi'l amr (mudzakkar/mu'annats), atau saran kelancaran pelafalan.</p>
+        <textarea id="rubrik-feedback" rows="3" oninput="handleStateChange()" placeholder="Tuliskan umpan balik konstruktif untuk pasangan/mahasantri..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- TAB 6: TUGAS MANDIRI MINGGUAN (BAGIAN G) & REFLEKSI PENUTUP      -->
+    <!-- ================================================================ -->
+    <section id="tab-mandiri" class="tab-panel print-section print-page-break hidden space-y-6">
+
+      <!-- Penjelasan Tugas Mandiri Mingguan -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-4 border-b border-slate-200">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-emas-600 text-white text-xs font-bold mb-1.5">Bagian G — Komponen Penugasan (30%)</span>
+            <h2 class="text-xl font-extrabold text-slate-900">Tugas Mandiri Mingguan: Voice Note Takhrij Digital</h2>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+              Lakukan takhrij <strong>satu hadis pilihan sendiri</strong> pada maktabah digital, lalu rekam <em>voice note</em> (<strong>1–2 menit</strong>) dalam bahasa Arab yang menjelaskan langkah yang ditempuh (memakai istilah D.1 dan penghubung urutan) beserta hasilnya, dan kirimkan melalui <strong>WhatsApp</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Formulir Perencanaan Tugas Mandiri -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <h3 class="text-base font-bold text-slate-900">1. Perencanaan Hadis &amp; Draf Skrip Lisan</h3>
+
+            <div>
+              <label for="mandiri-hadis" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Hadis Pilihan Sendiri (Teks Arab)</label>
+              <textarea id="mandiri-hadis" rows="2" dir="rtl" oninput="handleStateChange()" placeholder="اكتب نص الحديث المختار هنا..." class="arab-ui w-full px-3.5 py-2 rounded-xl bg-kertas border border-slate-300 text-lg focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+            </div>
+
+            <div>
+              <label for="mandiri-hasil" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Perawi, Sumber Kitab &amp; Hukum Hasil Takhrij</label>
+              <input id="mandiri-hasil" type="text" oninput="handleStateChange()" placeholder="Contoh: Perawi Abu Hurairah, HR. Muslim no. 2699, Hukum: Sahih" class="w-full px-3.5 py-2.5 rounded-xl bg-kertas border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </div>
+
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <label for="mandiri-skrip" class="text-xs font-bold text-slate-700 uppercase tracking-wider">Draf Skrip Lisan (1–2 Menit)</label>
+                <button type="button" onclick="insertTemplateSkrip()" class="no-print text-xs font-bold text-tebuireng-700 hover:text-tebuireng-900 bg-tebuireng-50 px-2.5 py-1 rounded-lg border border-tebuireng-700/20 cursor-pointer">+ Sisipkan Kerangka Urutan</button>
+              </div>
+              <textarea id="mandiri-skrip" rows="5" dir="rtl" oninput="handleStateChange()" placeholder="أولاً، افتح موقع الدرر السنية... ثم اكتب... بعد ذلك... وأخيراً..." class="arab-ui w-full px-3.5 py-2.5 rounded-xl bg-kertas border border-slate-300 text-lg focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+            </div>
+          </div>
+
+          <!-- Checklist Kesiapan Voice Note -->
+          <div class="bg-kertas rounded-2xl border border-slate-200 p-4 sm:p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="text-base font-bold text-slate-900">2. Checklist Kesiapan Voice Note</h3>
+                <span id="checklist-badge" class="px-2.5 py-0.5 rounded-full bg-tebuireng-900 text-white text-xs font-bold">0 / 11</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-3">Centang unsur yang sudah Anda masukkan dalam draf dan rekaman suara:</p>
+
+              <div id="mandiri-checklist-container" class="space-y-2 text-xs sm:text-sm"></div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200">
+              <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                <div id="checklist-bar" class="h-full bg-tebuireng-700 transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fitur Latihan Rekam Audio (MediaRecorder API) — Tidak dicetak -->
+        <div class="no-print p-5 rounded-2xl bg-gradient-to-r from-tebuireng-950 to-tebuireng-900 text-white shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded-md bg-emas-600 text-white text-[10px] font-bold uppercase tracking-wider mb-1.5">Studio Latihan Rekam</span>
+              <h3 class="text-base sm:text-lg font-bold">Latihan Rekam Voice Note (Target 01:00 – 02:00)</h3>
+              <p class="text-xs text-emerald-200 mt-0.5">Rekam langsung di browser, dengarkan hasilnya, lalu unduh untuk dikirim ke grup/WA dosen.</p>
+            </div>
+
+            <div class="flex items-center gap-3 shrink-0">
+              <div class="px-4 py-2 rounded-xl bg-black/30 border border-white/15 text-center min-w-[110px]">
+                <div id="rec-status-label" class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">Siap Rekam</div>
+                <div id="rec-timer" class="text-xl font-mono font-bold text-white">00:00</div>
+              </div>
+
+              <button type="button" id="btn-rec-start" onclick="startAudioRecording()" class="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                <span>Mulai Rekam</span>
+              </button>
+              <button type="button" id="btn-rec-stop" onclick="stopAudioRecording()" class="hidden px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                <span class="w-2.5 h-2.5 bg-slate-950 rounded-xs"></span>
+                <span>Hentikan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pesan Status / Fallback Mikrofon -->
+          <div id="rec-message" class="hidden mt-3 p-3 rounded-xl bg-white/10 border border-white/20 text-xs text-amber-100"></div>
+
+          <!-- Pemutar & Tombol Unduh Hasil Rekaman -->
+          <div id="rec-playback-box" class="hidden mt-4 pt-4 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <audio id="rec-audio-player" controls class="w-full sm:max-w-md h-10"></audio>
+            <div class="flex items-center gap-2 shrink-0">
+              <a id="btn-rec-download" download="voice_note_takhrij_digital.webm" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emas-600 hover:bg-emas-700 text-white text-xs font-bold transition cursor-pointer">
+                ⬇ Unduh Rekaman
+              </a>
+              <button type="button" onclick="clearAudioRecording()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold cursor-pointer">Hapus</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refleksi Penutup Pertemuan (Bagian F.4) -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sm:p-6 space-y-4">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-lg bg-tebuireng-50 text-tebuireng-800 text-xs font-bold mb-1">Kegiatan Penutup (Bagian F.4)</span>
+          <h3 class="text-lg font-extrabold text-slate-900">Refleksi Kritis Takhrij Digital</h3>
+          <p class="text-xs text-slate-500 mt-0.5">Ingat: hasil mesin pencari hadis digital tetap perlu diteliti kembali pada kitab sumber aslinya.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="refleksi-1" class="block text-sm font-bold text-slate-800 mb-1.5">
+              1. Apa kelebihan dan batas maktabah digital dibanding takhrij manual?
+            </label>
+            <textarea id="refleksi-1" rows="4" oninput="handleStateChange()" placeholder="Kelebihan: cepat, lintas kitab... Batasan: perbedaan redaksi/penomoran, risiko salah ketik (tashhif), tidak menggantikan verifikasi sanad manual..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+
+          <div class="p-4 rounded-xl bg-kertas border border-slate-200">
+            <label for="refleksi-2" class="block text-sm font-bold text-slate-800 mb-1.5">
+              2. Mengapa hukum muhaddith perlu dibaca bersama sumbernya?
+            </label>
+            <textarea id="refleksi-2" rows="4" oninput="handleStateChange()" placeholder="Karena satu lafaz hadis bisa memiliki beberapa jalur sanad dengan derajat berbeda, serta setiap muhaddith memiliki metodologi penilaian yang khas..." class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Ma'had Aly Hasyim Asy'ari Tebuireng • Prodi Takhassus Hadis wa Ulumuhu</span>
+      <span>Mata Kuliah Bahasa Arab Terapan (Maharah al-Istima' wa al-Hiwar) — Pertemuan 10</span>
+    </div>
+  </footer>
+
+  <!-- ==================== DRAWER KAMUS MUFRADAT CEPAT ==================== -->
+  <div id="kamus-overlay" class="hidden fixed inset-0 z-50 no-print">
+    <div onclick="closeKamusDrawer()" class="absolute inset-0 bg-slate-900/50 backdrop-blur-xs"></div>
+    <aside class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-4 bg-tebuireng-900 text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-base">Kamus Cepat Mufradat (Bagian D)</h3>
+          <p class="text-[11px] text-emerald-200">Referensi instan istilah antarmuka &amp; fi'l amr</p>
+        </div>
+        <button type="button" onclick="closeKamusDrawer()" class="w-8 h-8 rounded-lg bg-white/15 hover:bg-white/25 flex items-center justify-center text-white font-bold cursor-pointer">✕</button>
+      </div>
+      <div class="p-3 border-b border-slate-200 bg-kertas">
+        <input id="kamus-drawer-search" type="text" oninput="renderKamusDrawer()" placeholder="Cari istilah Arab / Indonesia..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+      </div>
+      <div id="kamus-drawer-list" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
+      <div class="p-3 bg-emas-50 border-t border-emas-600/20 text-xs text-amber-950">
+        <strong>Ingat Fi'l Amr:</strong>
+        Laki-laki (<span class="arab-ui font-bold">اكتبْ، اختَرْ، اضغطْ</span>) •
+        Perempuan (<span class="arab-ui font-bold">اكتبي، اختاري، اضغطي</span>) •
+        Jamak (<span class="arab-ui font-bold">اكتبوا، اختاروا، اضغطوا</span>)
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== MODAL KONFIRMASI RESET (Pengganti confirm()) ==================== -->
+  <div id="reset-modal" class="hidden fixed inset-0 z-50 no-print flex items-center justify-center p-4">
+    <div onclick="closeResetModal()" class="absolute inset-0 bg-slate-900/50 backdrop-blur-xs"></div>
+    <div class="relative bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <h3 class="text-lg font-extrabold text-slate-900">Reset Semua Isian Lembar Tugas?</h3>
+      <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+        Tindakan ini akan menghapus seluruh data yang tersimpan di browser (Identitas, Lampiran A, Hasil Takhrij Lampiran C, Rubrik D, Tugas Mandiri, dan Refleksi). Tindakan tidak dapat dibatalkan.
+      </p>
+      <div class="flex items-center justify-end gap-2 mt-5">
+        <button type="button" onclick="closeResetModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer">Batal</button>
+        <button type="button" onclick="confirmResetAll()" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold cursor-pointer">Ya, Reset Semua</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 no-print pointer-events-none transition-all duration-300 opacity-0 translate-y-3">
+    <div id="toast-content" class="px-4 py-2.5 rounded-xl bg-tebuireng-950 text-white text-xs sm:text-sm font-semibold shadow-xl border border-emas-500/40 flex items-center gap-2"></div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT APLIKASI ==================== -->
+  <script>
+    /* =========================================================================
+       1. DATA MODUL AJAR PERTEMUAN 10 (100% AKURAT SESUAI MODUL)
+       ========================================================================= */
+    const STORAGE_KEY = 'mahad_aly_tebuireng_takhrij_p10_v1';
+
+    // Mufradat Bagian D.1 (8 Istilah Antarmuka)
+    const MUFRADAT_D1 = [
+      { id: 'd1_1', ar: 'مربع البحث', tr: "murabba' al-bahth", idText: 'kotak pencarian', group: 'D.1 Antarmuka' },
+      { id: 'd1_2', ar: 'ابحث / اكتب', tr: 'ibhath / uktub', idText: 'cari / ketik', group: 'D.1 Antarmuka' },
+      { id: 'd1_3', ar: 'نتائج البحث', tr: "nata'ij al-bahth", idText: 'hasil pencarian', group: 'D.1 Antarmuka' },
+      { id: 'd1_4', ar: 'بحث مطابق', tr: 'bahth mutabiq', idText: 'pencarian sama persis', group: 'D.1 Antarmuka' },
+      { id: 'd1_5', ar: 'اختر الكتاب / المؤلف', tr: "ikhtar al-kitab / al-mu'allif", idText: 'pilih kitab / pengarang', group: 'D.1 Antarmuka' },
+      { id: 'd1_6', ar: 'الصفحة التالية / السابقة', tr: 'as-safhah at-taliyah / as-sabiqah', idText: 'halaman selanjutnya / sebelumnya', group: 'D.1 Antarmuka' },
+      { id: 'd1_7', ar: 'تحميل / حفظ', tr: 'tahmil / hifzh', idText: 'unduh / simpan', group: 'D.1 Antarmuka' },
+      { id: 'd1_8', ar: 'تصفية', tr: 'tasfiyah', idText: 'filter (saring)', group: 'D.1 Antarmuka' },
+    ];
+
+    // Mufradat Bagian D.2 (Kata Kerja Perintah, Penghubung Urutan, & Istilah Hasil Takhrij)
+    const MUFRADAT_D2 = [
+      { id: 'd2_1', ar: 'افتح / اضغط على', tr: "iftah / idghat 'ala", idText: 'buka / tekan (klik)', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_2', ar: 'انسخ / الصق', tr: 'insakh / ilshaq', idText: 'salin / tempel', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_3', ar: 'حدِّد / مرِّر للأسفل', tr: 'haddid / marrir lil-asfal', idText: 'pilih / gulir ke bawah', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_4', ar: 'أولاً … ثم … بعد ذلك … وأخيراً', tr: "awwalan … thumma … ba'da dhalika … wa akhiran", idText: 'pertama … lalu … setelah itu … terakhir', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_5', ar: 'الراوي / المحدِّث', tr: 'ar-rawi / al-muhaddith', idText: 'perawi (sahabat) / pentakhrij', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_6', ar: 'المصدر / الصفحة أو الرقم', tr: 'al-mashdar / as-safhah aw ar-raqm', idText: 'sumber / halaman atau nomor', group: 'D.2 Perintah & Hasil' },
+      { id: 'd2_7', ar: 'خلاصة حكم المحدِّث', tr: 'khulasat hukm al-muhaddith', idText: 'ringkasan hukum muhaddith', group: 'D.2 Perintah & Hasil' },
+    ];
+
+    const ALL_MUFRADAT = [...MUFRADAT_D1, ...MUFRADAT_D2];
+
+    // Data Fi'l Amr Switcher
+    const AMR_DATA = {
+      male: {
+        label: 'Mitra Laki-laki (المفرد المذكر)',
+        verbs: 'اكتبْ، اختَرْ، اضغطْ',
+        sub: 'Ketiklah, pilihlah, tekanlah (untuk satu mitra laki-laki).',
+        sentence: 'اكتب كلمة «النية» في مربع البحث، ثم اختر بحث مطابق، واضغط على زر البحث.',
+      },
+      female: {
+        label: 'Mitra Perempuan (المفردة المؤنثة)',
+        verbs: 'اكتبي، اختاري، اضغطي',
+        sub: 'Ketiklah, pilihlah, tekanlah (untuk satu mitra perempuan — ditambah ya mukhathabah).',
+        sentence: 'اكتبي كلمة «النية» في مربع البحث، ثم اختاري بحث مطابق، واضغطي على زر البحث.',
+      },
+      plural: {
+        label: 'Beberapa Orang / Jamak (الجمع)',
+        verbs: 'اكتبوا، اختاروا، اضغطوا',
+        sub: 'Ketiklah, pilihlah, tekanlah (untuk audiens atau kelompok lebih dari dua orang).',
+        sentence: 'اكتبوا كلمة «النية» في مربع البحث، ثم اختاروا بحث مطابق، واضغطوا على زر البحث.',
+      },
+    };
+
+    // Data Lampiran B — 8 Giliran Dialog (adaptif gender mitra)
+    const DIALOG_TURNS = [
+      {
+        role: 'Pemandu',
+        male: 'افتح موقع الدرر السنية، ثم اختر الموسوعة الحديثية.',
+        female: 'افتحي موقع الدرر السنية، ثم اختاري الموسوعة الحديثية.',
+        id: "Buka situs Ad-Durar As-Saniyyah, lalu pilih Al-Mawsu'ah Al-Hadithiyyah.",
+      },
+      {
+        role: 'Operator',
+        male: 'فتحتُ الموقع. أين أكتب الحديث؟',
+        female: 'فتحتُ الموقع. أين أكتب الحديث؟',
+        id: 'Saya sudah membuka situsnya. Di mana saya mengetik hadisnya?',
+      },
+      {
+        role: 'Pemandu',
+        male: 'اكتب كلمة «النية» في مربع البحث، ثم اختر بحث مطابق، واضغط على زر البحث.',
+        female: 'اكتبي كلمة «النية» في مربع البحث، ثم اختاري بحث مطابق، واضغطي على زر البحث.',
+        id: 'Ketik kata «An-Niyyah» di kotak pencarian, lalu pilih pencarian sama persis, dan tekan tombol cari.',
+      },
+      {
+        role: 'Operator',
+        male: 'ظهرت نتائج البحث. ماذا أفعل الآن؟',
+        female: 'ظهرت نتائج البحث. ماذا أفعل الآن؟',
+        id: 'Hasil pencarian telah muncul. Apa yang saya lakukan sekarang?',
+      },
+      {
+        role: 'Pemandu',
+        male: 'انظر إلى الراوي والمحدِّث والمصدر، ثم اقرأ خلاصة حكم المحدِّث.',
+        female: 'انظري إلى الراوي والمحدِّث والمصدر، ثم اقرئي خلاصة حكم المحدِّث.',
+        id: 'Lihatlah pada perawi, muhaddith, dan sumbernya, lalu bacalah ringkasan hukum muhaddith.',
+      },
+      {
+        role: 'Operator',
+        male: 'الراوي عمر بن الخطاب، والمصدر صحيح البخاري، والحكم: صحيح.',
+        female: 'الراوي عمر بن الخطاب، والمصدر صحيح البخاري، والحكم: صحيح.',
+        id: "Perawinya 'Umar bin al-Khaththab, sumbernya Shahih al-Bukhari, dan hukumnya: sahih.",
+      },
+      {
+        role: 'Pemandu',
+        male: 'أحسنتَ. والآن اضغط على الصفحة التالية لترى مصادر أخرى، ثم احفظ النتيجة.',
+        female: 'أحسنتِ. والآن اضغطي على الصفحة التالية لترَي مصادر أخرى، ثم احفظي النتيجة.',
+        id: 'Bagus sekali. Sekarang tekan halaman selanjutnya untuk melihat sumber-sumber lain, lalu simpan hasilnya.',
+      },
+      {
+        role: 'Operator',
+        male: 'حفظتُ النتيجة. خلاصة القول: الحديث صحيح ومخرَّج في الصحيحين.',
+        female: 'حفظتُ النتيجة. خلاصة القول: الحديث صحيح ومخرَّج في الصحيحين.',
+        id: 'Saya sudah menyimpan hasilnya. Kesimpulannya: hadis ini sahih dan ditakhrij dalam Ash-Shahihain.',
+      },
+    ];
+
+    // Data Lampiran C — 3 Kartu Tugas Takhrij
+    const TASK_CARDS = [
+      {
+        no: 1,
+        hadis: 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ',
+        tugas: 'Cari dengan pencarian sama persis; sebutkan perawi, sumber, dan hukum.',
+        putaran: 'Putaran 1',
+      },
+      {
+        no: 2,
+        hadis: 'الدِّينُ النَّصِيحَةُ',
+        tugas: 'Cari dengan kata kunci; bandingkan hasil sebelum dan sesudah memakai filter.',
+        putaran: 'Putaran 1',
+      },
+      {
+        no: 3,
+        hadis: 'مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا',
+        tugas: 'Cari dengan kata kunci; sebutkan minimal dua sumber yang muncul.',
+        putaran: 'Putaran 2 (Tukar Peran)',
+      },
+    ];
+
+    // Data Lampiran D — 5 Aspek Rubrik Penilaian
+    const RUBRIK_ASPEK = [
+      {
+        id: 'ketepatan',
+        nama: 'Ketepatan Istilah Antarmuka',
+        desc: [
+          'Kurang dari 4 istilah tepat',
+          '4–5 istilah tepat',
+          '6–7 istilah tepat',
+          'Seluruh 8 istilah tepat & variatif',
+        ],
+      },
+      {
+        id: 'kejelasan',
+        nama: 'Kejelasan & Urutan Instruksi',
+        desc: [
+          'Instruksi acak/membingungkan',
+          'Cukup jelas, urutan kurang rapi',
+          'Jelas dan berurutan',
+          'Sangat jelas, berurutan, memakai penghubung urutan',
+        ],
+      },
+      {
+        id: 'keberhasilan',
+        nama: 'Keberhasilan Takhrij',
+        desc: [
+          'Operator tidak sampai hasil',
+          'Sampai hasil dengan banyak bantuan',
+          'Sampai hasil dengan sedikit bantuan',
+          'Sampai hasil lancar, data lengkap',
+        ],
+      },
+      {
+        id: 'kelancaran',
+        nama: 'Kelancaran & Pelafalan',
+        desc: [
+          'Tersendat, banyak kesalahan lafaz',
+          'Cukup lancar, ada kesalahan',
+          'Lancar, sesekali ragu',
+          'Sangat lancar & fasih',
+        ],
+      },
+      {
+        id: 'amr',
+        nama: 'Bentuk Kalimat Perintah & Kerja Sama',
+        desc: [
+          'Bentuk amr sering keliru; kerja sama minim',
+          'Sebagian amr tepat',
+          'Amr tepat, kerja sama baik',
+          'Amr tepat dan disesuaikan; kerja sama sangat baik',
+        ],
+      },
+    ];
+
+    // Data Checklist Kesiapan Voice Note (Tugas Mandiri Bagian G)
+    const MANDIRI_CHECKLIST = [
+      { id: 'ck_d1_1', label: 'Menggunakan istilah «مربع البحث» (kotak pencarian)' },
+      { id: 'ck_d1_2', label: 'Menggunakan istilah «ابحث / اكتب» (cari / ketik)' },
+      { id: 'ck_d1_3', label: 'Menggunakan istilah «نتائج البحث» (hasil pencarian)' },
+      { id: 'ck_d1_4', label: 'Menggunakan istilah «بحث مطابق» (pencarian sama persis)' },
+      { id: 'ck_d1_5', label: 'Menggunakan istilah «اختر الكتاب / المؤلف» (pilih kitab/pengarang)' },
+      { id: 'ck_d1_6', label: 'Menggunakan istilah «الصفحة التالية / السابقة» (hal. selanjutnya/sebelumnya)' },
+      { id: 'ck_d1_7', label: 'Menggunakan istilah «تحميل / حفظ» (unduh / simpan)' },
+      { id: 'ck_d1_8', label: 'Menggunakan istilah «تصفية» (filter / saring)' },
+      { id: 'ck_seq', label: 'Memakai penghubung urutan: «أولاً، ثم، بعد ذلك، وأخيراً»' },
+      { id: 'ck_res', label: 'Menyebutkan perawi (الراوي), sumber (المصدر), & hukum (خلاصة حكم المحدِّث)' },
+      { id: 'ck_dur', label: 'Durasi voice note sesuai target (1–2 menit) & siap kirim via WhatsApp' },
+    ];
+
+    /* =========================================================================
+       2. STATE APLIKASI & PERSISTENSI LOCALSTORAGE
+       ========================================================================= */
+    function getDefaultState() {
+      const today = new Date().toISOString().split('T')[0];
+      return {
+        activeTab: 'tab-mufradat',
+        modeDosen: false,
+        identity: {
+          pemandu: '',
+          operator: '',
+          pengamat: '',
+          nim: '',
+          tanggal: today,
+        },
+        istimaRows: Array.from({ length: 6 }, () => ({ ar: '', ui: '', id: '' })),
+        istimaQ: { q1: '', q2: '', q3: '' },
+        dialogGender: 'male',
+        dialogRoleMode: 'all',
+        takhrijDone: { 1: false, 2: false, 3: false },
+        takhrijResults: {
+          1: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+          2: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+          3: { perawi: '', muhaddith: '', sumber: '', noHal: '', hukum: '' },
+        },
+        kartu2FilterNote: '',
+        rubrikScores: { ketepatan: 0, kejelasan: 0, keberhasilan: 0, kelancaran: 0, amr: 0 },
+        rubrikFeedback: '',
+        mandiri: {
+          hadis: '',
+          hasil: '',
+          skrip: '',
+          checklist: {},
+        },
+        refleksi: { r1: '', r2: '' },
+      };
+    }
+
+    let appState = getDefaultState();
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        // Gabungkan secara aman dengan default state
+        const def = getDefaultState();
+        appState = {
+          ...def,
+          ...parsed,
+          identity: { ...def.identity, ...(parsed.identity || {}) },
+          istimaQ: { ...def.istimaQ, ...(parsed.istimaQ || {}) },
+          takhrijDone: { ...def.takhrijDone, ...(parsed.takhrijDone || {}) },
+          takhrijResults: {
+            1: { ...def.takhrijResults[1], ...(parsed.takhrijResults?.[1] || {}) },
+            2: { ...def.takhrijResults[2], ...(parsed.takhrijResults?.[2] || {}) },
+            3: { ...def.takhrijResults[3], ...(parsed.takhrijResults?.[3] || {}) },
+          },
+          rubrikScores: { ...def.rubrikScores, ...(parsed.rubrikScores || {}) },
+          mandiri: {
+            ...def.mandiri,
+            ...(parsed.mandiri || {}),
+            checklist: { ...(parsed.mandiri?.checklist || {}) },
+          },
+          refleksi: { ...def.refleksi, ...(parsed.refleksi || {}) },
+        };
+        if (!Array.isArray(appState.istimaRows) || appState.istimaRows.length === 0) {
+          appState.istimaRows = def.istimaRows;
+        }
+      } catch (err) {
+        console.warn('Gagal memuat state dari localStorage:', err);
+      }
+    }
+
+    let saveIndicatorTimer = null;
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+        const dot = document.getElementById('autosave-dot');
+        const txt = document.getElementById('autosave-text');
+        if (dot && txt) {
+          dot.classList.remove('bg-emerald-400');
+          dot.classList.add('bg-emas-500');
+          txt.textContent = 'Menyimpan...';
+          clearTimeout(saveIndicatorTimer);
+          saveIndicatorTimer = setTimeout(() => {
+            dot.classList.remove('bg-emas-500');
+            dot.classList.add('bg-emerald-400');
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            txt.textContent = `Tersimpan (${hh}:${mm})`;
+          }, 450);
+        }
+      } catch (err) {
+        console.warn('Gagal menyimpan ke localStorage:', err);
+      }
+    }
+
+    /* =========================================================================
+       3. UTILITAS: TOAST, CLIPBOARD AMAN IFRAME, SPEECH SYNTHESIS ARAB
+       ========================================================================= */
+    let toastTimer = null;
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const content = document.getElementById('toast-content');
+      if (!box || !content) return;
+      content.textContent = msg;
+      box.classList.remove('opacity-0', 'translate-y-3');
+      box.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.add('opacity-0', 'translate-y-3');
+        box.classList.remove('opacity-100', 'translate-y-0');
+      }, 2600);
+    }
+
+    // Salin teks menggunakan fallback document.execCommand('copy') agar aman di iframe
+    function copyText(text) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) {
+          showToast('Teks berhasil disalin ke papan klip.');
+        } else if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast('Teks berhasil disalin.'));
+        }
+      } catch (err) {
+        showToast('Tidak dapat menyalin otomatis. Silakan salin manual.');
+      }
+    }
+
+    // Pemutar suara Bahasa Arab via Web Speech API
+    function speakArabic(text, onEndCallback) {
+      try {
+        if (!('speechSynthesis' in window)) {
+          showToast('Browser ini belum mendukung fitur suara (Speech Synthesis).');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'ar-SA';
+        utter.rate = 0.88;
+        const voices = window.speechSynthesis.getVoices();
+        const arVoice = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('ar'));
+        if (arVoice) utter.voice = arVoice;
+        if (typeof onEndCallback === 'function') {
+          utter.onend = onEndCallback;
+          utter.onerror = onEndCallback;
+        }
+        window.speechSynthesis.speak(utter);
+      } catch (err) {
+        showToast('Gagal memutar audio bahasa Arab pada perangkat ini.');
+      }
+    }
+
+    /* =========================================================================
+       4. NAVIGASI TAB, IDENTITAS, MODE DOSEN, & CETAK
+       ========================================================================= */
+    function switchTab(tabId) {
+      appState.activeTab = tabId;
+      document.querySelectorAll('.tab-panel').forEach((panel) => {
+        if (panel.id === tabId) {
+          panel.classList.remove('hidden');
+        } else {
+          panel.classList.add('hidden');
+        }
+      });
+
+      document.querySelectorAll('.tab-btn').forEach((btn) => {
+        const badge = btn.querySelector('.tab-badge');
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('bg-tebuireng-900', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+          if (badge) {
+            badge.classList.add('bg-emas-600', 'text-white');
+            badge.classList.remove('bg-slate-200', 'text-slate-700');
+          }
+        } else {
+          btn.classList.remove('bg-tebuireng-900', 'text-white', 'shadow-sm');
+          btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+          if (badge) {
+            badge.classList.remove('bg-emas-600', 'text-white');
+            badge.classList.add('bg-slate-200', 'text-slate-700');
+          }
+        }
+      });
+      saveState();
+    }
+
+    function toggleIdentityPanel() {
+      const body = document.getElementById('identity-panel-body');
+      const chev = document.getElementById('identity-chevron');
+      body.classList.toggle('hidden');
+      chev.classList.toggle('rotate-180');
+    }
+
+    function updateIdentitySummary() {
+      const el = document.getElementById('identity-summary');
+      const p = appState.identity.pemandu.trim();
+      const o = appState.identity.operator.trim();
+      if (p || o) {
+        el.textContent = `— ${p || '(Pemandu)'} & ${o || '(Operator)'}`;
+      } else {
+        el.textContent = '— Klik untuk mengisi nama pasangan';
+      }
+    }
+
+    function applyModeDosenUI() {
+      const isOn = !!appState.modeDosen;
+      document.querySelectorAll('.dosen-only').forEach((el) => {
+        el.classList.toggle('hidden', !isOn);
+      });
+      const banner = document.getElementById('dosen-banner');
+      const ind = document.getElementById('dosen-indicator');
+      const lbl = document.getElementById('dosen-status-label');
+      if (banner) banner.classList.toggle('hidden', !isOn);
+      if (lbl) lbl.textContent = isOn ? 'ON' : 'OFF';
+      if (ind) {
+        ind.classList.toggle('bg-emas-500', isOn);
+        ind.classList.toggle('bg-slate-400', !isOn);
+      }
+    }
+
+    function toggleModeDosen() {
+      appState.modeDosen = !appState.modeDosen;
+      applyModeDosenUI();
+      saveState();
+      showToast(appState.modeDosen ? 'Mode Dosen diaktifkan: Kunci Jawaban & Catatan tampil.' : 'Mode Dosen dinonaktifkan.');
+    }
+
+    function printWorksheet() {
+      // Pastikan panel identitas terbuka saat dicetak
+      document.getElementById('identity-panel-body').classList.remove('hidden');
+      window.print();
+    }
+
+    /* =========================================================================
+       5. TAB 1: MUFRADAT, FLASHCARD, & FI'L AMR
+       ========================================================================= */
+    function renderMufradatTables() {
+      const q = (document.getElementById('mufradat-search')?.value || '').trim().toLowerCase();
+      const filterFn = (item) =>
+        !q ||
+        item.ar.toLowerCase().includes(q) ||
+        item.tr.toLowerCase().includes(q) ||
+        item.idText.toLowerCase().includes(q);
+
+      const renderRows = (list, tbodyId) => {
+        const tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+        const filtered = list.filter(filterFn);
+        if (filtered.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="4" class="px-4 py-5 text-center text-xs text-slate-400">Tidak ada mufradat yang cocok dengan "${escapeHtml(q)}".</td></tr>`;
+          return;
+        }
+        tbody.innerHTML = filtered
+          .map(
+            (item) => `
+          <tr class="hover:bg-tebuireng-50/50 transition">
+            <td class="px-3 py-2.5 text-right arab-ui text-lg font-bold text-slate-900">${item.ar}</td>
+            <td class="px-3 py-2.5 text-xs italic text-slate-600">${item.tr}</td>
+            <td class="px-3 py-2.5 text-xs sm:text-sm font-medium text-slate-800">${item.idText}</td>
+            <td class="px-2 py-2.5 text-center">
+              <div class="inline-flex items-center gap-1">
+                <button type="button" onclick="speakArabic('${item.ar.replace(/'/g, "\\'")}')" title="Dengarkan lafaz" class="p-1.5 rounded-lg hover:bg-tebuireng-100 text-tebuireng-800 cursor-pointer">🔊</button>
+                <button type="button" onclick="copyText('${item.ar.replace(/'/g, "\\'")}')" title="Salin teks Arab" class="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 cursor-pointer">📋</button>
+              </div>
+            </td>
+          </tr>`
+          )
+          .join('');
+      };
+
+      renderRows(MUFRADAT_D1, 'tbody-d1');
+      renderRows(MUFRADAT_D2, 'tbody-d2');
+    }
+
+    // Mini Flashcard
+    let fcDeck = [...ALL_MUFRADAT];
+    let fcIndex = 0;
+    let fcFlipped = false;
+
+    function toggleFlashcard() {
+      const panel = document.getElementById('flashcard-panel');
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        renderFlashcard();
+      }
+    }
+
+    function renderFlashcard() {
+      const item = fcDeck[fcIndex];
+      document.getElementById('fc-counter').textContent = `${fcIndex + 1} / ${fcDeck.length}`;
+      document.getElementById('fc-category').textContent = item.group;
+      document.getElementById('fc-arabic').textContent = item.ar;
+      document.getElementById('fc-arabic-back').textContent = item.ar;
+      document.getElementById('fc-translit').textContent = item.tr;
+      document.getElementById('fc-meaning').textContent = item.idText;
+      document.getElementById('fc-front').classList.toggle('hidden', fcFlipped);
+      document.getElementById('fc-back').classList.toggle('hidden', !fcFlipped);
+    }
+
+    function flipFlashcard() {
+      fcFlipped = !fcFlipped;
+      renderFlashcard();
+    }
+
+    function nextFlashcard() {
+      fcIndex = (fcIndex + 1) % fcDeck.length;
+      fcFlipped = false;
+      renderFlashcard();
+    }
+
+    function prevFlashcard() {
+      fcIndex = (fcIndex - 1 + fcDeck.length) % fcDeck.length;
+      fcFlipped = false;
+      renderFlashcard();
+    }
+
+    function shuffleFlashcards() {
+      for (let i = fcDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fcDeck[i], fcDeck[j]] = [fcDeck[j], fcDeck[i]];
+      }
+      fcIndex = 0;
+      fcFlipped = false;
+      renderFlashcard();
+      showToast('Urutan flashcard diacak.');
+    }
+
+    function speakCurrentFlashcard() {
+      speakArabic(fcDeck[fcIndex].ar);
+    }
+
+    // Fi'l Amr Switcher
+    function setAmrMode(mode) {
+      const data = AMR_DATA[mode] || AMR_DATA.male;
+      document.getElementById('amr-label').textContent = data.label;
+      document.getElementById('amr-verbs').textContent = data.verbs;
+      document.getElementById('amr-verbs-sub').textContent = data.sub;
+      document.getElementById('rps-sentence-ar').textContent = data.sentence;
+
+      ['male', 'female', 'plural'].forEach((m) => {
+        const btn = document.getElementById(`amr-btn-${m}`);
+        if (m === mode) {
+          btn.classList.add('bg-tebuireng-900', 'text-white', 'shadow-xs');
+          btn.classList.remove('text-slate-600', 'hover:text-slate-900');
+        } else {
+          btn.classList.remove('bg-tebuireng-900', 'text-white', 'shadow-xs');
+          btn.classList.add('text-slate-600', 'hover:text-slate-900');
+        }
+      });
+    }
+
+    /* =========================================================================
+       6. TAB 2: LAMPIRAN A — LEMBAR KERJA ISTIMA'
+       ========================================================================= */
+    function renderIstimaRows() {
+      const tbody = document.getElementById('istima-rows-body');
+      if (!tbody) return;
+      tbody.innerHTML = appState.istimaRows
+        .map(
+          (row, idx) => `
+        <tr class="hover:bg-slate-50/70">
+          <td class="px-3 py-2 text-center text-xs font-bold text-slate-500">${idx + 1}</td>
+          <td class="px-2 py-2">
+            <input type="text" dir="rtl" value="${escapeAttr(row.ar)}" oninput="updateIstimaRow(${idx}, 'ar', this.value)" placeholder="مثال: مربع البحث" class="arab-ui w-full px-3 py-1.5 rounded-lg border border-slate-200 text-base focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+          </td>
+          <td class="px-2 py-2">
+            <input type="text" value="${escapeAttr(row.ui)}" oninput="updateIstimaRow(${idx}, 'ui', this.value)" placeholder="Contoh: Kolom ketik di atas layar" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+          </td>
+          <td class="px-2 py-2">
+            <input type="text" value="${escapeAttr(row.id)}" oninput="updateIstimaRow(${idx}, 'id', this.value)" placeholder="Contoh: Kotak pencarian" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+          </td>
+          <td class="no-print px-2 py-2 text-center">
+            ${
+              appState.istimaRows.length > 1
+                ? `<button type="button" onclick="deleteIstimaRow(${idx})" title="Hapus baris" class="text-slate-400 hover:text-rose-600 text-xs font-bold p-1 cursor-pointer">✕</button>`
+                : ''
+            }
+          </td>
+        </tr>`
+        )
+        .join('');
+      updateIstimaProgress();
+    }
+
+    function updateIstimaRow(idx, field, val) {
+      if (appState.istimaRows[idx]) {
+        appState.istimaRows[idx][field] = val;
+        updateIstimaProgress();
+        saveState();
+      }
+    }
+
+    function addIstimaRow() {
+      appState.istimaRows.push({ ar: '', ui: '', id: '' });
+      renderIstimaRows();
+      saveState();
+    }
+
+    function deleteIstimaRow(idx) {
+      if (appState.istimaRows.length <= 1) return;
+      appState.istimaRows.splice(idx, 1);
+      renderIstimaRows();
+      saveState();
+    }
+
+    function updateIstimaProgress() {
+      const totalItems = appState.istimaRows.length + 3;
+      let filled = 0;
+      appState.istimaRows.forEach((r) => {
+        if (r.ar.trim() || r.ui.trim() || r.id.trim()) filled++;
+      });
+      if ((appState.istimaQ.q1 || '').trim()) filled++;
+      if ((appState.istimaQ.q2 || '').trim()) filled++;
+      if ((appState.istimaQ.q3 || '').trim()) filled++;
+
+      const pct = Math.round((filled / totalItems) * 100);
+      const pctEl = document.getElementById('istima-progress-pct');
+      const barEl = document.getElementById('istima-progress-bar');
+      if (pctEl) pctEl.textContent = `${pct}%`;
+      if (barEl) barEl.style.width = `${pct}%`;
+    }
+
+    /* =========================================================================
+       7. TAB 3: LAMPIRAN B — SKRIP DIALOG HIWAR
+       ========================================================================= */
+    let isPlayingAllDialog = false;
+
+    function setDialogGender(g) {
+      appState.dialogGender = g;
+      renderDialog();
+      saveState();
+    }
+
+    function setDialogRoleMode(mode) {
+      appState.dialogRoleMode = mode;
+      renderDialog();
+      saveState();
+    }
+
+    function renderDialog() {
+      const g = appState.dialogGender || 'male';
+      const roleMode = appState.dialogRoleMode || 'all';
+      const showTrans = document.getElementById('toggle-dialog-trans')?.checked;
+
+      // Update style tombol gender
+      const btnM = document.getElementById('dlg-gender-m');
+      const btnF = document.getElementById('dlg-gender-f');
+      if (btnM && btnF) {
+        btnM.className = `px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${g === 'male' ? 'bg-tebuireng-900 text-white shadow-xs' : 'text-slate-600'}`;
+        btnF.className = `px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${g === 'female' ? 'bg-tebuireng-900 text-white shadow-xs' : 'text-slate-600'}`;
+      }
+
+      // Update style tombol role mode
+      ['all', 'pemandu', 'operator'].forEach((m) => {
+        const b = document.getElementById(`role-btn-${m}`);
+        if (!b) return;
+        if (m === roleMode) {
+          b.className = 'role-mode-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-tebuireng-800 bg-tebuireng-50 text-tebuireng-900 transition cursor-pointer';
+        } else {
+          b.className = 'role-mode-btn px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition cursor-pointer';
+        }
+      });
+
+      const container = document.getElementById('dialog-container');
+      if (!container) return;
+
+      container.innerHTML = DIALOG_TURNS.map((turn, idx) => {
+        const isPemandu = turn.role === 'Pemandu';
+        const arText = g === 'female' ? turn.female : turn.male;
+        const shouldBlur =
+          (roleMode === 'pemandu' && isPemandu) || (roleMode === 'operator' && !isPemandu);
+
+        return `
+          <div class="flex ${isPemandu ? 'justify-start' : 'justify-end'}">
+            <div class="w-full sm:w-[85%] rounded-2xl p-4 border shadow-xs ${
+              isPemandu
+                ? 'bg-tebuireng-50/70 border-tebuireng-700/25 rounded-tl-sm'
+                : 'bg-emas-50/60 border-emas-600/25 rounded-tr-sm'
+            }">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                    isPemandu ? 'bg-tebuireng-900 text-white' : 'bg-emas-600 text-white'
+                  }">${idx + 1}. ${turn.role}</span>
+                  ${shouldBlur ? '<span class="text-[11px] text-slate-500 italic">(Klik teks untuk mengintip)</span>' : ''}
+                </div>
+                <button type="button" onclick="speakArabic('${arText.replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-lg bg-white/80 hover:bg-white border border-slate-200 text-xs font-semibold text-slate-700 cursor-pointer">🔊 Putar</button>
+              </div>
+              <p onclick="if(this.classList.contains('role-hidden')) this.classList.toggle('peeked')" class="arab text-xl sm:text-2xl font-bold text-slate-900 text-right leading-loose ${
+                shouldBlur ? 'role-hidden' : ''
+              }">${arText}</p>
+              ${
+                showTrans
+                  ? `<p class="text-xs sm:text-sm text-slate-600 mt-2 pt-2 border-t border-slate-200/70">${turn.id}</p>`
+                  : ''
+              }
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function playAllDialog() {
+      if (!('speechSynthesis' in window)) {
+        showToast('Browser ini belum mendukung fitur Speech Synthesis.');
+        return;
+      }
+      const btn = document.getElementById('btn-play-all-dialog');
+      if (isPlayingAllDialog) {
+        window.speechSynthesis.cancel();
+        isPlayingAllDialog = false;
+        btn.innerHTML = '<span>🔊 Putar Semua</span>';
+        return;
+      }
+      isPlayingAllDialog = true;
+      btn.innerHTML = '<span>⏹ Hentikan Audio</span>';
+      const g = appState.dialogGender || 'male';
+      let idx = 0;
+
+      function playNext() {
+        if (!isPlayingAllDialog || idx >= DIALOG_TURNS.length) {
+          isPlayingAllDialog = false;
+          btn.innerHTML = '<span>🔊 Putar Semua</span>';
+          return;
+        }
+        const text = g === 'female' ? DIALOG_TURNS[idx].female : DIALOG_TURNS[idx].male;
+        idx++;
+        speakArabic(text, () => {
+          setTimeout(playNext, 350);
+        });
+      }
+      playNext();
+    }
+
+    /* =========================================================================
+       8. TAB 4: LAMPIRAN C — TIMER, KARTU TUGAS, & LEMBAR HASIL TAKHRIJ
+       ========================================================================= */
+    let timerTotalSec = 12 * 60;
+    let timerRemainingSec = 12 * 60;
+    let timerInterval = null;
+
+    function updateTimerUI() {
+      const m = String(Math.floor(timerRemainingSec / 60)).padStart(2, '0');
+      const s = String(timerRemainingSec % 60).padStart(2, '0');
+      const disp = document.getElementById('timer-display');
+      const bar = document.getElementById('timer-bar');
+      if (disp) disp.textContent = `${m}:${s}`;
+      if (bar) {
+        const pct = timerTotalSec > 0 ? (timerRemainingSec / timerTotalSec) * 100 : 0;
+        bar.style.width = `${pct}%`;
+      }
+    }
+
+    function setTimerPreset(minutes, label) {
+      pauseTimer();
+      timerTotalSec = minutes * 60;
+      timerRemainingSec = minutes * 60;
+      document.getElementById('timer-label').textContent = `Mode: ${label}`;
+      updateTimerUI();
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        pauseTimer();
+      } else {
+        if (timerRemainingSec <= 0) timerRemainingSec = timerTotalSec;
+        const btn = document.getElementById('btn-timer-start');
+        btn.textContent = '⏸ Jeda';
+        timerInterval = setInterval(() => {
+          timerRemainingSec--;
+          updateTimerUI();
+          if (timerRemainingSec <= 0) {
+            pauseTimer();
+            playTimerBeep();
+            showToast('Waktu sesi praktik telah selesai!');
+          }
+        }, 1000);
+      }
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      const btn = document.getElementById('btn-timer-start');
+      if (btn) btn.textContent = '▶ Mulai';
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      timerRemainingSec = timerTotalSec;
+      updateTimerUI();
+    }
+
+    // Bunyi bel lembut via Web Audio API saat timer selesai
+    function playTimerBeep() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(660, ctx.currentTime);
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.8);
+      } catch (e) {
+        // Abaikan jika audio context diblokir
+      }
+    }
+
+    function renderTaskCards() {
+      const grid = document.getElementById('task-cards-grid');
+      if (!grid) return;
+      grid.innerHTML = TASK_CARDS.map((card) => {
+        const done = !!appState.takhrijDone[card.no];
+        return `
+          <div class="rounded-2xl border-2 p-4 flex flex-col justify-between transition ${
+            done ? 'bg-tebuireng-50/70 border-tebuireng-700' : 'bg-white border-slate-200'
+          }">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="px-2.5 py-0.5 rounded-lg bg-tebuireng-900 text-white text-xs font-bold">Kartu ${card.no}</span>
+                <span class="text-[11px] font-semibold text-emas-700 bg-emas-50 px-2 py-0.5 rounded-md border border-emas-600/20">${card.putaran}</span>
+              </div>
+              <div class="p-3 rounded-xl bg-kertas border border-slate-200/80 text-center my-2">
+                <p class="arab text-2xl sm:text-[26px] font-bold text-slate-950">${card.hadis}</p>
+              </div>
+              <p class="text-xs text-slate-700 leading-relaxed mt-2">
+                <strong>Tugas Tambahan:</strong> ${card.tugas}
+              </p>
+            </div>
+            <div class="no-print flex items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-200/70">
+              <label class="inline-flex items-center gap-1.5 text-xs font-bold cursor-pointer select-none ${done ? 'text-tebuireng-800' : 'text-slate-600'}">
+                <input type="checkbox" ${done ? 'checked' : ''} onchange="toggleCardDone(${card.no}, this.checked)" class="w-4 h-4 rounded accent-tebuireng-700" />
+                <span>${done ? 'Selesai ✓' : 'Tandai Selesai'}</span>
+              </label>
+              <button type="button" onclick="copyText('${card.hadis}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-tebuireng-100 text-slate-700 hover:text-tebuireng-900 text-xs font-semibold transition cursor-pointer">📋 Salin Lafaz</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function toggleCardDone(no, checked) {
+      appState.takhrijDone[no] = checked;
+      renderTaskCards();
+      saveState();
+    }
+
+    function renderTakhrijResultsTable() {
+      const tbody = document.getElementById('takhrij-results-body');
+      if (!tbody) return;
+      tbody.innerHTML = [1, 2, 3]
+        .map((no) => {
+          const r = appState.takhrijResults[no] || {};
+          return `
+          <tr class="hover:bg-slate-50/70">
+            <td class="px-3 py-2.5 text-center font-extrabold text-tebuireng-900 bg-tebuireng-50/40">${no}</td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.perawi)}" oninput="updateTakhrijResult(${no}, 'perawi', this.value)" placeholder="Nama sahabat..." class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.muhaddith)}" oninput="updateTakhrijResult(${no}, 'muhaddith', this.value)" placeholder="Al-Bukhari / Muslim..." class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.sumber)}" oninput="updateTakhrijResult(${no}, 'sumber', this.value)" placeholder="Shahih al-Bukhari..." class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" value="${escapeAttr(r.noHal)}" oninput="updateTakhrijResult(${no}, 'noHal', this.value)" placeholder="No. 1" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </td>
+            <td class="px-2 py-2">
+              <input type="text" list="hukum-options" value="${escapeAttr(r.hukum)}" oninput="updateTakhrijResult(${no}, 'hukum', this.value)" placeholder="Pilih / ketik..." class="w-full px-2.5 py-1.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-tebuireng-700" />
+            </td>
+          </tr>`;
+        })
+        .join('');
+    }
+
+    function updateTakhrijResult(no, field, val) {
+      appState.takhrijResults[no][field] = val;
+      saveState();
+    }
+
+    /* =========================================================================
+       9. TAB 5: LAMPIRAN D — RUBRIK PENILAIAN INTERAKTIF
+       ========================================================================= */
+    function renderRubrikTable() {
+      const tbody = document.getElementById('rubrik-table-body');
+      if (!tbody) return;
+      tbody.innerHTML = RUBRIK_ASPEK.map((aspek) => {
+        const selectedScore = appState.rubrikScores[aspek.id] || 0;
+        const cells = aspek.desc
+          .map((text, idx) => {
+            const score = idx + 1;
+            const isSelected = selectedScore === score;
+            return `
+              <td onclick="selectRubrikScore('${aspek.id}', ${score})" class="px-3 py-3 align-top cursor-pointer transition border-l border-slate-200 ${
+                isSelected
+                  ? 'rubrik-selected bg-tebuireng-100/80 text-tebuireng-950 font-bold ring-2 ring-inset ring-tebuireng-700'
+                  : 'hover:bg-slate-50 text-slate-600'
+              }">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
+                    isSelected ? 'bg-tebuireng-900 text-white' : 'bg-slate-200 text-slate-600'
+                  }">Skor ${score}</span>
+                  ${isSelected ? '<span class="text-tebuireng-800 text-sm">✓</span>' : ''}
+                </div>
+                <p class="leading-snug">${text}</p>
+              </td>`;
+          })
+          .join('');
+        return `
+          <tr>
+            <td class="px-3.5 py-3 font-bold text-slate-900 bg-kertas/70 align-top">
+              <div>${aspek.nama}</div>
+              <div class="text-[11px] font-semibold mt-1 ${selectedScore ? 'text-tebuireng-700' : 'text-slate-400'}">
+                ${selectedScore ? `Terpilih: ${selectedScore} / 4` : 'Klik skor 1–4'}
+              </div>
+            </td>
+            ${cells}
+          </tr>`;
+      }).join('');
+      updateRubrikSummary();
+    }
+
+    function selectRubrikScore(aspekId, score) {
+      appState.rubrikScores[aspekId] = score;
+      renderRubrikTable();
+      saveState();
+    }
+
+    function updateRubrikSummary() {
+      const scores = Object.values(appState.rubrikScores);
+      const total = scores.reduce((a, b) => a + (Number(b) || 0), 0);
+      const ratedCount = scores.filter((s) => s > 0).length;
+      const nilaiAkhir = Math.round((total / 20) * 100);
+      const bobot20 = ((nilaiAkhir * 0.2)).toFixed(1);
+
+      document.getElementById('rubrik-total').textContent = total;
+      document.getElementById('rubrik-nilai').textContent = nilaiAkhir;
+      document.getElementById('rubrik-bobot').textContent = bobot20;
+      document.getElementById('rubrik-aspek-count').textContent = `${ratedCount} dari 5 aspek dinilai`;
+
+      let predikat = 'Belum Dinilai';
+      let colorClass = 'text-slate-600';
+      if (ratedCount > 0) {
+        if (nilaiAkhir >= 85) {
+          predikat = 'Sangat Baik (ممتاز)';
+          colorClass = 'text-tebuireng-800';
+        } else if (nilaiAkhir >= 70) {
+          predikat = 'Baik (جيد جداً)';
+          colorClass = 'text-emerald-700';
+        } else if (nilaiAkhir >= 55) {
+          predikat = 'Cukup (جيد)';
+          colorClass = 'text-emas-700';
+        } else {
+          predikat = 'Perlu Pembinaan';
+          colorClass = 'text-rose-700';
+        }
+      }
+      const pEl = document.getElementById('rubrik-predikat');
+      pEl.textContent = predikat;
+      pEl.className = `text-base sm:text-lg font-extrabold mt-1.5 ${colorClass}`;
+    }
+
+    function resetRubrik() {
+      appState.rubrikScores = { ketepatan: 0, kejelasan: 0, keberhasilan: 0, kelancaran: 0, amr: 0 };
+      renderRubrikTable();
+      saveState();
+      showToast('Skor rubrik penilaian direset.');
+    }
+
+    /* =========================================================================
+       10. TAB 6: TUGAS MANDIRI (CHECKLIST & STUDIO REKAM AUDIO)
+       ========================================================================= */
+    function renderMandiriChecklist() {
+      const container = document.getElementById('mandiri-checklist-container');
+      if (!container) return;
+      container.innerHTML = MANDIRI_CHECKLIST.map((item) => {
+        const checked = !!appState.mandiri.checklist[item.id];
+        return `
+          <label class="flex items-start gap-2.5 p-2 rounded-xl border cursor-pointer transition ${
+            checked ? 'bg-tebuireng-50 border-tebuireng-700/30 text-tebuireng-950' : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+          }">
+            <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleMandiriCheck('${item.id}', this.checked)" class="mt-0.5 w-4 h-4 rounded accent-tebuireng-700 shrink-0" />
+            <span class="leading-snug">${item.label}</span>
+          </label>`;
+      }).join('');
+      updateChecklistProgress();
+    }
+
+    function toggleMandiriCheck(id, checked) {
+      appState.mandiri.checklist[id] = checked;
+      renderMandiriChecklist();
+      saveState();
+    }
+
+    function updateChecklistProgress() {
+      const total = MANDIRI_CHECKLIST.length;
+      const checkedCount = MANDIRI_CHECKLIST.filter((i) => appState.mandiri.checklist[i.id]).length;
+      const pct = Math.round((checkedCount / total) * 100);
+      document.getElementById('checklist-badge').textContent = `${checkedCount} / ${total}`;
+      document.getElementById('checklist-bar').style.width = `${pct}%`;
+    }
+
+    function insertTemplateSkrip() {
+      const el = document.getElementById('mandiri-skrip');
+      const template = `أولاً، افتح موقع الدرر السنية، ثم اختر الموسوعة الحديثية.\nثم اكتب كلمة «...» في مربع البحث، واختر بحث مطابق، واضغط على زر البحث.\nبعد ذلك، انظر إلى نتائج البحث واستخدم التصفية، أو اضغط على الصفحة التالية لترى مصادر أخرى، ثم احفظ النتيجة.\nوأخيراً، خلاصة القول: الراوي ...، والمصدر ...، وخلاصة حكم المحدِّث: ...`;
+      el.value = el.value.trim() ? el.value + '\n' + template : template;
+      handleStateChange();
+      showToast('Kerangka urutan berbahasa Arab ditambahkan.');
+    }
+
+    // MediaRecorder API untuk latihan rekam voice note (00:00 - 02:00)
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recTimerInterval = null;
+    let recSeconds = 0;
+    let recAudioUrl = null;
+
+    function formatMMSS(sec) {
+      return `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
+    }
+
+    async function startAudioRecording() {
+      const msgBox = document.getElementById('rec-message');
+      msgBox.classList.add('hidden');
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === 'undefined') {
+        msgBox.textContent = 'Maaf, browser atau perangkat Anda tidak mendukung perekaman audio langsung. Anda tetap dapat merekam voice note langsung dari aplikasi WhatsApp atau perekam suara ponsel.';
+        msgBox.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioChunks = [];
+        let mimeType = '';
+        if (MediaRecorder.isTypeSupported('audio/webm')) mimeType = 'audio/webm';
+        else if (MediaRecorder.isTypeSupported('audio/ogg')) mimeType = 'audio/ogg';
+
+        mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          stream.getTracks().forEach((t) => t.stop());
+          const blobType = mimeType || 'audio/webm';
+          const ext = blobType.includes('ogg') ? 'ogg' : 'webm';
+          const blob = new Blob(audioChunks, { type: blobType });
+          if (recAudioUrl) URL.revokeObjectURL(recAudioUrl);
+          recAudioUrl = URL.createObjectURL(blob);
+
+          const player = document.getElementById('rec-audio-player');
+          const dl = document.getElementById('btn-rec-download');
+          player.src = recAudioUrl;
+          dl.href = recAudioUrl;
+          dl.download = `voice_note_takhrij_digital.${ext}`;
+          document.getElementById('rec-playback-box').classList.remove('hidden');
+          document.getElementById('rec-status-label').textContent = 'Rekaman Selesai';
+
+          if (recSeconds < 60) {
+            msgBox.textContent = `Durasi rekaman ${formatMMSS(recSeconds)} (kurang dari 1 menit). Target tugas mandiri adalah 1–2 menit.`;
+            msgBox.classList.remove('hidden');
+          } else {
+            msgBox.textContent = `Bagus! Durasi rekaman ${formatMMSS(recSeconds)} sesuai target (1–2 menit). Silakan putar ulang atau unduh untuk dikirim ke WhatsApp.`;
+            msgBox.classList.remove('hidden');
+          }
+        };
+
+        mediaRecorder.start();
+        recSeconds = 0;
+        document.getElementById('rec-timer').textContent = '00:00';
+        document.getElementById('rec-status-label').textContent = 'Sedang Merekam...';
+        document.getElementById('btn-rec-start').classList.add('hidden');
+        document.getElementById('btn-rec-stop').classList.remove('hidden');
+
+        clearInterval(recTimerInterval);
+        recTimerInterval = setInterval(() => {
+          recSeconds++;
+          document.getElementById('rec-timer').textContent = formatMMSS(recSeconds);
+          if (recSeconds >= 120) {
+            stopAudioRecording();
+            showToast('Batas maksimal 02:00 tercapai. Rekaman dihentikan otomatis.');
+          }
+        }, 1000);
+      } catch (err) {
+        msgBox.textContent = 'Izin mikrofon ditolak atau mikrofon tidak ditemukan. Mohon izinkan akses mikrofon di browser, atau gunakan perekam suara bawaan ponsel / WhatsApp.';
+        msgBox.classList.remove('hidden');
+      }
+    }
+
+    function stopAudioRecording() {
+      clearInterval(recTimerInterval);
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+      }
+      document.getElementById('btn-rec-start').classList.remove('hidden');
+      document.getElementById('btn-rec-stop').classList.add('hidden');
+    }
+
+    function clearAudioRecording() {
+      if (recAudioUrl) {
+        URL.revokeObjectURL(recAudioUrl);
+        recAudioUrl = null;
+      }
+      document.getElementById('rec-audio-player').src = '';
+      document.getElementById('rec-playback-box').classList.add('hidden');
+      document.getElementById('rec-message').classList.add('hidden');
+      document.getElementById('rec-timer').textContent = '00:00';
+      document.getElementById('rec-status-label').textContent = 'Siap Rekam';
+    }
+
+    /* =========================================================================
+       11. DRAWER KAMUS CEPAT & MODAL RESET
+       ========================================================================= */
+    function openKamusDrawer() {
+      document.getElementById('kamus-overlay').classList.remove('hidden');
+      renderKamusDrawer();
+      document.getElementById('kamus-drawer-search').focus();
+    }
+
+    function closeKamusDrawer() {
+      document.getElementById('kamus-overlay').classList.add('hidden');
+    }
+
+    function renderKamusDrawer() {
+      const q = (document.getElementById('kamus-drawer-search')?.value || '').trim().toLowerCase();
+      const list = document.getElementById('kamus-drawer-list');
+      const items = ALL_MUFRADAT.filter(
+        (m) =>
+          !q ||
+          m.ar.toLowerCase().includes(q) ||
+          m.tr.toLowerCase().includes(q) ||
+          m.idText.toLowerCase().includes(q)
+      );
+      if (items.length === 0) {
+        list.innerHTML = `<p class="text-center text-xs text-slate-400 py-6">Istilah tidak ditemukan.</p>`;
+        return;
+      }
+      list.innerHTML = items
+        .map(
+          (m) => `
+        <div class="p-3 rounded-xl border border-slate-200 bg-white hover:border-tebuireng-700/40 transition flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <span class="text-[10px] font-bold uppercase text-emas-700">${m.group}</span>
+            <div class="text-sm font-bold text-slate-800">${m.idText}</div>
+            <div class="text-xs italic text-slate-500">${m.tr}</div>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="arab-ui text-lg font-bold text-tebuireng-950">${m.ar}</div>
+            <div class="flex items-center justify-end gap-1 mt-1">
+              <button type="button" onclick="speakArabic('${m.ar.replace(/'/g, "\\'")}')" class="px-2 py-0.5 rounded bg-tebuireng-50 hover:bg-tebuireng-100 text-[11px] cursor-pointer">🔊</button>
+              <button type="button" onclick="copyText('${m.ar.replace(/'/g, "\\'")}')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-[11px] cursor-pointer">📋</button>
+            </div>
+          </div>
+        </div>`
+        )
+        .join('');
+    }
+
+    function openResetModal() {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('reset-modal').classList.add('hidden');
+    }
+
+    function confirmResetAll() {
+      localStorage.removeItem(STORAGE_KEY);
+      appState = getDefaultState();
+      hydrateStaticInputs();
+      renderAllDynamicSections();
+      applyModeDosenUI();
+      switchTab('tab-mufradat');
+      closeResetModal();
+      showToast('Seluruh isian lembar tugas telah direset.');
+    }
+
+    /* =========================================================================
+       12. SINKRONISASI INPUT STATIS & INISIALISASI
+       ========================================================================= */
+    function handleStateChange() {
+      appState.identity.pemandu = document.getElementById('id-pemandu').value;
+      appState.identity.operator = document.getElementById('id-operator').value;
+      appState.identity.pengamat = document.getElementById('id-pengamat').value;
+      appState.identity.nim = document.getElementById('id-nim').value;
+      appState.identity.tanggal = document.getElementById('id-tanggal').value;
+
+      appState.istimaQ.q1 = document.getElementById('istima-q1').value;
+      appState.istimaQ.q2 = document.getElementById('istima-q2').value;
+      appState.istimaQ.q3 = document.getElementById('istima-q3').value;
+
+      appState.kartu2FilterNote = document.getElementById('kartu2-filter-note').value;
+      appState.rubrikFeedback = document.getElementById('rubrik-feedback').value;
+
+      appState.mandiri.hadis = document.getElementById('mandiri-hadis').value;
+      appState.mandiri.hasil = document.getElementById('mandiri-hasil').value;
+      appState.mandiri.skrip = document.getElementById('mandiri-skrip').value;
+
+      appState.refleksi.r1 = document.getElementById('refleksi-1').value;
+      appState.refleksi.r2 = document.getElementById('refleksi-2').value;
+
+      updateIdentitySummary();
+      updateIstimaProgress();
+      saveState();
+    }
+
+    function hydrateStaticInputs() {
+      document.getElementById('id-pemandu').value = appState.identity.pemandu || '';
+      document.getElementById('id-operator').value = appState.identity.operator || '';
+      document.getElementById('id-pengamat').value = appState.identity.pengamat || '';
+      document.getElementById('id-nim').value = appState.identity.nim || '';
+      document.getElementById('id-tanggal').value = appState.identity.tanggal || '';
+
+      document.getElementById('istima-q1').value = appState.istimaQ.q1 || '';
+      document.getElementById('istima-q2').value = appState.istimaQ.q2 || '';
+      document.getElementById('istima-q3').value = appState.istimaQ.q3 || '';
+
+      document.getElementById('kartu2-filter-note').value = appState.kartu2FilterNote || '';
+      document.getElementById('rubrik-feedback').value = appState.rubrikFeedback || '';
+
+      document.getElementById('mandiri-hadis').value = appState.mandiri.hadis || '';
+      document.getElementById('mandiri-hasil').value = appState.mandiri.hasil || '';
+      document.getElementById('mandiri-skrip').value = appState.mandiri.skrip || '';
+
+      document.getElementById('refleksi-1').value = appState.refleksi.r1 || '';
+      document.getElementById('refleksi-2').value = appState.refleksi.r2 || '';
+
+      updateIdentitySummary();
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str).replace(/"/g, '&quot;');
+    }
+
+    function renderAllDynamicSections() {
+      renderMufradatTables();
+      setAmrMode('male');
+      renderIstimaRows();
+      renderDialog();
+      renderTaskCards();
+      renderTakhrijResultsTable();
+      renderRubrikTable();
+      renderMandiriChecklist();
+      updateTimerUI();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      hydrateStaticInputs();
+      renderAllDynamicSections();
+      applyModeDosenUI();
+      switchTab(appState.activeTab || 'tab-mufradat');
+
+      // Muat daftar suara TTS jika tersedia
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+      }
+    });
+  </script>
+</body>
+</html>
